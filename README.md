@@ -15,4 +15,4 @@ But this doesn't really matter cause we're friend's. Right!? _("Why can we be fr
 ### About:
 - 👀 I’m interested in Full-Stack development
 - 🌱 I’m currently learning ReactJS, React Native and Node.js
-- 👻 I want to be like a dev ninja!!
+- 👻 I am a Dev Ghost!!
