@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react';
-import { useTransition } from 'react-spring';
+import { useTransition, config } from 'react-spring';
+import { Link } from 'react-router-dom';
 import {
   UilEstate,
   UilUser,
@@ -18,15 +19,16 @@ const NavMenu: React.FC = () => {
   const [show, setShow] = useState(false);
 
   const navExibitionMobile = useTransition(show, {
-    from: { opacity: 0, y: '100%' },
+    from: { opacity: 0, y: '150%' },
     enter: { opacity: 1, y: '0' },
-    leave: { opacity: 0, y: '100%' },
-    delay: 200,
+    leave: { opacity: 0, y: '120%' },
+    reverse: show,
+    config: config.stiff,
   });
 
   const handleShowNav = useCallback(() => {
-    setShow(!show);
-  }, [show]);
+    setShow((state) => !state);
+  }, []);
 
   return (
     <Header>
@@ -39,34 +41,34 @@ const NavMenu: React.FC = () => {
               <NavList style={styles}>
                 <ul>
                   <NavItem>
-                    <a href="#">
+                    <Link to="#" onClick={handleShowNav}>
                       <UilEstate /> Home
-                    </a>
+                    </Link>
                   </NavItem>
                   <NavItem>
-                    <a href="#">
+                    <Link to="#" onClick={handleShowNav}>
                       <UilUser /> About
-                    </a>
+                    </Link>
                   </NavItem>
                   <NavItem>
-                    <a href="#">
+                    <Link to="#" onClick={handleShowNav}>
                       <UilFileAlt /> Skills
-                    </a>
+                    </Link>
                   </NavItem>
                   <NavItem>
-                    <a href="#">
+                    <Link to="#" onClick={handleShowNav}>
                       <UilBriefcaseAlt /> Services
-                    </a>
+                    </Link>
                   </NavItem>
                   <NavItem>
-                    <a href="#">
+                    <Link to="#" onClick={handleShowNav}>
                       <UilScenery /> Portfolio
-                    </a>
+                    </Link>
                   </NavItem>
                   <NavItem>
-                    <a href="#">
+                    <Link to="#" onClick={handleShowNav}>
                       <UilMessage /> Contactme
-                    </a>
+                    </Link>
                   </NavItem>
                 </ul>
                 <UilTimes onClick={handleShowNav} />
