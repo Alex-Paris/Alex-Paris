@@ -1,4 +1,3 @@
-import styled from 'styled-components';
 import { device } from './device';
 
 export const HeaderHeight = '3rem';
@@ -100,16 +99,16 @@ export const Grid = `
   gap: 1.5rem;
 `;
 
-export const Section = styled.section`
+export const Section = `
   padding: 2rem 0 4rem;
 
   title {
-    font-size: ${H1FontSize};
+    ${H1FontSize}
   }
 
   subtitle {
+    ${SmallFontSize}
     display: block;
-    font-size: ${SmallFontSize};
     margin-bottom: ${Mb3};
   }
 
@@ -117,4 +116,16 @@ export const Section = styled.section`
   subtitle {
     text-align: center;
   }
+`;
+
+export const SectionTitle = `
+  ${H1FontSize}
+  text-align: center;
+`;
+
+export const SectionSubtitle = `
+  ${SmallFontSize}
+  display: block;
+  margin-bottom: ${Mb3};
+  text-align: center;
 `;
