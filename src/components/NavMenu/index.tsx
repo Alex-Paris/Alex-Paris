@@ -41,9 +41,9 @@ const NavMenu: React.FC = () => {
               <NavList style={styles}>
                 <ul>
                   <NavItem>
-                    <Link to="#" onClick={handleShowNav}>
+                    <a href="#home" onClick={handleShowNav}>
                       <UilEstate /> Home
-                    </Link>
+                    </a>
                   </NavItem>
                   <NavItem>
                     <Link to="#" onClick={handleShowNav}>
@@ -51,7 +51,7 @@ const NavMenu: React.FC = () => {
                     </Link>
                   </NavItem>
                   <NavItem>
-                    <Link to="#" onClick={handleShowNav}>
+                    <Link to="skills" onClick={handleShowNav}>
                       <UilFileAlt /> Skills
                     </Link>
                   </NavItem>
