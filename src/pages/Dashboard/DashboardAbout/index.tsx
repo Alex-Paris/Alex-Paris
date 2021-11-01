@@ -4,7 +4,7 @@ import {
   // @ts-expect-error: React-Unicons doesnt have @types yet
 } from '@iconscout/react-unicons';
 
-import aboutImg from '../../../assets/about.jpg';
+import aboutImg from '../../../assets/about320.jpg';
 import Button from '../../../components/Button';
 
 import {
