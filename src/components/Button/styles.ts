@@ -5,6 +5,7 @@ import { FirstColor, FirstColorAlt, FontMedium } from '../../styles/variables';
 interface ContainerProps {
   isFlex?: boolean;
   isSimple?: boolean;
+  isActive?: boolean;
   isPressed: boolean;
 }
 
@@ -39,5 +40,12 @@ export const Container = styled.button<ContainerProps>`
     css`
       display: inline-flex;
       align-items: center;
+    `}
+
+  ${(props) =>
+    props.isSimple &&
+    props.isActive &&
+    css`
+      color: ${FirstColor};
     `}
 `;

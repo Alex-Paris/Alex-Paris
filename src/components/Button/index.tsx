@@ -6,6 +6,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
   isFlex?: boolean;
   isSimple?: boolean;
+  isActive?: boolean;
 };
 
 const Button: React.FC<ButtonProps> = ({
@@ -13,6 +14,7 @@ const Button: React.FC<ButtonProps> = ({
   loading,
   isFlex,
   isSimple,
+  isActive,
   ...rest
 }) => {
   const [isPressed, setIsPressed] = useState(false);
@@ -32,6 +34,7 @@ const Button: React.FC<ButtonProps> = ({
       isFlex={isFlex}
       isSimple={isSimple}
       isPressed={isPressed}
+      isActive={isActive}
       {...rest}
     >
       {loading ? 'Carregando...' : children}
