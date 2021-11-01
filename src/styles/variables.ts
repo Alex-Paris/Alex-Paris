@@ -101,21 +101,6 @@ export const Grid = `
 
 export const Section = `
   padding: 2rem 0 4rem;
-
-  title {
-    ${H1FontSize}
-  }
-
-  subtitle {
-    ${SmallFontSize}
-    display: block;
-    margin-bottom: ${Mb3};
-  }
-
-  title,
-  subtitle {
-    text-align: center;
-  }
 `;
 
 export const SectionTitle = `

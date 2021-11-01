@@ -29,11 +29,11 @@ interface SkillsItemListBarProps {
 export const Skills = styled.section`
   ${/*inherithed*/ Section}
 
-  h2 {
+  > h2 {
     ${SectionTitle}
   }
 
-  span {
+  > span {
     ${SectionSubtitle}
     margin-bottom: 10px;
   }
@@ -97,7 +97,7 @@ export const SkillsArrow = styled.i<SkillsContentProps>`
 export const SkillsItemList = styled.div<SkillsContentProps>`
   row-gap: 1.5rem;
   padding-left: 2.7rem;
-  transition: 0.5s;
+  transition: 0.3s;
 
   ${(props) =>
     !props.isOpened
