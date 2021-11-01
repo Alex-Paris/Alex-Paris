@@ -6,11 +6,14 @@ interface ContainerProps {
   isFlex?: boolean;
   isSimple?: boolean;
   isActive?: boolean;
+  isSmall?: boolean;
+  isLink?: boolean;
   isPressed: boolean;
 }
 
 export const Container = styled.button<ContainerProps>`
   border: 0;
+  padding: 0;
   background-color: transparent;
 
   ${(props) =>
@@ -47,5 +50,21 @@ export const Container = styled.button<ContainerProps>`
     props.isActive &&
     css`
       color: ${FirstColor};
+    `}
+
+  ${(props) =>
+    props.isSmall &&
+    css`
+      padding: 0.75rem 1rem;
+    `}
+
+  ${(props) =>
+    props.isLink &&
+    css`
+      color: ${FirstColor};
+
+      &:hover {
+        color: ${FirstColorAlt};
+      }
     `}
 `;
