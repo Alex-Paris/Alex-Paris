@@ -1,6 +1,6 @@
 import React from 'react';
 
-import perfil from './perfil.png';
+import perfil from './perfil320.jpg';
 
 export const PerfilIcon: React.FC = () => {
   return (
