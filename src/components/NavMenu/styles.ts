@@ -37,6 +37,7 @@ export const Nav = styled.nav`
   > a {
     color: ${TitleColor};
     font-weight: ${FontMedium};
+    transition: 0.3s;
 
     &:hover {
       color: ${FirstColor};
@@ -82,6 +83,7 @@ export const NavToggle = styled.div`
   font-weight: ${FontMedium};
   font-size: 1.1rem;
   cursor: pointer;
+  transition: 0.3s;
 
   &:hover {
     color: ${FirstColor};
