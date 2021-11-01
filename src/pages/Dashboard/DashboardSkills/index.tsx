@@ -23,11 +23,11 @@ interface Skill {
   title: string;
   description: string;
   icon: ReactElement;
-  items: SkillItems[];
+  items: SkillItem[];
   isOpened: boolean;
 }
 
-interface SkillItems {
+interface SkillItem {
   name: string;
   porcent: number;
 }
