@@ -7,6 +7,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   isFlex?: boolean;
   isSimple?: boolean;
   isActive?: boolean;
+  isWhite?: boolean;
   isSmall?: boolean;
   isLink?: boolean;
 };
@@ -17,6 +18,7 @@ const Button: React.FC<ButtonProps> = ({
   isFlex,
   isSimple,
   isActive,
+  isWhite,
   isSmall,
   isLink,
   ...rest
@@ -39,6 +41,7 @@ const Button: React.FC<ButtonProps> = ({
       isSimple={isSimple}
       isPressed={isPressed}
       isActive={isActive}
+      isWhite={isWhite}
       isSmall={isSmall}
       isLink={isLink}
       {...rest}
