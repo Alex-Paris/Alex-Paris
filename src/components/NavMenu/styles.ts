@@ -98,6 +98,7 @@ export const NavItem = styled.li`
     align-items: center;
     color: ${TitleColor};
     font-weight: ${FontMedium};
+    transition: 0.3s;
 
     svg {
       font-size: 1.2rem;

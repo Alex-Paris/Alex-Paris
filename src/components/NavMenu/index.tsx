@@ -46,7 +46,7 @@ const NavMenu: React.FC = () => {
                     </a>
                   </NavItem>
                   <NavItem>
-                    <Link to="#" onClick={handleShowNav}>
+                    <Link to="#about" onClick={handleShowNav}>
                       <UilUser /> About
                     </Link>
                   </NavItem>
@@ -56,17 +56,17 @@ const NavMenu: React.FC = () => {
                     </Link>
                   </NavItem>
                   <NavItem>
-                    <Link to="#" onClick={handleShowNav}>
+                    <Link to="#services" onClick={handleShowNav}>
                       <UilBriefcaseAlt /> Services
                     </Link>
                   </NavItem>
                   <NavItem>
-                    <Link to="#" onClick={handleShowNav}>
+                    <Link to="#portfolio" onClick={handleShowNav}>
                       <UilScenery /> Portfolio
                     </Link>
                   </NavItem>
                   <NavItem>
-                    <Link to="#" onClick={handleShowNav}>
+                    <Link to="#contactme" onClick={handleShowNav}>
                       <UilMessage /> Contactme
                     </Link>
                   </NavItem>
