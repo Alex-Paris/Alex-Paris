@@ -6,6 +6,7 @@ import {
   UilMessage,
   UilMouseAlt,
   UilArrowDown,
+  UilExternalLinkAlt,
   // @ts-expect-error: React-Unicons doesnt have @types yet
 } from '@iconscout/react-unicons';
 
@@ -34,6 +35,7 @@ const DashboardHome: React.FC = () => {
               rel="noreferrer"
             >
               <UilLinkedinAlt />
+              <UilExternalLinkAlt size="1.1rem" />
             </a>
 
             <a
@@ -42,6 +44,7 @@ const DashboardHome: React.FC = () => {
               rel="noreferrer"
             >
               <UilDribbble />
+              <UilExternalLinkAlt size="1.1rem" />
             </a>
 
             <a
@@ -50,6 +53,7 @@ const DashboardHome: React.FC = () => {
               rel="noreferrer"
             >
               <UilGithubAlt />
+              <UilExternalLinkAlt size="1.1rem" />
             </a>
           </HomeSocial>
 

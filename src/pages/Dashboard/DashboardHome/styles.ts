@@ -42,9 +42,23 @@ export const HomeSocial = styled.div`
   a {
     font-size: 1.25rem;
     color: ${FirstColor};
+    padding: 0.3rem 0.3rem 0rem 0.3rem;
+    border-radius: 0.25rem;
+    transition: 0.3s;
+
+    svg + svg {
+      margin-left: 0.7rem;
+      color: transparent;
+      transition: 0.3s;
+    }
 
     &:hover {
       color: ${FirstColorAlt};
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+      svg + svg {
+        margin-left: 0.7rem;
+        color: ${FirstColorAlt};
+      }
     }
   }
 `;
