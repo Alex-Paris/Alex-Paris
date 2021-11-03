@@ -18,7 +18,7 @@ import 'swiper/modules/navigation/navigation.min.css';
 import 'swiper/modules/pagination/pagination.min.css';
 
 import Button from '../../../components/Button';
-import aboutImg from '../../../assets/about320.jpg';
+import portfolio1Img from '../../../assets/portfolio1.png';
 
 import { Portfolio, PortfolioContainer, PortfolioContent } from './styles';
 
@@ -34,11 +34,11 @@ interface Portfolio {
 const DashboardPortfolio: React.FC = () => {
   const portfolios: Portfolio[] = [
     {
-      title: 'Modern Website',
+      title: 'GoBarber',
       description:
-        'Website adaptable to all devices, with ui components and animated interactions.',
+        'Website to make appointments with a barber shop, using React, React Native and Node.',
       image: 'D:/ARQUIVOS/PROJETOS/React/Alex-Paris/src/assets/about320.jpg',
-      link: '',
+      link: 'http://gobarber.alexparis.dev/',
     },
     {
       title: 'Brand Design',
@@ -89,12 +89,12 @@ const DashboardPortfolio: React.FC = () => {
           {portfolios.map((portfolio) => (
             <SwiperSlide key={portfolio.title} className="mySwiperSlide">
               <PortfolioContent>
-                <img src={aboutImg} />
+                <img src={portfolio1Img} />
 
                 <div>
                   <h3>{portfolio.title}</h3>
                   <p>{portfolio.description}</p>
-                  <Button isFlex isSmall>
+                  <Button isFlex isSmall href={portfolio.link}>
                     Demo
                     <UilArrowRight />
                   </Button>
