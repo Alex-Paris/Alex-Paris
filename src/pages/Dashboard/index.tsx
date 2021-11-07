@@ -9,6 +9,7 @@ import DashboardQualification from './DashboardQualification';
 import DashboardServices from './DashboardServices';
 import DashboardPortfolio from './DashboardPortfolio';
 import DashboardProject from './DashboardProject';
+import DashboardTestimonials from './DashboardTestimonials';
 
 const Dashboard: React.FC = () => {
   return (
@@ -27,6 +28,8 @@ const Dashboard: React.FC = () => {
         <DashboardPortfolio />
 
         <DashboardProject />
+
+        <DashboardTestimonials />
       </Content>
     </>
   );
