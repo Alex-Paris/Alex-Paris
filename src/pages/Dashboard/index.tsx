@@ -11,6 +11,7 @@ import DashboardPortfolio from './DashboardPortfolio';
 import DashboardProject from './DashboardProject';
 import DashboardTestimonials from './DashboardTestimonials';
 import DashboardContact from './DashboardContact';
+import DashboardFooter from './DashboardFooter';
 
 const Dashboard: React.FC = () => {
   return (
@@ -34,6 +35,8 @@ const Dashboard: React.FC = () => {
 
         <DashboardContact />
       </Content>
+
+      <DashboardFooter />
     </>
   );
 };
