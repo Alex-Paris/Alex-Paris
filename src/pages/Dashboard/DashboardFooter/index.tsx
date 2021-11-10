@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashLink } from 'react-router-hash-link';
+import { Link as HashLink } from 'react-scroll';
 
 import Icon from '../../../components/Unicons';
 
@@ -17,19 +17,40 @@ const DashboardFooter: React.FC = () => {
 
           <FooterLinks>
             <li>
-              <HashLink smooth to="#services">
+              <HashLink
+                activeClass="active"
+                to="services"
+                spy
+                smooth
+                offset={-70}
+                duration={300}
+              >
                 Services
               </HashLink>
             </li>
 
             <li>
-              <HashLink smooth to="#portfolio">
+              <HashLink
+                activeClass="active"
+                to="portfolio"
+                spy
+                smooth
+                offset={-70}
+                duration={300}
+              >
                 Portfolio
               </HashLink>
             </li>
 
             <li>
-              <HashLink smooth to="#contact">
+              <HashLink
+                activeClass="active"
+                to="contact"
+                spy
+                smooth
+                offset={-70}
+                duration={300}
+              >
                 Contactme
               </HashLink>
             </li>

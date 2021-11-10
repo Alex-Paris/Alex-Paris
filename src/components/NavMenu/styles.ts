@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { animated } from 'react-spring';
 
 import { device } from '../../styles/device';
@@ -16,13 +16,24 @@ import {
   FirstColorAlt,
 } from '../../styles/variables';
 
-export const Header = styled.header`
+interface HeaderProps {
+  isBordered: boolean;
+}
+
+export const Header = styled.header<HeaderProps>`
   width: 100%;
   position: fixed;
   bottom: 0;
+  transition: 0.3s;
   left: 0;
   z-index: ${ZFixed};
   background-color: ${BodyColor};
+
+  ${(props) =>
+    props.isBordered &&
+    css`
+      box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+    `}
 `;
 
 export const Nav = styled.nav`
@@ -107,5 +118,9 @@ export const NavItem = styled.li`
     &:hover {
       color: ${FirstColor};
     }
+  }
+
+  > .active {
+    color: ${FirstColor};
   }
 `;
