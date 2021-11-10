@@ -62,7 +62,7 @@ const DashboardTestimonials: React.FC = () => {
       testimonial.starsElement = [];
 
       for (let i = 0; i < testimonial.stars; i++) {
-        testimonial.starsElement.push(<Icon icon="UilStar" />);
+        testimonial.starsElement.push(<Icon key={i} icon="UilStar" />);
       }
     });
 

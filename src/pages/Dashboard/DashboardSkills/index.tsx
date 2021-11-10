@@ -117,7 +117,7 @@ const DashboardSkills: React.FC = () => {
 
       <SkillsContainer>
         {skills.map((skill) => (
-          <div key="">
+          <div key={skill.title}>
             <SkillsContent
               key={skill.title}
               onClick={() => handleShowSkillsList(skill)}

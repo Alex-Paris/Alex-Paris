@@ -139,8 +139,8 @@ const DashboardServices: React.FC = () => {
                 </Button>
 
                 <ServicesModalServices>
-                  {service.items.map((itemService) => (
-                    <ServicesModalService key="">
+                  {service.items.map((itemService, index) => (
+                    <ServicesModalService key={index}>
                       <ServicesModalIcon>
                         <Icon icon="UilCheckCircle" />
                       </ServicesModalIcon>
