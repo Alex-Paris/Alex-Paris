@@ -1,17 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { useTransition, config } from 'react-spring';
 import { HashLink } from 'react-router-hash-link';
-import {
-  UilEstate,
-  UilUser,
-  UilFileAlt,
-  UilBriefcaseAlt,
-  UilScenery,
-  UilMessage,
-  UilTimes,
-  UilApps,
-  // @ts-expect-error: React-Unicons doesnt have @types yet
-} from '@iconscout/react-unicons';
+
+import Icon from '../Unicons';
 
 import { Header, Nav, NavList, NavToggle, NavItem } from './styles';
 
@@ -42,43 +33,43 @@ const NavMenu: React.FC = () => {
                 <ul>
                   <NavItem>
                     <HashLink smooth to="/#home" onClick={handleShowNav}>
-                      <UilEstate /> Home
+                      <Icon icon="UilEstate" /> Home
                     </HashLink>
                   </NavItem>
                   <NavItem>
                     <HashLink smooth to="/#about" onClick={handleShowNav}>
-                      <UilUser /> About
+                      <Icon icon="UilUser" /> About
                     </HashLink>
                   </NavItem>
                   <NavItem>
                     <HashLink smooth to="/#skills" onClick={handleShowNav}>
-                      <UilFileAlt /> Skills
+                      <Icon icon="UilFileAlt" /> Skills
                     </HashLink>
                   </NavItem>
                   <NavItem>
                     <HashLink smooth to="/#services" onClick={handleShowNav}>
-                      <UilBriefcaseAlt /> Services
+                      <Icon icon="UilBriefcaseAlt" /> Services
                     </HashLink>
                   </NavItem>
                   <NavItem>
                     <HashLink smooth to="/#portfolio" onClick={handleShowNav}>
-                      <UilScenery /> Portfolio
+                      <Icon icon="UilScenery" /> Portfolio
                     </HashLink>
                   </NavItem>
                   <NavItem>
                     <HashLink smooth to="/#contactme" onClick={handleShowNav}>
-                      <UilMessage /> Contactme
+                      <Icon icon="UilMessage" /> Contactme
                     </HashLink>
                   </NavItem>
                 </ul>
-                <UilTimes onClick={handleShowNav} />
+                <Icon icon="UilTimes" onClick={handleShowNav} />
               </NavList>
             )
         )}
 
         <div>
           <NavToggle onClick={handleShowNav}>
-            <UilApps />
+            <Icon icon="UilApps" />
           </NavToggle>
         </div>
       </Nav>

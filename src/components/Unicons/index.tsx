@@ -30,6 +30,11 @@ import {
   UilFacebookF,
   UilInstagram,
   UilTwitterAlt,
+  UilEstate,
+  UilUser,
+  UilFileAlt,
+  UilScenery,
+  UilApps,
   // @ts-expect-error: React-Unicons doesnt have @types yet
 } from '@iconscout/react-unicons';
 
@@ -64,7 +69,12 @@ export type IconProps = SVGAttributes<SVGAElement> & {
     | 'UilMapMarker'
     | 'UilFacebookF'
     | 'UilInstagram'
-    | 'UilTwitterAlt';
+    | 'UilTwitterAlt'
+    | 'UilEstate'
+    | 'UilUser'
+    | 'UilFileAlt'
+    | 'UilScenery'
+    | 'UilApps';
 };
 
 const iconType = {
@@ -98,6 +108,11 @@ const iconType = {
   UilFacebookF: UilFacebookF,
   UilInstagram: UilInstagram,
   UilTwitterAlt: UilTwitterAlt,
+  UilEstate: UilEstate,
+  UilUser: UilUser,
+  UilFileAlt: UilFileAlt,
+  UilScenery: UilScenery,
+  UilApps: UilApps,
 };
 
 const Icon: React.FC<IconProps> = ({ icon, ...rest }) => {
