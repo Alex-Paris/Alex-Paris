@@ -42,7 +42,7 @@ const DashboardContact: React.FC = () => {
   ];
 
   return (
-    <Contact id="contact">
+    <Contact id="contactme">
       <h2>Contact Me</h2>
       <span>Get in touch</span>
 

@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 import { useTransition, config } from 'react-spring';
-import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 import {
   UilEstate,
   UilUser,
@@ -41,34 +41,34 @@ const NavMenu: React.FC = () => {
               <NavList style={styles}>
                 <ul>
                   <NavItem>
-                    <a href="#home" onClick={handleShowNav}>
+                    <HashLink smooth to="/#home" onClick={handleShowNav}>
                       <UilEstate /> Home
-                    </a>
+                    </HashLink>
                   </NavItem>
                   <NavItem>
-                    <Link to="#about" onClick={handleShowNav}>
+                    <HashLink smooth to="/#about" onClick={handleShowNav}>
                       <UilUser /> About
-                    </Link>
+                    </HashLink>
                   </NavItem>
                   <NavItem>
-                    <Link to="skills" onClick={handleShowNav}>
+                    <HashLink smooth to="/#skills" onClick={handleShowNav}>
                       <UilFileAlt /> Skills
-                    </Link>
+                    </HashLink>
                   </NavItem>
                   <NavItem>
-                    <Link to="#services" onClick={handleShowNav}>
+                    <HashLink smooth to="/#services" onClick={handleShowNav}>
                       <UilBriefcaseAlt /> Services
-                    </Link>
+                    </HashLink>
                   </NavItem>
                   <NavItem>
-                    <Link to="#portfolio" onClick={handleShowNav}>
+                    <HashLink smooth to="/#portfolio" onClick={handleShowNav}>
                       <UilScenery /> Portfolio
-                    </Link>
+                    </HashLink>
                   </NavItem>
                   <NavItem>
-                    <Link to="#contactme" onClick={handleShowNav}>
+                    <HashLink smooth to="/#contactme" onClick={handleShowNav}>
                       <UilMessage /> Contactme
-                    </Link>
+                    </HashLink>
                   </NavItem>
                 </ul>
                 <UilTimes onClick={handleShowNav} />

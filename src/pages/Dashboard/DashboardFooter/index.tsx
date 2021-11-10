@@ -1,4 +1,5 @@
 import React from 'react';
+import { HashLink } from 'react-router-hash-link';
 
 import Icon from '../../../components/Unicons';
 
@@ -16,15 +17,21 @@ const DashboardFooter: React.FC = () => {
 
           <FooterLinks>
             <li>
-              <a href="#services">Services</a>
+              <HashLink smooth to="#services">
+                Services
+              </HashLink>
             </li>
 
             <li>
-              <a href="#portfolio">Portfolio</a>
+              <HashLink smooth to="#portfolio">
+                Portfolio
+              </HashLink>
             </li>
 
             <li>
-              <a href="#contact">Contactme</a>
+              <HashLink smooth to="#contact">
+                Contactme
+              </HashLink>
             </li>
           </FooterLinks>
 
