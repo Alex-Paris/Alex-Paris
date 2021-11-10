@@ -10,6 +10,7 @@ import DashboardServices from './DashboardServices';
 import DashboardPortfolio from './DashboardPortfolio';
 import DashboardProject from './DashboardProject';
 import DashboardTestimonials from './DashboardTestimonials';
+import DashboardContact from './DashboardContact';
 
 const Dashboard: React.FC = () => {
   return (
@@ -30,6 +31,8 @@ const Dashboard: React.FC = () => {
         <DashboardProject />
 
         <DashboardTestimonials />
+
+        <DashboardContact />
       </Content>
     </>
   );
