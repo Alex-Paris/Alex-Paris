@@ -45,7 +45,7 @@ const DashboardFooter: React.FC = () => {
             <li>
               <HashLink
                 activeClass="active"
-                to="contact"
+                to="contactme"
                 spy
                 smooth
                 offset={-70}
