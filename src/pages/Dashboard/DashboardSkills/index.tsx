@@ -1,11 +1,6 @@
-import React, { ReactElement, useCallback, useState } from 'react';
-import {
-  UilBracketsCurly,
-  UilAngleDown,
-  UilServerNetwork,
-  UilSwatchbook,
-  // @ts-expect-error: React-Unicons doesnt have @types yet
-} from '@iconscout/react-unicons';
+import React, { useCallback, useState } from 'react';
+
+import Icon, { IconProps } from '../../../components/Unicons';
 
 import {
   Skills,
@@ -22,7 +17,7 @@ import {
 interface Skill {
   title: string;
   description: string;
-  icon: ReactElement;
+  icon: IconProps['icon'];
   items: SkillItem[];
   isOpened: boolean;
 }
@@ -37,7 +32,7 @@ const DashboardSkills: React.FC = () => {
     {
       title: 'Frontend developer',
       description: 'More than 4 years',
-      icon: <UilBracketsCurly size="2rem" />,
+      icon: 'UilBracketsCurly',
       isOpened: false,
       items: [
         {
@@ -61,7 +56,7 @@ const DashboardSkills: React.FC = () => {
     {
       title: 'Backend developer',
       description: 'More than 2 years',
-      icon: <UilServerNetwork size="2rem" />,
+      icon: 'UilServerNetwork',
       isOpened: false,
       items: [
         {
@@ -85,7 +80,7 @@ const DashboardSkills: React.FC = () => {
     {
       title: 'Designer',
       description: 'More than 5 years',
-      icon: <UilSwatchbook size="2rem" />,
+      icon: 'UilSwatchbook',
       isOpened: false,
       items: [
         {
@@ -129,7 +124,9 @@ const DashboardSkills: React.FC = () => {
               isOpened={skill.isOpened}
             >
               <SkillsItemHeader>
-                <SkillsIcon>{skill.icon}</SkillsIcon>
+                <SkillsIcon>
+                  <Icon icon={skill.icon} />
+                </SkillsIcon>
 
                 <div>
                   <h1>{skill.title}</h1>
@@ -137,7 +134,7 @@ const DashboardSkills: React.FC = () => {
                 </div>
 
                 <SkillsArrow isOpened={skill.isOpened}>
-                  <UilAngleDown size="2rem" />
+                  <Icon icon="UilAngleDown" />
                 </SkillsArrow>
               </SkillsItemHeader>
 

@@ -56,6 +56,11 @@ export const QualificationTabs = styled.div`
 
 export const QualificationIcon = styled.i`
   margin-right: ${Mb025};
+
+  svg {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
 `;
 
 export const QualificationSections = styled.div``;
@@ -95,6 +100,11 @@ export const QualificationDescription = styled.div`
 export const QualificationCalendar = styled.div`
   ${SmallerFontSize}
   color: ${TextColorLight};
+
+  svg {
+    width: 0.813rem;
+    height: 0.813rem;
+  }
 `;
 
 export const QualificationRounder = styled.span`

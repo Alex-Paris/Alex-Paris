@@ -1,13 +1,7 @@
 import React from 'react';
-import {
-  UilPhone,
-  UilEnvelope,
-  UilMapMarker,
-  UilMessage,
-  // @ts-expect-error: React-Unicons doesnt have @types yet
-} from '@iconscout/react-unicons';
 
 import Button from '../../../components/Button';
+import Icon, { IconProps } from '../../../components/Unicons';
 
 import {
   Contact,
@@ -18,7 +12,35 @@ import {
   ContactInputs,
 } from './styles';
 
+interface Contacts {
+  title: string;
+  type: 'phone' | 'email' | 'location';
+  contact: string;
+  icon: IconProps['icon'];
+}
+
 const DashboardContact: React.FC = () => {
+  const contacts: Contacts[] = [
+    {
+      title: 'Call Me',
+      type: 'phone',
+      contact: '+55 18 1111-2222',
+      icon: 'UilPhone',
+    },
+    {
+      title: 'Email',
+      type: 'email',
+      contact: 'alex_limpaNarisZ@hotmail.com',
+      icon: 'UilEnvelope',
+    },
+    {
+      title: 'Location',
+      type: 'location',
+      contact: 'Brazil - Maringá',
+      icon: 'UilMapMarker',
+    },
+  ];
+
   return (
     <Contact id="contact">
       <h2>Contact Me</h2>
@@ -26,32 +48,16 @@ const DashboardContact: React.FC = () => {
 
       <ContactContainer>
         <div>
-          <ContactInformation>
-            <UilPhone size="2rem" />
+          {contacts.map((contact) => (
+            <ContactInformation key={contact.contact}>
+              <Icon icon={contact.icon} />
 
-            <div>
-              <h3>Call Me</h3>
-              <span>+55 18 99784-0983</span>
-            </div>
-          </ContactInformation>
-
-          <ContactInformation>
-            <UilEnvelope size="2rem" />
-
-            <div>
-              <h3>Email</h3>
-              <span>alex_paris28@hotmail.com</span>
-            </div>
-          </ContactInformation>
-
-          <ContactInformation>
-            <UilMapMarker size="2rem" />
-
-            <div>
-              <h3>Location</h3>
-              <span>Brazil - Maringá</span>
-            </div>
-          </ContactInformation>
+              <div>
+                <h3>{contact.title}</h3>
+                <span>{contact.contact}</span>
+              </div>
+            </ContactInformation>
+          ))}
         </div>
 
         <ContactForm>
@@ -79,7 +85,7 @@ const DashboardContact: React.FC = () => {
           <div>
             <Button isFlex>
               Send Message
-              <UilMessage />
+              <Icon icon="UilMessage" />
             </Button>
           </div>
         </ContactForm>

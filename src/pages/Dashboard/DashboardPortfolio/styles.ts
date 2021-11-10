@@ -113,6 +113,8 @@ export const PortfolioContent = styled.div`
 
     > button {
       svg {
+        width: 2rem;
+        height: 2rem;
         transition: 0.2s;
       }
 

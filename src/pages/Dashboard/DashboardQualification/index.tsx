@@ -1,12 +1,7 @@
-import React, { ReactElement, useCallback, useState } from 'react';
-import {
-  UilGraduationCap,
-  UilBriefcaseAlt,
-  UilCalendarAlt,
-  // @ts-expect-error: React-Unicons doesnt have @types yet
-} from '@iconscout/react-unicons';
+import React, { useCallback, useState } from 'react';
 
 import Button from '../../../components/Button';
+import Icon, { IconProps } from '../../../components/Unicons';
 
 import {
   Qualification,
@@ -24,7 +19,7 @@ import {
 
 interface Qualification {
   title: string;
-  icon: ReactElement;
+  icon: IconProps['icon'];
   items: QualificationItem[];
   isSelected?: boolean;
 }
@@ -39,7 +34,7 @@ const DashboardQualification: React.FC = () => {
   const [qualifications, setQualifications] = useState<Qualification[]>([
     {
       title: 'Education',
-      icon: <UilGraduationCap size="1.8rem" />,
+      icon: 'UilGraduationCap',
       items: [
         {
           title: 'Computer Enginner',
@@ -65,7 +60,7 @@ const DashboardQualification: React.FC = () => {
     },
     {
       title: 'Work',
-      icon: <UilBriefcaseAlt size="1.8rem" />,
+      icon: 'UilBriefcaseAlt',
       items: [
         {
           title: 'Software Enginner',
@@ -120,7 +115,9 @@ const DashboardQualification: React.FC = () => {
               isFlex
               isActive={qualification.isSelected}
             >
-              <QualificationIcon>{qualification.icon}</QualificationIcon>
+              <QualificationIcon>
+                <Icon icon={qualification.icon} />
+              </QualificationIcon>
               {qualification.title}
             </Button>
           ))}
@@ -140,7 +137,7 @@ const DashboardQualification: React.FC = () => {
                         <h3>{qualificationItem.title}</h3>
                         <span>{qualificationItem.location}</span>
                         <QualificationCalendar>
-                          <UilCalendarAlt size=".813rem" />
+                          <Icon icon="UilCalendarAlt" />
                           {qualificationItem.period}
                         </QualificationCalendar>
                       </QualificationDescription>
@@ -167,7 +164,7 @@ const DashboardQualification: React.FC = () => {
                         <h3>{qualificationItem.title}</h3>
                         <span>{qualificationItem.location}</span>
                         <QualificationCalendar>
-                          <UilCalendarAlt size=".813rem" />
+                          <Icon icon="UilCalendarAlt" />
                           {qualificationItem.period}
                         </QualificationCalendar>
                       </QualificationDescription>

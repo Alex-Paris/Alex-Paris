@@ -27,6 +27,8 @@ export const Container = styled.button<ContainerProps>`
 
   > svg {
     margin-left: ${Mb05};
+    width: 1.25rem;
+    height: 1.25rem;
     transition: 0.3s;
   }
 

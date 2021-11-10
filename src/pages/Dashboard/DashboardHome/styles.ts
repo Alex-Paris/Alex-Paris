@@ -15,7 +15,6 @@ import {
   SmallFontSize,
   TitleColor,
   Mb025,
-  Mb05,
 } from '../../../styles/variables';
 
 export const Home = styled.section`
@@ -47,6 +46,8 @@ export const HomeSocial = styled.div`
     transition: 0.3s;
 
     svg + svg {
+      width: 1.1rem;
+      height: 1.1rem;
       margin-left: 0.7rem;
       color: transparent;
       transition: 0.3s;
@@ -56,6 +57,8 @@ export const HomeSocial = styled.div`
       color: ${FirstColorAlt};
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
       svg + svg {
+        width: 1.1rem;
+        height: 1.1rem;
         margin-left: 0.7rem;
         color: ${FirstColorAlt};
       }
@@ -94,10 +97,6 @@ export const HomeData = styled.div`
 
   button {
     margin-bottom: ${Mb2};
-
-    svg {
-      margin-left: ${Mb05};
-    }
   }
 `;
 
@@ -110,6 +109,16 @@ export const HomeScroll = styled.div`
 
     &:hover {
       transform: translateY(0.25rem);
+    }
+
+    svg {
+      width: 2rem;
+      height: 2rem;
+
+      &:last-child {
+        width: inherit;
+        height: inherit;
+      }
     }
 
     span {

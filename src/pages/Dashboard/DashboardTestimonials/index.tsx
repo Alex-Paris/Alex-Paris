@@ -1,8 +1,4 @@
 import React, { useMemo } from 'react';
-import {
-  UilStar,
-  // @ts-expect-error: React-Unicons doesnt have @types yet
-} from '@iconscout/react-unicons';
 import SwiperCore, { Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react';
 import {
@@ -15,6 +11,7 @@ import 'swiper/swiper.min.css';
 import 'swiper/modules/pagination/pagination.min.css';
 
 import aboutImg from '../../../assets/about320.jpg';
+import Icon from '../../../components/Unicons';
 
 import {
   Testimonials,
@@ -65,7 +62,7 @@ const DashboardTestimonials: React.FC = () => {
       testimonial.starsElement = [];
 
       for (let i = 0; i < testimonial.stars; i++) {
-        testimonial.starsElement.push(<UilStar />);
+        testimonial.starsElement.push(<Icon icon="UilStar" />);
       }
     });
 

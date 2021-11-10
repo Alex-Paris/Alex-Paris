@@ -1,11 +1,8 @@
 import React from 'react';
-import {
-  UilMessage,
-  // @ts-expect-error: React-Unicons doesnt have @types yet
-} from '@iconscout/react-unicons';
 
 import projectImg from '../../../assets/project320.jpg';
 import Button from '../../../components/Button';
+import Icon from '../../../components/Unicons';
 
 import { Project, ProjectContainer, ProjectData } from './styles';
 
@@ -18,7 +15,7 @@ const DashboardProject: React.FC = () => {
             <h2>You have a new project</h2>
             <p>Contact me now and get 30% discount.</p>
             <Button isFlex isWhite>
-              Contact Me <UilMessage />
+              Contact Me <Icon icon="UilMessage" />
             </Button>
           </ProjectData>
           <img src={projectImg} />

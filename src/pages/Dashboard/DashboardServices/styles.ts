@@ -80,6 +80,11 @@ export const ServicesIcon = styled.i`
   display: block;
   color: ${FirstColor};
   margin-bottom: ${Mb1};
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
 `;
 
 export const ServicesModal = styled.div<ServicesModalProps>`
@@ -123,6 +128,11 @@ export const ServicesModalContent = styled.div`
     top: 1rem;
     right: 1rem;
     color: ${FirstColor};
+
+    > svg {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
   }
 `;
 

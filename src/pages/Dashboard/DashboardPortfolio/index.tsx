@@ -1,10 +1,4 @@
 import React from 'react';
-import {
-  UilArrowRight,
-  UilAngleRightB,
-  UilAngleLeftB,
-  // @ts-expect-error: React-Unicons doesnt have @types yet
-} from '@iconscout/react-unicons';
 import SwiperCore, { Navigation, Pagination, Autoplay, Keyboard } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react/swiper-react';
 import {
@@ -17,6 +11,7 @@ import 'swiper/swiper.min.css';
 import 'swiper/modules/navigation/navigation.min.css';
 import 'swiper/modules/pagination/pagination.min.css';
 
+import Icon from '../../../components/Unicons';
 import Button from '../../../components/Button';
 import portfolio1Img from '../../../assets/portfolio1.png';
 
@@ -96,14 +91,14 @@ const DashboardPortfolio: React.FC = () => {
                   <p>{portfolio.description}</p>
                   <Button isFlex isSmall href={portfolio.link}>
                     Demo
-                    <UilArrowRight />
+                    <Icon icon="UilArrowRight" />
                   </Button>
                 </div>
               </PortfolioContent>
             </SwiperSlide>
           ))}
-          <UilAngleLeftB className="swiper-button-prev" size="2rem" />
-          <UilAngleRightB className="swiper-button-next" size="2rem" />
+          <Icon icon="UilAngleLeftB" className="swiper-button-prev" />
+          <Icon icon="UilAngleRightB" className="swiper-button-next" />
         </Swiper>
       </PortfolioContainer>
     </Portfolio>

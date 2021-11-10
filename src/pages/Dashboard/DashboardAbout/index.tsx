@@ -1,11 +1,8 @@
 import React from 'react';
-import {
-  UilDownloadAlt,
-  // @ts-expect-error: React-Unicons doesnt have @types yet
-} from '@iconscout/react-unicons';
 
 import aboutImg from '../../../assets/about320.jpg';
 import Button from '../../../components/Button';
+import Icon from '../../../components/Unicons';
 
 import {
   About,
@@ -57,7 +54,7 @@ const DashboardAbout: React.FC = () => {
 
           <AboutButtons>
             <Button isFlex>
-              Download CV <UilDownloadAlt size="1.25rem" />
+              Download CV <Icon icon="UilDownloadAlt" />
             </Button>
           </AboutButtons>
         </AboutData>

@@ -46,6 +46,8 @@ export const ContactInformation = styled.div`
   > svg {
     color: ${FirstColor};
     margin-right: ${Mb075};
+    width: 2rem;
+    height: 2rem;
   }
 
   > div {

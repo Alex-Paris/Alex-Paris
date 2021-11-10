@@ -1,17 +1,8 @@
 import React from 'react';
-import {
-  UilLinkedinAlt,
-  UilDribbble,
-  UilGithubAlt,
-  UilMessage,
-  UilMouseAlt,
-  UilArrowDown,
-  UilExternalLinkAlt,
-  // @ts-expect-error: React-Unicons doesnt have @types yet
-} from '@iconscout/react-unicons';
 
 import { PerfilIcon } from '../../../assets/perfil';
 import Button from '../../../components/Button';
+import Icon from '../../../components/Unicons';
 
 import {
   Home,
@@ -34,8 +25,8 @@ const DashboardHome: React.FC = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <UilLinkedinAlt />
-              <UilExternalLinkAlt size="1.1rem" />
+              <Icon icon="UilLinkedinAlt" />
+              <Icon icon="UilExternalLinkAlt" />
             </a>
 
             <a
@@ -43,8 +34,8 @@ const DashboardHome: React.FC = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <UilDribbble />
-              <UilExternalLinkAlt size="1.1rem" />
+              <Icon icon="UilDribbble" />
+              <Icon icon="UilExternalLinkAlt" />
             </a>
 
             <a
@@ -52,8 +43,8 @@ const DashboardHome: React.FC = () => {
               target="_blank"
               rel="noreferrer"
             >
-              <UilGithubAlt />
-              <UilExternalLinkAlt size="1.1rem" />
+              <Icon icon="UilGithubAlt" />
+              <Icon icon="UilExternalLinkAlt" />
             </a>
           </HomeSocial>
 
@@ -69,16 +60,16 @@ const DashboardHome: React.FC = () => {
               work.
             </p>
             <Button isFlex>
-              Contact Me <UilMessage size="1.25rem" />
+              Contact Me <Icon icon="UilMessage" />
             </Button>
           </HomeData>
         </HomeContent>
 
         <HomeScroll>
           <Button isFlex isSimple>
-            <UilMouseAlt size="2rem" />
+            <Icon icon="UilMouseAlt" />
             <span>Scroll down</span>
-            <UilArrowDown size="1.25rem" />
+            <Icon icon="UilArrowDown" />
           </Button>
         </HomeScroll>
       </HomeContainer>

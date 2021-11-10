@@ -81,11 +81,21 @@ export const SkillsItemHeader = styled.div`
 
 export const SkillsIcon = styled.i`
   margin-right: ${Mb075};
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
 `;
 
 export const SkillsArrow = styled.i<SkillsContentProps>`
   margin-left: auto;
   transition: 0.4s;
+
+  svg {
+    width: 2rem;
+    height: 2rem;
+  }
 
   ${(props) =>
     props.isOpened &&

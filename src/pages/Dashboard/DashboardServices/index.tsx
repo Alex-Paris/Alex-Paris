@@ -1,15 +1,7 @@
-import React, { ReactElement, useCallback, useState } from 'react';
-import {
-  UilWebGrid,
-  UilArrowRight,
-  UilTimes,
-  UilCheckCircle,
-  UilArrow,
-  UilPen,
-  // @ts-expect-error: React-Unicons doesnt have @types yet
-} from '@iconscout/react-unicons';
+import React, { useCallback, useState } from 'react';
 
 import Button from '../../../components/Button';
+import Icon, { IconProps } from '../../../components/Unicons';
 
 import {
   Services,
@@ -26,7 +18,7 @@ import {
 interface Service {
   title: string;
   subtitle: string;
-  icon: ReactElement;
+  icon: IconProps['icon'];
   items: ServiceItem[];
   isOpened?: boolean;
 }
@@ -40,7 +32,7 @@ const DashboardServices: React.FC = () => {
     {
       title: 'Ui/Ux',
       subtitle: 'Designer',
-      icon: <UilWebGrid size="1.5rem" />,
+      icon: 'UilWebGrid',
       items: [
         {
           description: 'I develop the user interface.',
@@ -59,7 +51,7 @@ const DashboardServices: React.FC = () => {
     {
       title: 'Frontend',
       subtitle: 'Developer',
-      icon: <UilArrow size="1.5rem" />,
+      icon: 'UilArrow',
       items: [
         {
           description: 'I develop the user interface.',
@@ -78,7 +70,7 @@ const DashboardServices: React.FC = () => {
     {
       title: 'Branding',
       subtitle: 'Designer',
-      icon: <UilPen size="1.5rem" />,
+      icon: 'UilPen',
       items: [
         {
           description: 'I develop the user interface.',
@@ -116,7 +108,9 @@ const DashboardServices: React.FC = () => {
         {services.map((service) => (
           <ServicesContent key={service.title}>
             <div>
-              <ServicesIcon>{service.icon}</ServicesIcon>
+              <ServicesIcon>
+                <Icon icon={service.icon} />
+              </ServicesIcon>
               <h3>
                 {service.title} <br /> {service.subtitle}
               </h3>
@@ -129,7 +123,7 @@ const DashboardServices: React.FC = () => {
               onClick={() => handleShowServicesList(service)}
             >
               View More
-              <UilArrowRight />
+              <Icon icon="UilArrowRight" />
             </Button>
 
             <ServicesModal isOpened={service.isOpened}>
@@ -141,14 +135,14 @@ const DashboardServices: React.FC = () => {
                   isSimple
                   onClick={() => handleShowServicesList(service)}
                 >
-                  <UilTimes size="1.5rem" />
+                  <Icon icon="UilTimes" />
                 </Button>
 
                 <ServicesModalServices>
                   {service.items.map((itemService) => (
                     <ServicesModalService key="">
                       <ServicesModalIcon>
-                        <UilCheckCircle />
+                        <Icon icon="UilCheckCircle" />
                       </ServicesModalIcon>
                       <p>{itemService.description}</p>
                     </ServicesModalService>
