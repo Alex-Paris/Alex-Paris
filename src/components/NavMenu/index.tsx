@@ -2,13 +2,16 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useTransition, config } from 'react-spring';
 import { Link as HashLink } from 'react-scroll';
 
+import { useScroll } from '../../hooks/context/scrolls';
+
 import Icon from '../Unicons';
 
 import { Header, Nav, NavList, NavToggle, NavItem } from './styles';
 
 const NavMenu: React.FC = () => {
   const [show, setShow] = useState(false);
-  const [bordered, setBordered] = useState(false);
+  const [scrollActivated, setScrollActivated] = useState(false);
+  const { scrolled } = useScroll();
 
   const navExibitionMobile = useTransition(show, {
     from: { opacity: 0, y: '150%' },
@@ -18,28 +21,20 @@ const NavMenu: React.FC = () => {
     config: config.stiff,
   });
 
-  const handleScroll = useCallback(() => {
-    if (scrollY > 90) {
-      setBordered(true);
-      return;
-    }
-    setBordered(false);
-  }, []);
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [handleScroll]);
-
   const handleShowNav = useCallback(() => {
     setShow((state) => !state);
   }, []);
 
+  useEffect(() => {
+    if (scrolled(90)) {
+      setScrollActivated(true);
+      return;
+    }
+    setScrollActivated(false);
+  }, [scrolled]);
+
   return (
-    <Header isBordered={bordered}>
+    <Header isBordered={scrollActivated}>
       <Nav>
         <HashLink
           activeClass="active"

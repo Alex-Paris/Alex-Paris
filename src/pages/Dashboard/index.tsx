@@ -1,5 +1,7 @@
-import React, { useEffect, useCallback, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link as HashLink } from 'react-scroll';
+
+import { useScroll } from '../../hooks/context/scrolls';
 
 import Icon from '../../components/Unicons';
 
@@ -17,23 +19,16 @@ import DashboardContact from './DashboardContact';
 import DashboardFooter from './DashboardFooter';
 
 const Dashboard: React.FC = () => {
-  const [scrollUp, setScrollUp] = useState(false);
-
-  const handleScroll = useCallback(() => {
-    if (scrollY > 560) {
-      setScrollUp(true);
-      return;
-    }
-    setScrollUp(false);
-  }, []);
+  const [scrollActivated, setScrollActivated] = useState(false);
+  const { scrolled } = useScroll();
 
   useEffect(() => {
-    window.addEventListener('scroll', handleScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [handleScroll]);
+    if (scrolled(560)) {
+      setScrollActivated(true);
+      return;
+    }
+    setScrollActivated(false);
+  }, [scrolled]);
 
   return (
     <>
@@ -59,7 +54,7 @@ const Dashboard: React.FC = () => {
 
       <DashboardFooter />
 
-      <ScrollUp scrollUp={scrollUp}>
+      <ScrollUp scrollUp={scrollActivated}>
         <HashLink activeClass="active" to="home" spy smooth duration={300}>
           <Icon icon="UilArrowUp" />
         </HashLink>
