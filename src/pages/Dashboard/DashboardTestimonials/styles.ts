@@ -44,7 +44,7 @@ export const TestimonialsData = styled.div`
     }
   }
 
-  @media ${device.mobileM} {
+  @media ${device.mobileMax} {
     flex-direction: column;
     align-items: center;
     text-align: center;
@@ -60,7 +60,7 @@ export const TestimonialsHeader = styled.div`
     border-radius: 50%;
     margin-right: ${Mb075};
 
-    @media ${device.mobileM} {
+    @media ${device.mobileMax} {
       margin-right: 0;
       margin-bottom: ${Mb025};
     }
@@ -78,7 +78,7 @@ export const TestimonialsHeader = styled.div`
     }
   }
 
-  @media ${device.mobileM} {
+  @media ${device.mobileMax} {
     flex-direction: column;
     align-items: center;
   }
@@ -87,7 +87,7 @@ export const TestimonialsHeader = styled.div`
 export const TestimonialsDescription = styled.p`
   margin-bottom: ${Mb25};
 
-  @media ${device.mobileM} {
+  @media ${device.mobileMax} {
     text-align: center;
   }
 `;

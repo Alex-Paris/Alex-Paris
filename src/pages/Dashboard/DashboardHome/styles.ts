@@ -21,6 +21,10 @@ export const Home = styled.section`
 export const HomeContainer = styled.div`
   ${/*inherithed*/ Container}
   gap: 1rem;
+
+  @media ${device.laptopMin} {
+    row-gap: 5rem;
+  }
 `;
 
 export const HomeContent = styled.div`
@@ -29,8 +33,17 @@ export const HomeContent = styled.div`
   padding-top: 3.5rem;
   align-items: center;
 
-  @media ${device.mobileM} {
+  @media ${device.mobileMax} {
     grid-template-columns: 0.25fr 3fr;
+  }
+
+  @media ${device.tabletMin} {
+    grid-template-columns: max-content 1fr 1fr;
+  }
+
+  @media ${device.laptopMin} {
+    padding-top: 5.5rem;
+    column-gap: 2rem;
   }
 `;
 
@@ -72,13 +85,22 @@ export const HomeImg = styled.div`
     width: 200px;
     fill: ${(props) => props.theme.colors.primary};
 
-    @media ${device.mobileM} {
-      width: 180px;
-    }
-
     image {
       width: 200px;
     }
+
+    @media ${device.mobileMax} {
+      width: 180px;
+    }
+
+    @media ${device.laptopMin} {
+      width: 270px;
+    }
+  }
+
+  @media ${device.tabletMin} {
+    order: 1;
+    justify-self: center;
   }
 `;
 
@@ -103,10 +125,14 @@ export const HomeData = styled.div`
   button {
     margin-bottom: ${Mb2};
   }
+
+  @media ${device.tabletMin} {
+    grid-column: initial;
+  }
 `;
 
 export const HomeScroll = styled.div`
-  /* display: none; */
+  display: none;
 
   button {
     color: ${(props) => props.theme.colors.primary};
@@ -132,5 +158,13 @@ export const HomeScroll = styled.div`
       font-weight: ${FontMedium};
       margin-right: ${Mb025};
     }
+
+    @media ${device.laptopMin} {
+      margin-left: 3rem;
+    }
+  }
+
+  @media ${device.laptopMin} {
+    display: block;
   }
 `;

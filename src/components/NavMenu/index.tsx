@@ -10,7 +10,7 @@ import Icon from '../Unicons';
 import { Header, Nav, NavList, NavToggle, NavItem, NavBtns } from './styles';
 
 const NavMenu: React.FC = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
   const [scrollActivated, setScrollActivated] = useState(false);
   const { scrolled } = useScroll();
   const { actualTheme, toggleTheme } = useTheme();

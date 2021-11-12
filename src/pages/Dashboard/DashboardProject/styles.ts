@@ -18,6 +18,14 @@ export const Project = styled.section`
   > div {
     background-color: ${(props) => props.theme.colors.secundary};
     padding-top: 3rem;
+
+    @media ${device.laptopMin} {
+      background: none;
+    }
+  }
+
+  @media ${device.laptopMin} {
+    text-align: initial;
   }
 `;
 
@@ -31,9 +39,21 @@ export const ProjectContainer = styled.div`
     justify-self: center;
     align-self: center;
 
-    @media ${device.mobileM} {
+    @media ${device.mobileMax} {
       width: 180px;
     }
+  }
+
+  @media ${device.tabletMin} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ${device.laptopMin} {
+    background-color: ${(props) => props.theme.colors.secundary};
+    border-radius: 1rem;
+    padding: 3rem 2.5rem 0;
+    grid-template-columns: 1fr max-content;
+    column-gap: 3rem;
   }
 `;
 
@@ -47,5 +67,9 @@ export const ProjectData = styled.div`
   > p {
     color: #fff;
     margin-bottom: ${Mb15};
+  }
+
+  @media ${device.laptopMin} {
+    padding-top: 0.8rem;
   }
 `;

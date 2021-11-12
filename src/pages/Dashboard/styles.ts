@@ -1,12 +1,17 @@
 import styled, { css } from 'styled-components';
 
 import { ZToolTip } from '../../styles/variables';
+import { device } from '../../styles/device';
 
 interface ScrollUpProps {
   scrollUp: boolean;
 }
 
-export const Content = styled.main``;
+export const Content = styled.main`
+  @media ${device.laptopMin} {
+    padding: 0 1rem;
+  }
+`;
 
 export const ScrollUp = styled.div<ScrollUpProps>`
   position: fixed;

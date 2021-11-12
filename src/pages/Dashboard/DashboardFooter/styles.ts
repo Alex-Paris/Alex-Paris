@@ -10,6 +10,7 @@ import {
   SmallerFontSize,
   Mb3,
 } from '../../../styles/variables';
+import { device } from '../../../styles/device';
 
 export const Footer = styled.footer`
   padding-top: 2rem;
@@ -23,6 +24,14 @@ export const Footer = styled.footer`
       text-align: center;
       color: ${(props) => props.theme.colors.textLight};
       margin-top: ${Mb3};
+
+      @media ${device.laptopMin} {
+        margin-top: 4.5rem;
+      }
+    }
+
+    @media ${device.laptopMin} {
+      padding: 3rem 0 3.5rem;
     }
   }
 `;
@@ -45,6 +54,18 @@ export const FooterContainer = styled.div`
       color: #fff;
     }
   }
+
+  @media ${device.tabletMin} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ${device.laptopMin} {
+    padding: 0 1rem;
+  }
+
+  @media ${device.laptopMin} {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `;
 
 export const FooterLinks = styled.ul`
@@ -62,6 +83,11 @@ export const FooterLinks = styled.ul`
       }
     }
   }
+
+  @media ${device.laptopMin} {
+    flex-direction: row;
+    column-gap: 2rem;
+  }
 `;
 
 export const FooterSocials = styled.ul`
@@ -74,5 +100,9 @@ export const FooterSocials = styled.ul`
     :hover {
       color: ${(props) => props.theme.colors.lighter};
     }
+  }
+
+  @media ${device.laptopMin} {
+    justify-self: flex-end;
   }
 `;

@@ -10,6 +10,7 @@ import {
   Mb05,
   Mb075,
 } from '../../../styles/variables';
+import { device } from '../../../styles/device';
 
 export const Portfolio = styled.section`
   ${/*inherithed*/ Section}
@@ -98,6 +99,10 @@ export const PortfolioContent = styled.div`
     width: 265px;
     border-radius: 0.5rem;
     justify-self: center;
+
+    @media ${device.laptopMin} {
+      width: 320px;
+    }
   }
 
   > div {
@@ -123,5 +128,13 @@ export const PortfolioContent = styled.div`
         }
       }
     }
+  }
+
+  @media ${device.tabletMin} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ${device.laptopMin} {
+    align-items: center;
   }
 `;

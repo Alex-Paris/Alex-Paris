@@ -14,6 +14,7 @@ import {
   BodyFont,
   NormalFontSize,
 } from '../../../styles/variables';
+import { device } from '../../../styles/device';
 
 export const Contact = styled.section`
   ${/*inherithed*/ Section}
@@ -32,6 +33,10 @@ export const ContactContainer = styled.div`
   ${/*inherithed*/ Grid}
 
   row-gap: 3rem;
+
+  @media ${device.tabletMin} {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 export const ContactInformation = styled.div`

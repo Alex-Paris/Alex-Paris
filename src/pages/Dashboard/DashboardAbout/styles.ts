@@ -13,6 +13,7 @@ import {
   H2FontSize,
   FontSemiBold,
 } from '../../../styles/variables';
+import { device } from '../../../styles/device';
 
 export const About = styled.section`
   ${/*inherithed*/ Section}
@@ -35,6 +36,18 @@ export const AboutContainer = styled.div`
     border-radius: 0.5rem;
     justify-self: center;
     align-self: center;
+
+    @media ${device.laptopMin} {
+      width: 350px;
+    }
+  }
+
+  @media ${device.tabletMin} {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media ${device.laptopMin} {
+    column-gap: 5rem;
   }
 `;
 
@@ -42,6 +55,10 @@ export const AboutData = styled.div`
   p {
     text-align: center;
     margin-bottom: ${Mb25};
+
+    @media ${device.laptopMin} {
+      text-align: initial;
+    }
   }
 `;
 
@@ -49,6 +66,10 @@ export const AboutInfo = styled.div`
   display: flex;
   justify-content: space-evenly;
   margin-bottom: ${Mb25};
+
+  @media ${device.laptopMin} {
+    justify-content: space-between;
+  }
 `;
 
 export const AboutInfoTitle = styled.div`
@@ -76,5 +97,9 @@ export const AboutButtons = styled.div`
     svg {
       margin-left: ${Mb05};
     }
+  }
+
+  @media ${device.laptopMin} {
+    justify-content: initial;
   }
 `;

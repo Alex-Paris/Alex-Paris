@@ -10,49 +10,49 @@ export const BodyFont = '"Poppins", serins';
 export const BigFontSize = `
   font-size: 3rem;
 
-  @media ${device.laptop} {
+  @media ${device.tabletMax} {
     font-size: 2rem;
   }
 `;
 export const H1FontSize = `
   font-size: 2.25rem;
 
-  @media ${device.laptop} {
+  @media ${device.tabletMax} {
     font-size: 1.5rem;
   }
 `;
 export const H2FontSize = `
   font-size: 1.5rem;
 
-  @media ${device.laptop} {
+  @media ${device.tabletMax} {
     font-size: 1.25rem;
   }
 `;
 export const H3FontSize = `
   font-size: 1.25rem;
 
-  @media ${device.laptop} {
+  @media ${device.tabletMax} {
     font-size: 1.125rem;
   }
 `;
 export const NormalFontSize = `
   font-size: 1rem;
 
-  @media ${device.laptop} {
+  @media ${device.tabletMax} {
     font-size: .938rem;
   }
 `;
 export const SmallFontSize = `
   font-size: .875rem;
 
-  @media ${device.laptop} {
+  @media ${device.tabletMax} {
     font-size: .813rem;
   }
 `;
 export const SmallerFontSize = `
   font-size: .813rem;
 
-  @media ${device.laptop} {
+  @media ${device.tabletMax} {
     font-size: .75rem;
   }
 `;
@@ -82,9 +82,14 @@ export const Container = `
   margin-left: ${Mb15};
   margin-right: ${Mb15};
 
-  @media ${device.mobileM} {
+  @media ${device.mobileMax} {
     margin-left: ${Mb1};
     margin-right: ${Mb1};
+  }
+
+  @media ${device.laptopMin} {
+    margin-left: auto;
+    margin-right: auto;
   }
 `;
 
@@ -95,6 +100,10 @@ export const Grid = `
 
 export const Section = `
   padding: 2rem 0 4rem;
+
+  @media ${device.laptopMin} {
+    padding: 6rem 0 2rem;
+  }
 `;
 
 export const SectionTitle = `
@@ -107,4 +116,8 @@ export const SectionSubtitle = `
   display: block;
   margin-bottom: ${Mb3};
   text-align: center;
+
+  @media ${device.laptopMin} {
+    margin-bottom: 4rem;
+  }
 `;

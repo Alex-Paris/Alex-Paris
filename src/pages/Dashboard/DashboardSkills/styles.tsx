@@ -42,6 +42,10 @@ export const SkillsContainer = styled.div`
   ${/*inherithed*/ Grid}
 
   row-gap: 0;
+
+  @media ${device.tabletMin} {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 export const SkillsContent = styled.div<SkillsContentProps>`
@@ -67,7 +71,7 @@ export const SkillsItemHeader = styled.div`
     h1 {
       ${H3FontSize}
 
-      @media ${device.mobileM} {
+      @media ${device.mobileMax} {
         ${NormalFontSize};
       }
     }

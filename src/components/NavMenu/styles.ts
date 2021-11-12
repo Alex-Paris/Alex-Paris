@@ -31,6 +31,12 @@ export const Header = styled.header<HeaderProps>`
     css`
       box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
     `}
+
+  @media ${device.laptopMin} {
+    top: 0;
+    bottom: initial;
+    padding: 0 1rem;
+  }
 `;
 
 export const Nav = styled.nav`
@@ -51,10 +57,15 @@ export const Nav = styled.nav`
       color: ${(props) => props.theme.colors.primary};
     }
   }
+
+  @media ${device.laptopMin} {
+    height: calc(${HeaderHeight} + 1.5rem);
+    column-gap: 1rem;
+  }
 `;
 
 export const NavList = styled(animated.div)`
-  @media ${device.tablet} {
+  @media ${device.tabletMax} {
     position: fixed;
     bottom: 0;
     left: 0;
@@ -64,10 +75,6 @@ export const NavList = styled(animated.div)`
     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
     border-radius: 1.5rem 1.5rem 0 0;
     transition: 0.3s;
-  }
-
-  @media ${device.mobileM} {
-    padding: 2rem 0.25rem 4rem;
   }
 
   > svg {
@@ -81,6 +88,10 @@ export const NavList = styled(animated.div)`
     &:hover {
       color: ${(props) => props.theme.colors.primaryAlt};
     }
+
+    @media ${device.laptopMin} {
+      display: none;
+    }
   }
 
   ul {
@@ -88,9 +99,22 @@ export const NavList = styled(animated.div)`
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
 
-    @media ${device.mobileM} {
+    @media ${device.mobileMax} {
       column-gap: 0;
     }
+
+    @media ${device.laptopMin} {
+      display: flex;
+      column-gap: 2rem;
+    }
+  }
+
+  @media ${device.mobileMax} {
+    padding: 2rem 0.25rem 4rem;
+  }
+
+  @media ${device.laptopMin} {
+    margin-left: auto;
   }
 `;
 
@@ -106,6 +130,10 @@ export const NavToggle = styled.div`
   &:hover {
     color: ${(props) => props.theme.colors.primary};
   }
+
+  @media ${device.laptopMin} {
+    display: none;
+  }
 `;
 
 export const NavItem = styled.li`
@@ -120,6 +148,10 @@ export const NavItem = styled.li`
 
     svg {
       font-size: 1.2rem;
+
+      @media ${device.laptopMin} {
+        display: none;
+      }
     }
 
     &:hover {
@@ -146,6 +178,10 @@ export const NavBtns = styled.div`
 
     &:hover {
       color: ${(props) => props.theme.colors.primary};
+    }
+
+    @media ${device.laptopMin} {
+      margin: 0;
     }
   }
 `;

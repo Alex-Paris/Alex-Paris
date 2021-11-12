@@ -39,8 +39,13 @@ export const ServicesContainer = styled.div`
   gap: 1.5rem;
   grid-template-columns: repeat(2, 1fr);
 
-  @media ${device.mobileM} {
+  @media ${device.mobileMax} {
     grid-template-columns: max-content;
+    justify-content: center;
+  }
+
+  @media ${device.laptopMin} {
+    grid-template-columns: repeat(3, 218px);
     justify-content: center;
   }
 `;
@@ -79,8 +84,12 @@ export const ServicesContent = styled.div`
     }
   }
 
-  @media ${device.mobileM} {
+  @media ${device.mobileMax} {
     padding-right: 3.5rem;
+  }
+
+  @media ${device.laptopMin} {
+    padding: 6rem 0 2rem 2.5rem;
   }
 `;
 
@@ -92,6 +101,11 @@ export const ServicesIcon = styled.i`
   svg {
     width: 1.5rem;
     height: 1.5rem;
+
+    @media ${device.laptopMin} {
+      width: 2rem;
+      height: 2rem;
+    }
   }
 `;
 
@@ -118,7 +132,7 @@ export const ServicesModal = styled.div<ServicesModalProps>`
       visibility: visible;
     `}
 
-  @media ${device.mobileM} {
+  @media ${device.mobileMax} {
     padding: 0 0.5rem;
   }
 `;
@@ -145,6 +159,10 @@ export const ServicesModalContent = styled.div`
       width: 1.5rem;
       height: 1.5rem;
     }
+  }
+
+  @media ${device.laptopMin} {
+    width: 450px;
   }
 `;
 

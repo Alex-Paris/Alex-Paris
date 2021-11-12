@@ -50,6 +50,14 @@ export const QualificationTabs = styled.div`
     &:hover {
       color: ${(props) => props.theme.colors.primary};
     }
+
+    @media ${device.laptopMin} {
+      margin: 0 ${Mb1};
+    }
+  }
+
+  @media ${device.laptopMin} {
+    justify-content: center;
   }
 `;
 
@@ -62,7 +70,17 @@ export const QualificationIcon = styled.i`
   }
 `;
 
-export const QualificationSections = styled.div``;
+export const QualificationSections = styled.div`
+  @media ${device.tabletMin} {
+    display: grid;
+    grid-template-columns: 0.6fr;
+    justify-content: center;
+  }
+
+  @media ${device.laptopMin} {
+    grid-template-columns: 0.5fr;
+  }
+`;
 
 export const QualificationContent = styled.div<QualificationContentProps>`
   transition: 0.4s;
@@ -82,7 +100,7 @@ export const QualificationData = styled.div`
   grid-template-columns: 1fr max-content 1fr;
   column-gap: 1.5rem;
 
-  @media ${device.mobileM} {
+  @media ${device.mobileMax} {
     gap: 0.5rem;
   }
 `;
