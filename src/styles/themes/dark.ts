@@ -16,5 +16,7 @@ export default {
     input: `hsl(${HueColor}, 29%, 16%)`,
 
     container: `hsl(${HueColor}, 29%, 16%)`,
+    scrollBar: `hsl(${HueColor}, 12%, 48%)`,
+    scrollThumb: `hsl(${HueColor}, 12%, 36%)`,
   },
 };

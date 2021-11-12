@@ -48,4 +48,19 @@ export default createGlobalStyle`
   button, a {
     cursor: pointer;
   }
+
+  ::-webkit-scrollbar {
+    width: 0.60rem;
+    background-color: ${(props) => props.theme.colors.scrollBar};
+    border-radius: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: ${(props) => props.theme.colors.scrollThumb};
+    border-radius: 0.5rem;
+
+    &:hover {
+      background-color: ${(props) => props.theme.colors.textLight};
+    }
+  }
 `;

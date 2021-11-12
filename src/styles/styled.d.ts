@@ -17,6 +17,8 @@ declare module 'styled-components' {
       input: string;
 
       container: string;
+      scrollBar: string;
+      scrollThumb: string;
     };
   }
 }
