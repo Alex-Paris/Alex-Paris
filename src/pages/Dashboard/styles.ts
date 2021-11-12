@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 
-import { FirstColor, FirstColorAlt, ZToolTip } from '../../styles/variables';
+import { ZToolTip } from '../../styles/variables';
 
 interface ScrollUpProps {
   scrollUp: boolean;
@@ -12,7 +12,7 @@ export const ScrollUp = styled.div<ScrollUpProps>`
   position: fixed;
   right: 1rem;
   bottom: -20%;
-  background-color: ${FirstColor};
+  background-color: ${(props) => props.theme.colors.primary};
   opacity: 0.8;
   padding: 0 0.3rem;
   border-radius: 0.4rem;
@@ -27,7 +27,7 @@ export const ScrollUp = styled.div<ScrollUpProps>`
     `}
 
   &:hover {
-    background-color: ${FirstColorAlt};
+    background-color: ${(props) => props.theme.colors.primaryAlt};
   }
 
   svg {

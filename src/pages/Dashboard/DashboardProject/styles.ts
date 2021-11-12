@@ -5,7 +5,6 @@ import {
   Container,
   Grid,
   H2FontSize,
-  FirstColorSecond,
   Mb075,
   Mb15,
 } from '../../../styles/variables';
@@ -16,7 +15,7 @@ export const Project = styled.section`
   text-align: center;
 
   > div {
-    background-color: ${FirstColorSecond};
+    background-color: ${(props) => props.theme.colors.secundary};
     padding-top: 3rem;
   }
 `;

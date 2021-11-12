@@ -6,8 +6,6 @@ import {
   Grid,
   SectionTitle,
   SectionSubtitle,
-  ContainerColor,
-  FirstColor,
   Mb1,
   H3FontSize,
   FontMedium,
@@ -43,7 +41,7 @@ export const ServicesContainer = styled.div`
 
 export const ServicesContent = styled.div`
   position: relative;
-  background-color: ${ContainerColor};
+  background-color: ${(props) => props.theme.colors.container};
   padding: 3.5rem 0.5rem 1.25rem 1.5rem;
   border-radius: 0.25rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
@@ -78,7 +76,7 @@ export const ServicesContent = styled.div`
 
 export const ServicesIcon = styled.i`
   display: block;
-  color: ${FirstColor};
+  color: ${(props) => props.theme.colors.primary};
   margin-bottom: ${Mb1};
 
   svg {
@@ -113,7 +111,7 @@ export const ServicesModal = styled.div<ServicesModalProps>`
 
 export const ServicesModalContent = styled.div`
   position: relative;
-  background-color: ${ContainerColor};
+  background-color: ${(props) => props.theme.colors.container};
   padding: 1.5rem;
   border-radius: 0.5rem;
 
@@ -127,7 +125,7 @@ export const ServicesModalContent = styled.div`
     position: absolute;
     top: 1rem;
     right: 1rem;
-    color: ${FirstColor};
+    color: ${(props) => props.theme.colors.primary};
 
     > svg {
       width: 1.5rem;
@@ -147,6 +145,6 @@ export const ServicesModalService = styled.li`
 `;
 
 export const ServicesModalIcon = styled.i`
-  color: ${FirstColor};
+  color: ${(props) => props.theme.colors.primary};
   margin-right: ${Mb025};
 `;

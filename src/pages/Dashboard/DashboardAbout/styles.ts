@@ -5,7 +5,6 @@ import {
   Container,
   Grid,
   Mb2,
-  TitleColor,
   Mb05,
   SectionTitle,
   SectionSubtitle,
@@ -55,7 +54,7 @@ export const AboutInfo = styled.div`
 export const AboutInfoTitle = styled.div`
   ${H2FontSize}
   font-weight: ${FontSemiBold};
-  color: ${TitleColor};
+  color: ${(props) => props.theme.colors.title};
   display: block;
   text-align: center;
 `;

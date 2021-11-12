@@ -4,7 +4,6 @@ import {
   Section,
   Container,
   Grid,
-  FirstColor,
   H3FontSize,
   FontMedium,
   Mb075,
@@ -13,9 +12,7 @@ import {
   SectionTitle,
   SectionSubtitle,
   Mb25,
-  TextColorLight,
   NormalFontSize,
-  FirstColorLighter,
 } from '../../../styles/variables';
 
 interface SkillsContentProps {
@@ -62,7 +59,7 @@ export const SkillsItemHeader = styled.div`
   margin-top: 40px;
 
   svg {
-    color: ${FirstColor};
+    color: ${(props) => props.theme.colors.primary};
   }
 
   div {
@@ -72,7 +69,7 @@ export const SkillsItemHeader = styled.div`
 
     span {
       ${SmallFontSize}
-      color: ${TextColorLight};
+      color: ${(props) => props.theme.colors.textLight};
       margin-bottom: 0;
       text-align: left;
     }
@@ -140,13 +137,13 @@ export const SkillsItemListTitle = styled.div`
 export const SkillsItemListBar = styled.div<SkillsItemListBarProps>`
   height: 5px;
   border-radius: 0.25rem;
-  background-color: ${FirstColorLighter};
+  background-color: ${(props) => props.theme.colors.lighter};
 
   span {
     display: block;
     height: 5px;
     border-radius: 0.25rem;
-    background-color: ${FirstColor};
+    background-color: ${(props) => props.theme.colors.primary};
 
     ${(props) => css`
       width: ${props.porcent}%;

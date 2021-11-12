@@ -7,13 +7,9 @@ import {
   Container,
   Grid,
   ZFixed,
-  BodyColor,
   HeaderHeight,
-  TitleColor,
   FontMedium,
-  FirstColor,
   SmallFontSize,
-  FirstColorAlt,
 } from '../../styles/variables';
 
 interface HeaderProps {
@@ -27,7 +23,7 @@ export const Header = styled.header<HeaderProps>`
   transition: 0.3s;
   left: 0;
   z-index: ${ZFixed};
-  background-color: ${BodyColor};
+  background-color: ${(props) => props.theme.colors.background};
 
   ${(props) =>
     props.isBordered &&
@@ -46,12 +42,12 @@ export const Nav = styled.nav`
   align-items: center;
 
   > a {
-    color: ${TitleColor};
+    color: ${(props) => props.theme.colors.title};
     font-weight: ${FontMedium};
     transition: 0.3s;
 
     &:hover {
-      color: ${FirstColor};
+      color: ${(props) => props.theme.colors.primary};
     }
   }
 `;
@@ -62,7 +58,7 @@ export const NavList = styled(animated.div)`
     bottom: 0;
     left: 0;
     width: 100%;
-    background-color: ${BodyColor};
+    background-color: ${(props) => props.theme.colors.background};
     padding: 2rem 1.5rem 4rem;
     box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
     border-radius: 1.5rem 1.5rem 0 0;
@@ -75,10 +71,10 @@ export const NavList = styled(animated.div)`
     bottom: 0.5rem;
     font-size: 1.5rem;
     cursor: pointer;
-    color: ${FirstColor};
+    color: ${(props) => props.theme.colors.primary};
 
     &:hover {
-      color: ${FirstColorAlt};
+      color: ${(props) => props.theme.colors.primaryAlt};
     }
   }
 
@@ -90,14 +86,14 @@ export const NavList = styled(animated.div)`
 `;
 
 export const NavToggle = styled.div`
-  color: ${TitleColor};
+  color: ${(props) => props.theme.colors.title};
   font-weight: ${FontMedium};
   font-size: 1.1rem;
   cursor: pointer;
   transition: 0.3s;
 
   &:hover {
-    color: ${FirstColor};
+    color: ${(props) => props.theme.colors.primary};
   }
 `;
 
@@ -107,7 +103,7 @@ export const NavItem = styled.li`
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: ${TitleColor};
+    color: ${(props) => props.theme.colors.title};
     font-weight: ${FontMedium};
     transition: 0.3s;
 
@@ -116,11 +112,11 @@ export const NavItem = styled.li`
     }
 
     &:hover {
-      color: ${FirstColor};
+      color: ${(props) => props.theme.colors.primary};
     }
   }
 
   > .active {
-    color: ${FirstColor};
+    color: ${(props) => props.theme.colors.primary};
   }
 `;

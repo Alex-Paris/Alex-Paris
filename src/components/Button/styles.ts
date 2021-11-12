@@ -1,13 +1,7 @@
 import styled, { css } from 'styled-components';
 import { lighten } from 'polished';
 
-import {
-  FirstColor,
-  FirstColorAlt,
-  FirstColorLighter,
-  FontMedium,
-  Mb05,
-} from '../../styles/variables';
+import { FontMedium, Mb05 } from '../../styles/variables';
 
 interface ContainerProps {
   isFlex?: boolean;
@@ -37,14 +31,14 @@ export const Container = styled.button<ContainerProps>`
     css`
       display: inline-block;
       align-items: center;
-      background-color: ${FirstColor};
+      background-color: ${(props) => props.theme.colors.primary};
       color: #fff;
       padding: 1rem;
       border-radius: 0.5rem;
       font-weight: ${FontMedium};
 
       &:hover {
-        background-color: ${FirstColorAlt};
+        background-color: ${(props) => props.theme.colors.primaryAlt};
       }
 
       ${props.isPressed &&
@@ -64,7 +58,7 @@ export const Container = styled.button<ContainerProps>`
     props.isSimple &&
     props.isActive &&
     css`
-      color: ${FirstColor};
+      color: ${(props) => props.theme.colors.primary};
     `}
 
   ${(props) =>
@@ -72,11 +66,12 @@ export const Container = styled.button<ContainerProps>`
     props.isWhite &&
     css`
       background-color: #fff;
-      color: ${FirstColor};
+      color: ${(props) => props.theme.colors.primary};
 
       &:hover {
-        background-color: ${lighten(0.12, FirstColorLighter)};
-        color: ${FirstColorAlt};
+        background-color: ${(props) =>
+          lighten(0.12, props.theme.colors.lighter)};
+        color: ${(props) => props.theme.colors.primaryAlt};
       }
     `}
 
@@ -89,10 +84,10 @@ export const Container = styled.button<ContainerProps>`
   ${(props) =>
     props.isLink &&
     css`
-      color: ${FirstColor};
+      color: ${(props) => props.theme.colors.primary};
 
       &:hover {
-        color: ${FirstColorAlt};
+        color: ${(props) => props.theme.colors.primaryAlt};
       }
     `}
 `;

@@ -9,7 +9,6 @@ import {
   H3FontSize,
   Mb05,
   Mb075,
-  FirstColor,
 } from '../../../styles/variables';
 
 export const Portfolio = styled.section`
@@ -44,7 +43,7 @@ export const PortfolioContainer = styled.div`
 
     .swiper-button-next,
     .swiper-button-prev {
-      color: ${FirstColor};
+      color: ${(props) => props.theme.colors.primary};
     }
 
     .swiper-button-next::after,
@@ -59,7 +58,7 @@ export const PortfolioContainer = styled.div`
     }
 
     .swiper-pagination-bullet-active {
-      background-color: ${FirstColor};
+      background-color: ${(props) => props.theme.colors.primary};
     }
 
     /* .mySwiperSlide {

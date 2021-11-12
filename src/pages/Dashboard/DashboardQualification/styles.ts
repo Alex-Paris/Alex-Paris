@@ -8,13 +8,11 @@ import {
   Mb2,
   H3FontSize,
   FontMedium,
-  FirstColor,
   Mb025,
   NormalFontSize,
   SmallFontSize,
   Mb1,
   SmallerFontSize,
-  TextColorLight,
 } from '../../../styles/variables';
 
 interface QualificationContentProps {
@@ -49,7 +47,7 @@ export const QualificationTabs = styled.div`
     transition: 0.3s;
 
     &:hover {
-      color: ${FirstColor};
+      color: ${(props) => props.theme.colors.primary};
     }
   }
 `;
@@ -99,7 +97,7 @@ export const QualificationDescription = styled.div`
 
 export const QualificationCalendar = styled.div`
   ${SmallerFontSize}
-  color: ${TextColorLight};
+  color: ${(props) => props.theme.colors.textLight};
 
   svg {
     width: 0.813rem;
@@ -111,7 +109,7 @@ export const QualificationRounder = styled.span`
   display: inline-block;
   width: 13px;
   height: 13px;
-  background-color: ${FirstColor};
+  background-color: ${(props) => props.theme.colors.primary};
   border-radius: 50%;
 `;
 
@@ -119,6 +117,6 @@ export const QualificationLine = styled.span`
   display: block;
   width: 1px;
   height: 100%;
-  background-color: ${FirstColor};
+  background-color: ${(props) => props.theme.colors.primary};
   transform: translate(6px, -7px);
 `;

@@ -3,14 +3,11 @@ import styled from 'styled-components';
 import {
   Container,
   Grid,
-  FirstColorSecond,
   H1FontSize,
   Mb025,
   SmallFontSize,
-  FirstColorLighter,
   Mb15,
   SmallerFontSize,
-  TextColorLight,
   Mb3,
 } from '../../../styles/variables';
 
@@ -18,13 +15,13 @@ export const Footer = styled.footer`
   padding-top: 2rem;
 
   > div {
-    background-color: ${FirstColorSecond};
+    background-color: ${(props) => props.theme.colors.secundary};
     padding: 2rem 0 3rem;
 
     > p {
       ${SmallerFontSize}
       text-align: center;
-      color: ${TextColorLight};
+      color: ${(props) => props.theme.colors.textLight};
       margin-top: ${Mb3};
     }
   }
@@ -60,7 +57,7 @@ export const FooterLinks = styled.ul`
       color: #fff;
 
       :hover {
-        color: ${FirstColorLighter};
+        color: ${(props) => props.theme.colors.lighter};
       }
     }
   }
@@ -73,7 +70,7 @@ export const FooterSocials = styled.ul`
     color: #fff;
 
     :hover {
-      color: ${FirstColorLighter};
+      color: ${(props) => props.theme.colors.lighter};
     }
   }
 `;

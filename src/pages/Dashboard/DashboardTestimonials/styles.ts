@@ -11,8 +11,6 @@ import {
   H3FontSize,
   FontMedium,
   SmallFontSize,
-  TextColorLight,
-  FirstColor,
 } from '../../../styles/variables';
 
 export const Testimonials = styled.section`
@@ -40,7 +38,7 @@ export const TestimonialsData = styled.div`
 
   > div {
     svg {
-      color: ${FirstColor};
+      color: ${(props) => props.theme.colors.primary};
     }
   }
 `;
@@ -63,7 +61,7 @@ export const TestimonialsHeader = styled.div`
 
     span {
       ${SmallFontSize}
-      color: ${TextColorLight};
+      color: ${(props) => props.theme.colors.textLight};
     }
   }
 `;

@@ -5,17 +5,6 @@ export const HeaderHeight = '3rem';
 //Colors definition
 export const HueColor = '250'; //Purple 250 - Green 142 - Blue 230 - Pink 340
 
-export const FirstColor = `hsl(${HueColor}, 69%, 61%)`;
-export const FirstColorSecond = `hsl(${HueColor}, 69%, 61%)`;
-export const FirstColorAlt = `hsl(${HueColor}, 57%, 53%)`;
-export const FirstColorLighter = `hsl(${HueColor}, 92%, 85%)`;
-export const TitleColor = `hsl(${HueColor}, 8%, 15%)`;
-export const TextColor = `hsl(${HueColor}, 8%, 45%)`;
-export const TextColorLight = `hsl(${HueColor}, 8%, 65%)`;
-export const InputColor = `hsl(${HueColor}, 70%, 96%)`;
-export const BodyColor = `hsl(${HueColor}, 60%, 99%)`;
-export const ContainerColor = '#FFF';
-
 //Font typography
 export const BodyFont = '"Poppins", serins';
 export const BigFontSize = `

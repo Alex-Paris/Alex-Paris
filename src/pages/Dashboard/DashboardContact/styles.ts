@@ -5,17 +5,12 @@ import {
   Container,
   Grid,
   Mb2,
-  TitleColor,
   SectionTitle,
   SectionSubtitle,
   SmallerFontSize,
-  FirstColor,
   Mb075,
   H3FontSize,
   SmallFontSize,
-  TextColorLight,
-  InputColor,
-  TextColor,
   BodyFont,
   NormalFontSize,
 } from '../../../styles/variables';
@@ -44,7 +39,7 @@ export const ContactInformation = styled.div`
   margin-bottom: ${Mb2};
 
   > svg {
-    color: ${FirstColor};
+    color: ${(props) => props.theme.colors.primary};
     margin-right: ${Mb075};
     width: 2rem;
     height: 2rem;
@@ -57,7 +52,7 @@ export const ContactInformation = styled.div`
 
     span {
       ${SmallFontSize}
-      color: ${TextColorLight};
+      color: ${(props) => props.theme.colors.textLight};
     }
   }
 `;
@@ -71,21 +66,21 @@ export const ContactInputs = styled.div`
 `;
 
 export const ContactContent = styled.div`
-  background-color: ${InputColor};
+  background-color: ${(props) => props.theme.colors.input};
   border-radius: 0.5rem;
   padding: 0.75rem 1rem 0.25rem;
 
   label {
     ${SmallerFontSize}
-    color: ${TitleColor};
+    color: ${(props) => props.theme.colors.title};
   }
 
   input,
   textarea {
     ${NormalFontSize}
     width: 100%;
-    background-color: ${InputColor};
-    color: ${TextColor};
+    background-color: ${(props) => props.theme.colors.input};
+    color: ${(props) => props.theme.colors.text};
     font-family: ${BodyFont};
     border: none;
     outline: none;

@@ -4,16 +4,12 @@ import {
   Section,
   Container,
   Grid,
-  FirstColor,
-  FirstColorAlt,
   BigFontSize,
   H3FontSize,
-  TextColor,
   FontMedium,
   Mb075,
   Mb2,
   SmallFontSize,
-  TitleColor,
   Mb025,
 } from '../../../styles/variables';
 
@@ -40,7 +36,7 @@ export const HomeSocial = styled.div`
 
   a {
     font-size: 1.25rem;
-    color: ${FirstColor};
+    color: ${(props) => props.theme.colors.primary};
     padding: 0.3rem 0.3rem 0rem 0.3rem;
     border-radius: 0.25rem;
     transition: 0.3s;
@@ -54,13 +50,13 @@ export const HomeSocial = styled.div`
     }
 
     &:hover {
-      color: ${FirstColorAlt};
+      color: ${(props) => props.theme.colors.primaryAlt};
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
       svg + svg {
         width: 1.1rem;
         height: 1.1rem;
         margin-left: 0.7rem;
-        color: ${FirstColorAlt};
+        color: ${(props) => props.theme.colors.primaryAlt};
       }
     }
   }
@@ -69,7 +65,7 @@ export const HomeSocial = styled.div`
 export const HomeImg = styled.div`
   svg {
     width: 200px;
-    fill: ${FirstColor};
+    fill: ${(props) => props.theme.colors.primary};
 
     image {
       width: 200px;
@@ -86,7 +82,7 @@ export const HomeData = styled.div`
 
   h3 {
     ${H3FontSize}
-    color: ${TextColor};
+    color: ${(props) => props.theme.colors.text};
     font-weight: ${FontMedium};
     margin-bottom: ${Mb075};
   }
@@ -104,7 +100,7 @@ export const HomeScroll = styled.div`
   /* display: none; */
 
   button {
-    color: ${FirstColor};
+    color: ${(props) => props.theme.colors.primary};
     transition: 0.3s;
 
     &:hover {
@@ -123,7 +119,7 @@ export const HomeScroll = styled.div`
 
     span {
       ${SmallFontSize}
-      color: ${TitleColor};
+      color: ${(props) => props.theme.colors.title};
       font-weight: ${FontMedium};
       margin-right: ${Mb025};
     }

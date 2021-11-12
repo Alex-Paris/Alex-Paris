@@ -4,9 +4,6 @@ import {
   NormalFontSize,
   HeaderHeight,
   BodyFont,
-  BodyColor,
-  TextColor,
-  TitleColor,
   FontSemiBold,
 } from './variables';
 
@@ -21,12 +18,12 @@ export default createGlobalStyle`
     ${NormalFontSize}
     margin: 0 0 ${HeaderHeight} 0;
     font-family: ${BodyFont};
-    background-color: ${BodyColor};
-    color: ${TextColor};
+    background-color: ${(props) => props.theme.colors.background};
+    color: ${(props) => props.theme.colors.text};
   }
 
   h1, h2, h3, h4, h5, h6, strong {
-    color: ${TitleColor};
+    color: ${(props) => props.theme.colors.title};
     font-weight: ${FontSemiBold};
   }
 
