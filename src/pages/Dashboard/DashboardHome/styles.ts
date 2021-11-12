@@ -78,6 +78,10 @@ export const HomeSocial = styled.div`
       }
     }
   }
+
+  @media ${device.desktopMin} {
+    transform: translateX(-6rem);
+  }
 `;
 
 export const HomeImg = styled.div`
@@ -95,6 +99,10 @@ export const HomeImg = styled.div`
 
     @media ${device.laptopMin} {
       width: 270px;
+    }
+
+    @media ${device.desktopMin} {
+      width: 320px;
     }
   }
 

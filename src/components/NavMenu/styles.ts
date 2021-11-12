@@ -37,6 +37,10 @@ export const Header = styled.header<HeaderProps>`
     bottom: initial;
     padding: 0 1rem;
   }
+
+  @media ${device.desktopMin} {
+    padding: 0;
+  }
 `;
 
 export const Nav = styled.nav`

@@ -64,10 +64,18 @@ export const ContactInformation = styled.div`
 
 export const ContactForm = styled.form`
   ${/*inherithed*/ Grid}
+
+  @media ${device.desktopMin} {
+    width: 460px;
+  }
 `;
 
 export const ContactInputs = styled.div`
   ${/*inherithed*/ Grid}
+
+  @media ${device.desktopMin} {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 export const ContactContent = styled.div`

@@ -11,6 +11,10 @@ export const Content = styled.main`
   @media ${device.laptopMin} {
     padding: 0 1rem;
   }
+
+  @media ${device.desktopMin} {
+    padding: 0;
+  }
 `;
 
 export const ScrollUp = styled.div<ScrollUpProps>`

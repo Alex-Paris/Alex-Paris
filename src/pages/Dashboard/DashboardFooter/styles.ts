@@ -66,6 +66,10 @@ export const FooterContainer = styled.div`
   @media ${device.laptopMin} {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  @media ${device.desktopMin} {
+    padding: 0;
+  }
 `;
 
 export const FooterLinks = styled.ul`

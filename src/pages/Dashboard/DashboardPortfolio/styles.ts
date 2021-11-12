@@ -36,15 +36,28 @@ export const PortfolioContainer = styled.div`
 
     .swiper-button-next {
       right: -0.5rem;
+
+      @media ${device.desktopMin} {
+        right: -3.5rem;
+      }
     }
 
     .swiper-button-prev {
       left: -0.5rem;
+
+      @media ${device.desktopMin} {
+        left: -3.5rem;
+      }
     }
 
     .swiper-button-next,
     .swiper-button-prev {
       color: ${(props) => props.theme.colors.primary};
+
+      @media ${device.desktopMin} {
+        width: 3.5rem;
+        height: 3.5rem;
+      }
     }
 
     .swiper-button-next::after,
@@ -60,6 +73,12 @@ export const PortfolioContainer = styled.div`
 
     .swiper-pagination-bullet-active {
       background-color: ${(props) => props.theme.colors.primary};
+    }
+
+    .swiper-horizontal > .swiper-pagination-bullet {
+      @media ${device.desktopMin} {
+        bottom: -4.5rem;
+      }
     }
 
     /* .mySwiperSlide {
@@ -136,5 +155,9 @@ export const PortfolioContent = styled.div`
 
   @media ${device.laptopMin} {
     align-items: center;
+  }
+
+  @media ${device.desktopMin} {
+    column-gap: 5rem;
   }
 `;
