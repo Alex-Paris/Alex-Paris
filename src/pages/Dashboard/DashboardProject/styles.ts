@@ -8,6 +8,7 @@ import {
   Mb075,
   Mb15,
 } from '../../../styles/variables';
+import { device } from '../../../styles/device';
 
 export const Project = styled.section`
   ${/*inherithed*/ Section}
@@ -29,6 +30,10 @@ export const ProjectContainer = styled.div`
     border-radius: 0.5rem;
     justify-self: center;
     align-self: center;
+
+    @media ${device.mobileM} {
+      width: 180px;
+    }
   }
 `;
 

@@ -66,6 +66,10 @@ export const NavList = styled(animated.div)`
     transition: 0.3s;
   }
 
+  @media ${device.mobileM} {
+    padding: 2rem 0.25rem 4rem;
+  }
+
   > svg {
     position: absolute;
     right: 1.3rem;
@@ -83,6 +87,10 @@ export const NavList = styled(animated.div)`
     ${Grid}
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
+
+    @media ${device.mobileM} {
+      column-gap: 0;
+    }
   }
 `;
 

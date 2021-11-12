@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { device } from '../../../styles/device';
 
 import {
   Section,
@@ -11,6 +12,7 @@ import {
   H3FontSize,
   FontMedium,
   SmallFontSize,
+  Mb025,
 } from '../../../styles/variables';
 
 export const Testimonials = styled.section`
@@ -41,6 +43,12 @@ export const TestimonialsData = styled.div`
       color: ${(props) => props.theme.colors.primary};
     }
   }
+
+  @media ${device.mobileM} {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
 `;
 
 export const TestimonialsHeader = styled.div`
@@ -51,6 +59,11 @@ export const TestimonialsHeader = styled.div`
     height: 60px;
     border-radius: 50%;
     margin-right: ${Mb075};
+
+    @media ${device.mobileM} {
+      margin-right: 0;
+      margin-bottom: ${Mb025};
+    }
   }
 
   > div {
@@ -64,8 +77,17 @@ export const TestimonialsHeader = styled.div`
       color: ${(props) => props.theme.colors.textLight};
     }
   }
+
+  @media ${device.mobileM} {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 export const TestimonialsDescription = styled.p`
   margin-bottom: ${Mb25};
+
+  @media ${device.mobileM} {
+    text-align: center;
+  }
 `;

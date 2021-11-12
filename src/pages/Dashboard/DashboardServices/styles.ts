@@ -14,6 +14,7 @@ import {
   Mb15,
   Mb025,
 } from '../../../styles/variables';
+import { device } from '../../../styles/device';
 
 interface ServicesModalProps {
   isOpened?: boolean;
@@ -37,6 +38,11 @@ export const ServicesContainer = styled.div`
 
   gap: 1.5rem;
   grid-template-columns: repeat(2, 1fr);
+
+  @media ${device.mobileM} {
+    grid-template-columns: max-content;
+    justify-content: center;
+  }
 `;
 
 export const ServicesContent = styled.div`
@@ -71,6 +77,10 @@ export const ServicesContent = styled.div`
         transform: translateX(0.35rem);
       }
     }
+  }
+
+  @media ${device.mobileM} {
+    padding-right: 3.5rem;
   }
 `;
 
@@ -107,6 +117,10 @@ export const ServicesModal = styled.div<ServicesModalProps>`
       opacity: 1;
       visibility: visible;
     `}
+
+  @media ${device.mobileM} {
+    padding: 0 0.5rem;
+  }
 `;
 
 export const ServicesModalContent = styled.div`

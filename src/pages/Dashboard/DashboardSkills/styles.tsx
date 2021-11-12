@@ -14,6 +14,7 @@ import {
   Mb25,
   NormalFontSize,
 } from '../../../styles/variables';
+import { device } from '../../../styles/device';
 
 interface SkillsContentProps {
   isOpened: boolean;
@@ -65,6 +66,10 @@ export const SkillsItemHeader = styled.div`
   div {
     h1 {
       ${H3FontSize}
+
+      @media ${device.mobileM} {
+        ${NormalFontSize};
+      }
     }
 
     span {

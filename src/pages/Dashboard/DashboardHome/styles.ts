@@ -12,6 +12,7 @@ import {
   SmallFontSize,
   Mb025,
 } from '../../../styles/variables';
+import { device } from '../../../styles/device';
 
 export const Home = styled.section`
   ${/*inherithed*/ Section}
@@ -24,9 +25,13 @@ export const HomeContainer = styled.div`
 
 export const HomeContent = styled.div`
   ${/*inherithed*/ Grid}
-  grid-template-columns: .5fr 3fr;
+  grid-template-columns: 0.5fr 3fr;
   padding-top: 3.5rem;
   align-items: center;
+
+  @media ${device.mobileM} {
+    grid-template-columns: 0.25fr 3fr;
+  }
 `;
 
 export const HomeSocial = styled.div`
@@ -66,6 +71,10 @@ export const HomeImg = styled.div`
   svg {
     width: 200px;
     fill: ${(props) => props.theme.colors.primary};
+
+    @media ${device.mobileM} {
+      width: 180px;
+    }
 
     image {
       width: 200px;

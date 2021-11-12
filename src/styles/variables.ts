@@ -81,6 +81,11 @@ export const Container = `
   max-width: 768px;
   margin-left: ${Mb15};
   margin-right: ${Mb15};
+
+  @media ${device.mobileM} {
+    margin-left: ${Mb1};
+    margin-right: ${Mb1};
+  }
 `;
 
 export const Grid = `
