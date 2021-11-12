@@ -36,6 +36,8 @@ import {
   UilScenery,
   UilApps,
   UilArrowUp,
+  UilMoon,
+  UilSun,
   // @ts-expect-error: React-Unicons doesnt have @types yet
 } from '@iconscout/react-unicons';
 
@@ -76,7 +78,9 @@ export type IconProps = SVGAttributes<SVGAElement> & {
     | 'UilFileAlt'
     | 'UilScenery'
     | 'UilApps'
-    | 'UilArrowUp';
+    | 'UilArrowUp'
+    | 'UilMoon'
+    | 'UilSun';
 };
 
 const iconType = {
@@ -116,6 +120,8 @@ const iconType = {
   UilScenery: UilScenery,
   UilApps: UilApps,
   UilArrowUp: UilArrowUp,
+  UilMoon: UilMoon,
+  UilSun: UilSun,
 };
 
 const Icon: React.FC<IconProps> = ({ icon, ...rest }) => {

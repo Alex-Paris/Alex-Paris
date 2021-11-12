@@ -5,7 +5,7 @@ import light from '../../styles/themes/light';
 import dark from '../../styles/themes/dark';
 
 interface ThemeContextData {
-  actualTheme(): string;
+  actualTheme(isTitle: string): boolean;
   toggleTheme(definedTheme?: DefaultTheme): void;
 }
 
@@ -17,19 +17,23 @@ export const ThemeToggleProvider: React.FC = ({ children }) => {
   const toggleTheme = useCallback(
     (definedTheme) => {
       setTheme(theme.title === 'light' ? dark : light);
-      console.log('theme:' + theme.title);
 
       if (definedTheme) {
-        console.log('definedTheme:' + definedTheme.title);
         setTheme(definedTheme);
       }
     },
     [theme]
   );
 
-  const actualTheme = useCallback(() => {
-    return theme.title;
-  }, [theme]);
+  const actualTheme = useCallback(
+    (isTitle: string) => {
+      if (theme.title === isTitle) {
+        return true;
+      }
+      return false;
+    },
+    [theme]
+  );
 
   return (
     <ThemeContext.Provider value={{ actualTheme, toggleTheme }}>

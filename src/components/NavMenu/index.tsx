@@ -3,15 +3,17 @@ import { useTransition, config } from 'react-spring';
 import { Link as HashLink } from 'react-scroll';
 
 import { useScroll } from '../../hooks/context/scrolls';
+import { useTheme } from '../../hooks/context/theme';
 
 import Icon from '../Unicons';
 
-import { Header, Nav, NavList, NavToggle, NavItem } from './styles';
+import { Header, Nav, NavList, NavToggle, NavItem, NavBtns } from './styles';
 
 const NavMenu: React.FC = () => {
   const [show, setShow] = useState(false);
   const [scrollActivated, setScrollActivated] = useState(false);
   const { scrolled } = useScroll();
+  const { actualTheme, toggleTheme } = useTheme();
 
   const navExibitionMobile = useTransition(show, {
     from: { opacity: 0, y: '150%' },
@@ -136,11 +138,16 @@ const NavMenu: React.FC = () => {
             )
         )}
 
-        <div>
+        <NavBtns>
+          <Icon
+            icon={actualTheme('light') ? 'UilMoon' : 'UilSun'}
+            onClick={() => toggleTheme()}
+          />
+
           <NavToggle onClick={handleShowNav}>
             <Icon icon="UilApps" />
           </NavToggle>
-        </div>
+        </NavBtns>
       </Nav>
     </Header>
   );

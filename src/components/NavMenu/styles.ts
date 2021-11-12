@@ -10,6 +10,7 @@ import {
   HeaderHeight,
   FontMedium,
   SmallFontSize,
+  Mb1,
 } from '../../styles/variables';
 
 interface HeaderProps {
@@ -89,6 +90,8 @@ export const NavToggle = styled.div`
   color: ${(props) => props.theme.colors.title};
   font-weight: ${FontMedium};
   font-size: 1.1rem;
+  width: 1.1rem;
+  height: 1.1rem;
   cursor: pointer;
   transition: 0.3s;
 
@@ -118,5 +121,23 @@ export const NavItem = styled.li`
 
   > .active {
     color: ${(props) => props.theme.colors.primary};
+  }
+`;
+
+export const NavBtns = styled.div`
+  display: flex;
+  align-items: center;
+
+  svg {
+    color: ${(props) => props.theme.colors.title};
+    width: 1.25rem;
+    height: 1.25rem;
+    cursor: pointer;
+    margin-right: ${Mb1};
+    transition: 0.3s;
+
+    &:hover {
+      color: ${(props) => props.theme.colors.primary};
+    }
   }
 `;
