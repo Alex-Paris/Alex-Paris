@@ -18,6 +18,7 @@ export const Container = styled.button<ContainerProps>`
   padding: 0;
   background-color: transparent;
   transition: 0.2s;
+  color: ${(props) => props.theme.colors.title};
 
   > svg {
     margin-left: ${Mb05};

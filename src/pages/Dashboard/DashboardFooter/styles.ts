@@ -55,6 +55,7 @@ export const FooterLinks = styled.ul`
   li {
     a {
       color: #fff;
+      transition: 0.3s;
 
       :hover {
         color: ${(props) => props.theme.colors.lighter};
@@ -68,6 +69,7 @@ export const FooterSocials = styled.ul`
     font-size: 1.25rem;
     margin-right: ${Mb15};
     color: #fff;
+    transition: 0.3s;
 
     :hover {
       color: ${(props) => props.theme.colors.lighter};
