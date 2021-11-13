@@ -26,10 +26,11 @@ export const Portfolio = styled.section`
 
 export const PortfolioContainer = styled.div`
   ${/*inherithed*/ Container}
-
   overflow: initial;
 
   .mySwiper {
+    overflow: initial;
+
     width: 100%;
     height: 100%;
     padding-bottom: 2.5rem;
