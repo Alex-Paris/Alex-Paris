@@ -32,22 +32,8 @@ const DashboardPortfolio: React.FC = () => {
       title: 'GoBarber',
       description:
         'Website to make appointments with a barber shop, using React, React Native and Node.',
-      image: 'D:/ARQUIVOS/PROJETOS/React/Alex-Paris/src/assets/about320.jpg',
+      image: portfolio1Img,
       link: 'http://gobarber.alexparis.dev/',
-    },
-    {
-      title: 'Brand Design',
-      description:
-        'Website adaptable to all devices, with ui components and animated interactions.',
-      image: 'D:/ARQUIVOS/PROJETOS/React/Alex-Paris/src/assets/about320.jpg',
-      link: '',
-    },
-    {
-      title: 'Online Store',
-      description:
-        'Website adaptable to all devices, with ui components and animated interactions.',
-      image: 'D:/ARQUIVOS/PROJETOS/React/Alex-Paris/src/assets/about320.jpg',
-      link: '',
     },
   ];
 
@@ -84,7 +70,7 @@ const DashboardPortfolio: React.FC = () => {
           {portfolios.map((portfolio) => (
             <SwiperSlide key={portfolio.title} className="mySwiperSlide">
               <PortfolioContent>
-                <img src={portfolio1Img} />
+                <img src={portfolio.image} />
 
                 <div>
                   <h3>{portfolio.title}</h3>
