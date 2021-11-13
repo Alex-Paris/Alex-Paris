@@ -7,16 +7,23 @@ import React, {
 } from 'react';
 
 interface ScrollContextData {
-  scrolled(moreThan: number): boolean;
+  scrolledX: number;
+  scrolledY: number;
 }
 
 const ScrollContext = createContext<ScrollContextData>({} as ScrollContextData);
 
 export const ScrollProvider: React.FC = ({ children }) => {
-  const [scroll, setScroll] = useState(0);
+  const [windowScroll, setWindowScroll] = useState<ScrollContextData>({
+    scrolledX: scrollX,
+    scrolledY: scrollY,
+  });
 
   const handleScroll = useCallback(() => {
-    setScroll(scrollY);
+    setWindowScroll({
+      scrolledX: scrollX,
+      scrolledY: scrollY,
+    });
   }, []);
 
   useEffect(() => {
@@ -27,18 +34,13 @@ export const ScrollProvider: React.FC = ({ children }) => {
     };
   }, [handleScroll]);
 
-  const scrolled = useCallback(
-    (moreThan: number) => {
-      if (scroll > moreThan) {
-        return true;
-      }
-      return false;
-    },
-    [scroll]
-  );
-
   return (
-    <ScrollContext.Provider value={{ scrolled }}>
+    <ScrollContext.Provider
+      value={{
+        scrolledX: windowScroll.scrolledX,
+        scrolledY: windowScroll.scrolledY,
+      }}
+    >
       {children}
     </ScrollContext.Provider>
   );

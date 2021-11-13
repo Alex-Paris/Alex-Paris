@@ -15,7 +15,7 @@ const NavMenu: React.FC = () => {
   const [show, setShow] = useState(false);
   const [alwaysShowing, setAlwaysShowing] = useState(false);
   const [scrollActivated, setScrollActivated] = useState(false);
-  const { scrolled } = useScroll();
+  const { scrolledY } = useScroll();
   const { windowWidth } = useResize();
   const { actualTheme, toggleTheme } = useTheme();
 
@@ -37,12 +37,12 @@ const NavMenu: React.FC = () => {
   }, [alwaysShowing]);
 
   useEffect(() => {
-    if (scrolled(90)) {
+    if (scrolledY > 90) {
       setScrollActivated(true);
       return;
     }
     setScrollActivated(false);
-  }, [scrolled]);
+  }, [scrolledY]);
 
   useEffect(() => {
     if (windowWidth > size.laptop) {

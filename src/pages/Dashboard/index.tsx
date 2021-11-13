@@ -20,15 +20,15 @@ import DashboardFooter from './DashboardFooter';
 
 const Dashboard: React.FC = () => {
   const [scrollActivated, setScrollActivated] = useState(false);
-  const { scrolled } = useScroll();
+  const { scrolledY } = useScroll();
 
   useEffect(() => {
-    if (scrolled(560)) {
+    if (scrolledY > 560) {
       setScrollActivated(true);
       return;
     }
     setScrollActivated(false);
-  }, [scrolled]);
+  }, [scrolledY]);
 
   return (
     <>
