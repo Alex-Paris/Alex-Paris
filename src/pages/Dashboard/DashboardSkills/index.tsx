@@ -99,7 +99,7 @@ const DashboardSkills: React.FC = () => {
       title: 'Database',
       description: 'More than ' + (actualYear - 2015) + ' years',
       icon: 'UilDatabase',
-      isOpened: true,
+      isOpened: false,
       items: [
         {
           name: 'SQL',
