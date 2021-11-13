@@ -24,13 +24,13 @@ const DashboardContact: React.FC = () => {
     {
       title: 'Call Me',
       type: 'phone',
-      contact: '+55 18 1111-2222',
+      contact: '+55 18 99784-0983',
       icon: 'UilPhone',
     },
     {
       title: 'Email',
       type: 'email',
-      contact: 'alex_limpaNarisZ@hotmail.com',
+      contact: 'me@alexparis.dev',
       icon: 'UilEnvelope',
     },
     {

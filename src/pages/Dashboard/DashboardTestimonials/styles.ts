@@ -18,6 +18,9 @@ import {
 export const Testimonials = styled.section`
   ${/*inherithed*/ Section}
 
+  //Doesnt have testimonials yet
+  display: none;
+
   > h2 {
     ${SectionTitle}
   }

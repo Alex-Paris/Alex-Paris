@@ -72,14 +72,10 @@ const DashboardFooter: React.FC = () => {
             >
               <Icon icon="UilInstagram" />
             </a>
-
-            <a href="https://twitter.com/" target="_blank" rel="noreferrer">
-              <Icon icon="UilTwitterAlt" />
-            </a>
           </FooterSocials>
         </FooterContainer>
 
-        <p>&#169; GhostCode. All right reserved</p>
+        <p>&#169; Alex Paris. All right reserved</p>
       </div>
     </Footer>
   );
