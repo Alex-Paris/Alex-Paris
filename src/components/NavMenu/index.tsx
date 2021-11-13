@@ -3,6 +3,7 @@ import { useTransition, config } from 'react-spring';
 import { Link as HashLink } from 'react-scroll';
 
 import { useScroll } from '../../hooks/context/scrolls';
+import { useResize } from '../../hooks/context/resize';
 import { useTheme } from '../../hooks/context/theme';
 import { size } from '../../styles/device';
 
@@ -15,6 +16,7 @@ const NavMenu: React.FC = () => {
   const [alwaysShowing, setAlwaysShowing] = useState(false);
   const [scrollActivated, setScrollActivated] = useState(false);
   const { scrolled } = useScroll();
+  const { windowWidth } = useResize();
   const { actualTheme, toggleTheme } = useTheme();
 
   const navExibitionMobile = useTransition(show, {
@@ -43,7 +45,7 @@ const NavMenu: React.FC = () => {
   }, [scrolled]);
 
   useEffect(() => {
-    if (screen.width > size.laptop) {
+    if (windowWidth > size.laptop) {
       setShow(true);
       setAlwaysShowing(true);
       return;
@@ -53,7 +55,7 @@ const NavMenu: React.FC = () => {
       setShow(false);
       setAlwaysShowing(false);
     }
-  }, [alwaysShowing, scrolled]);
+  }, [windowWidth, alwaysShowing]);
 
   return (
     <Header isBordered={scrollActivated}>
