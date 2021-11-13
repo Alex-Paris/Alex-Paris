@@ -38,13 +38,7 @@ const DashboardServices: React.FC = () => {
           description: 'I develop the user interface.',
         },
         {
-          description: 'Web page development.',
-        },
-        {
           description: 'I create ux element interactions.',
-        },
-        {
-          description: 'I position your company brand.',
         },
       ],
     },
@@ -54,35 +48,26 @@ const DashboardServices: React.FC = () => {
       icon: 'UilArrow',
       items: [
         {
-          description: 'I develop the user interface.',
-        },
-        {
           description: 'Web page development.',
         },
         {
-          description: 'I create ux element interactions.',
+          description: 'Desktop Form development.',
         },
         {
-          description: 'I position your company brand.',
+          description: 'Mobile development.',
         },
       ],
     },
     {
-      title: 'Branding',
-      subtitle: 'Designer',
-      icon: 'UilPen',
+      title: 'Backend',
+      subtitle: 'Developer',
+      icon: 'UilServerNetwork',
       items: [
         {
-          description: 'I develop the user interface.',
+          description: 'I develop the API.',
         },
         {
-          description: 'Web page development.',
-        },
-        {
-          description: 'I create ux element interactions.',
-        },
-        {
-          description: 'I position your company brand.',
+          description: 'I can integrate external components.',
         },
       ],
     },
