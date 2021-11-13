@@ -38,6 +38,7 @@ import {
   UilArrowUp,
   UilMoon,
   UilSun,
+  UilDatabase,
   // @ts-expect-error: React-Unicons doesnt have @types yet
 } from '@iconscout/react-unicons';
 
@@ -80,7 +81,8 @@ export type IconProps = SVGAttributes<SVGAElement> & {
     | 'UilApps'
     | 'UilArrowUp'
     | 'UilMoon'
-    | 'UilSun';
+    | 'UilSun'
+    | 'UilDatabase';
 };
 
 const iconType = {
@@ -122,6 +124,7 @@ const iconType = {
   UilArrowUp: UilArrowUp,
   UilMoon: UilMoon,
   UilSun: UilSun,
+  UilDatabase: UilDatabase,
 };
 
 const Icon: React.FC<IconProps> = ({ icon, ...rest }) => {
