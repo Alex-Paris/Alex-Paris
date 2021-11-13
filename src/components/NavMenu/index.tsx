@@ -4,13 +4,15 @@ import { Link as HashLink } from 'react-scroll';
 
 import { useScroll } from '../../hooks/context/scrolls';
 import { useTheme } from '../../hooks/context/theme';
+import { size } from '../../styles/device';
 
 import Icon from '../Unicons';
 
 import { Header, Nav, NavList, NavToggle, NavItem, NavBtns } from './styles';
 
 const NavMenu: React.FC = () => {
-  const [show, setShow] = useState(true);
+  const [show, setShow] = useState(false);
+  const [alwaysShowing, setAlwaysShowing] = useState(false);
   const [scrollActivated, setScrollActivated] = useState(false);
   const { scrolled } = useScroll();
   const { actualTheme, toggleTheme } = useTheme();
@@ -24,8 +26,13 @@ const NavMenu: React.FC = () => {
   });
 
   const handleShowNav = useCallback(() => {
+    if (alwaysShowing) {
+      setShow(true);
+      return;
+    }
+
     setShow((state) => !state);
-  }, []);
+  }, [alwaysShowing]);
 
   useEffect(() => {
     if (scrolled(90)) {
@@ -34,6 +41,19 @@ const NavMenu: React.FC = () => {
     }
     setScrollActivated(false);
   }, [scrolled]);
+
+  useEffect(() => {
+    if (screen.width > size.laptop) {
+      setShow(true);
+      setAlwaysShowing(true);
+      return;
+    }
+
+    if (alwaysShowing) {
+      setShow(false);
+      setAlwaysShowing(false);
+    }
+  }, [alwaysShowing, scrolled]);
 
   return (
     <Header isBordered={scrollActivated}>

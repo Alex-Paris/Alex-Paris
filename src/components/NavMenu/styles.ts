@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components';
 import { animated } from 'react-spring';
+import { shade } from 'polished';
 
 import { device } from '../../styles/device';
 
@@ -29,7 +30,9 @@ export const Header = styled.header<HeaderProps>`
   ${(props) =>
     props.isBordered &&
     css`
-      box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.55);
+      background-color: ${(props) =>
+        shade(0.01, props.theme.colors.background)};
     `}
 
   @media ${device.laptopMin} {
