@@ -8,7 +8,7 @@
       "args": ["start"],
       "isBackground": true,
       "options": {
-        "cwd": "${workspaceFolder:Alex-Paris}/"
+        "cwd": "${workspaceFolder:Alex-Paris}/client/"
       },
       "problemMatcher":[
         {
