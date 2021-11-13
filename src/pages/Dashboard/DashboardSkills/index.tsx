@@ -28,72 +28,98 @@ interface SkillItem {
 }
 
 const DashboardSkills: React.FC = () => {
+  const actualYear = new Date().getFullYear();
+
   const [skills, setSkills] = useState<Skill[]>([
     {
       title: 'Frontend developer',
-      description: 'More than 4 years',
+      description: 'More than ' + (actualYear - 2020) + ' years',
       icon: 'UilBracketsCurly',
       isOpened: false,
       items: [
         {
           name: 'HTML',
-          porcent: 90,
-        },
-        {
-          name: 'CSS',
           porcent: 80,
         },
         {
-          name: 'Javascript',
+          name: 'CSS',
           porcent: 60,
         },
         {
+          name: 'Javascript',
+          porcent: 40,
+        },
+        {
           name: 'React',
+          porcent: 65,
+        },
+        {
+          name: 'Vue',
+          porcent: 40,
+        },
+        {
+          name: 'WPF',
+          porcent: 80,
+        },
+        {
+          name: 'DFM (Delphi Form)',
+          porcent: 85,
+        },
+        {
+          name: 'Windows Forms',
           porcent: 80,
         },
       ],
     },
     {
       title: 'Backend developer',
-      description: 'More than 2 years',
+      description: 'More than ' + (actualYear - 2019) + ' years',
       icon: 'UilServerNetwork',
       isOpened: false,
       items: [
         {
+          name: 'Node Js',
+          porcent: 50,
+        },
+        {
           name: 'PHP',
+          porcent: 30,
+        },
+        {
+          name: 'C#',
           porcent: 80,
         },
         {
-          name: 'Node Js',
-          porcent: 70,
-        },
-        {
-          name: 'Firebase',
-          porcent: 90,
-        },
-        {
-          name: 'Python',
-          porcent: 55,
+          name: 'Pascal',
+          porcent: 80,
         },
       ],
     },
     {
-      title: 'Designer',
-      description: 'More than 5 years',
-      icon: 'UilSwatchbook',
-      isOpened: false,
+      title: 'Database',
+      description: 'More than ' + (actualYear - 2015) + ' years',
+      icon: 'UilDatabase',
+      isOpened: true,
       items: [
         {
-          name: 'Figma',
+          name: 'SQL',
           porcent: 90,
         },
         {
-          name: 'Sketch',
+          name: 'Postgre',
           porcent: 85,
         },
         {
-          name: 'Photoshop',
-          porcent: 85,
+          name: 'MySqlServer',
+          porcent: 70,
+        },
+        {
+          name: 'Redis',
+          porcent: 40,
+        },
+        {
+          name: 'MongoDB',
+          porcent: 50,
         },
       ],
     },
