@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { saveAs } from 'file-saver';
 
 import aboutImg from '../../../assets/about320.jpg';
 import Button from '../../../components/Button';
@@ -15,6 +16,18 @@ import {
 } from './styles';
 
 const DashboardAbout: React.FC = () => {
+  const [yearsExperience, setYearsExperience] = useState('0');
+
+  const handleDownloadCV = useCallback(() => {
+    saveAs('/files/AlexParis-Resume.pdf', 'AlexParis-Resume.pdf');
+  }, []);
+
+  useEffect(() => {
+    const years = new Date().getFullYear() - 2018;
+    const lpad = '00';
+    setYearsExperience((lpad + years).slice(-lpad.length));
+  }, []);
+
   return (
     <About id="about">
       <h2>About Me</h2>
@@ -31,21 +44,21 @@ const DashboardAbout: React.FC = () => {
 
           <AboutInfo>
             <div>
-              <AboutInfoTitle>08+</AboutInfoTitle>
+              <AboutInfoTitle>{yearsExperience}+</AboutInfoTitle>
               <AboutInfoName>
                 Years <br /> experience
               </AboutInfoName>
             </div>
 
             <div>
-              <AboutInfoTitle>20+</AboutInfoTitle>
+              <AboutInfoTitle>02+</AboutInfoTitle>
               <AboutInfoName>
                 Completed <br /> project
               </AboutInfoName>
             </div>
 
             <div>
-              <AboutInfoTitle>05+</AboutInfoTitle>
+              <AboutInfoTitle>01+</AboutInfoTitle>
               <AboutInfoName>
                 Companies <br /> worked
               </AboutInfoName>
@@ -53,7 +66,7 @@ const DashboardAbout: React.FC = () => {
           </AboutInfo>
 
           <AboutButtons>
-            <Button isFlex>
+            <Button isFlex onClick={handleDownloadCV}>
               Download CV <Icon icon="UilDownloadAlt" />
             </Button>
           </AboutButtons>

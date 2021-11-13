@@ -89,7 +89,7 @@ const DashboardPortfolio: React.FC = () => {
                 <div>
                   <h3>{portfolio.title}</h3>
                   <p>{portfolio.description}</p>
-                  <Button isFlex isSmall href={portfolio.link}>
+                  <Button isFlex isSmall hrefLink={portfolio.link}>
                     Demo
                     <Icon icon="UilArrowRight" />
                   </Button>

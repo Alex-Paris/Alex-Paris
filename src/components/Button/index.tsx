@@ -4,7 +4,7 @@ import { Container } from './styles';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
-  href?: string;
+  hrefLink?: string;
   isFlex?: boolean;
   isSimple?: boolean;
   isActive?: boolean;
@@ -16,7 +16,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
 const Button: React.FC<ButtonProps> = ({
   children,
   loading,
-  href,
+  hrefLink,
   isFlex,
   isSimple,
   isActive,
@@ -30,14 +30,14 @@ const Button: React.FC<ButtonProps> = ({
   const handleOnClick = useCallback(() => {
     setIsPressed(true);
 
-    if (href) {
-      open(href, '_blank');
+    if (hrefLink) {
+      open(hrefLink, '_blank');
     }
 
     setTimeout(() => {
       setIsPressed(false);
     }, 150);
-  }, [href]);
+  }, [hrefLink]);
 
   return (
     <Container

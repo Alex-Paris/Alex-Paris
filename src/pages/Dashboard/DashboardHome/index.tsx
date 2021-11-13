@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { scroller } from 'react-scroll';
 
 import { PerfilIcon } from '../../../assets/perfil';
 import Button from '../../../components/Button';
@@ -15,6 +16,24 @@ import {
 } from './styles';
 
 const DashboardHome: React.FC = () => {
+  const handleContactMeClick = useCallback(() => {
+    scroller.scrollTo('contactme', {
+      spy: true,
+      smooth: true,
+      offset: -70,
+      duration: 500,
+    });
+  }, []);
+
+  const handleAboutClick = useCallback(() => {
+    scroller.scrollTo('about', {
+      spy: true,
+      smooth: true,
+      offset: -70,
+      duration: 500,
+    });
+  }, []);
+
   return (
     <Home id="home">
       <HomeContainer>
@@ -26,15 +45,6 @@ const DashboardHome: React.FC = () => {
               rel="noreferrer"
             >
               <Icon icon="UilLinkedinAlt" />
-              <Icon icon="UilExternalLinkAlt" />
-            </a>
-
-            <a
-              href="https://github.com/Alex-Paris"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Icon icon="UilDribbble" />
               <Icon icon="UilExternalLinkAlt" />
             </a>
 
@@ -59,14 +69,14 @@ const DashboardHome: React.FC = () => {
               High level experience in development knowledge, producing quality
               work.
             </p>
-            <Button isFlex>
+            <Button isFlex onClick={handleContactMeClick}>
               Contact Me <Icon icon="UilMessage" />
             </Button>
           </HomeData>
         </HomeContent>
 
         <HomeScroll>
-          <Button isFlex isSimple>
+          <Button isFlex isSimple onClick={handleAboutClick}>
             <Icon icon="UilMouseAlt" />
             <span>Scroll down</span>
             <Icon icon="UilArrowDown" />
