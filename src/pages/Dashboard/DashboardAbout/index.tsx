@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback } from 'react';
 import { saveAs } from 'file-saver';
 
 import aboutImg from '../../../assets/about320.jpg';
@@ -16,16 +16,12 @@ import {
 } from './styles';
 
 const DashboardAbout: React.FC = () => {
-  const [yearsExperience, setYearsExperience] = useState('0');
+  const year = new Date().getFullYear() - 2018;
+  const lpad = '00';
+  const yearsExperience = (lpad + year).slice(-lpad.length);
 
   const handleDownloadCV = useCallback(() => {
     saveAs('/files/AlexParis-Resume.pdf', 'AlexParis-Resume.pdf');
-  }, []);
-
-  useEffect(() => {
-    const years = new Date().getFullYear() - 2018;
-    const lpad = '00';
-    setYearsExperience((lpad + years).slice(-lpad.length));
   }, []);
 
   return (
