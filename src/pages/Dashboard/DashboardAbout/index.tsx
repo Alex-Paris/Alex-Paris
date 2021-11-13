@@ -16,9 +16,9 @@ import {
 } from './styles';
 
 const DashboardAbout: React.FC = () => {
-  const year = new Date().getFullYear() - 2018;
+  const years = new Date().getFullYear() - 2018;
   const lpad = '00';
-  const yearsExperience = (lpad + year).slice(-lpad.length);
+  const yearsExperience = (lpad + years).slice(-lpad.length);
 
   const handleDownloadCV = useCallback(() => {
     saveAs('/files/AlexParis-Resume.pdf', 'AlexParis-Resume.pdf');
