@@ -15,7 +15,21 @@ export default class EtherealMailProvider implements IMailProvider {
     @inject('MailTemplateProvider')
     private mailTemplateProvider: IMailTemplateProvider
   ) {
-    nodemailer.createTestAccount().then((account) => {
+    nodemailer.createTestAccount((err, account) => {
+      if (err) {
+        console.log(
+          'EtherealMailProvider.createTestAccount(Ignored): ' + err.message
+        );
+        return;
+      }
+
+      if (!account) {
+        console.log(
+          'EtherealMailProvider.createTestAccount(Ignored): account test not created'
+        );
+        return;
+      }
+
       const transporter = nodemailer.createTransport({
         host: account.smtp.host,
         port: account.smtp.port,
@@ -52,7 +66,13 @@ export default class EtherealMailProvider implements IMailProvider {
       html: await this.mailTemplateProvider.parse(templateData),
     });
 
-    console.log('Message sent: %s', message.messageId);
-    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(message));
+    console.log(
+      'EtherealMailProvider.sendMail: Message sent: %s',
+      message.messageId
+    );
+    console.log(
+      'EtherealMailProvider.sendMail: Preview URL: %s',
+      nodemailer.getTestMessageUrl(message)
+    );
   }
 }
