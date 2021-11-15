@@ -1,8 +1,21 @@
-import express, { Request, Response } from 'express';
+import 'reflect-metadata';
 
-import AppError from 'shared/errors/AppError';
+import express, { Request, Response } from 'express';
+import cors from 'cors';
+import { errors } from 'celebrate';
+import 'express-async-errors';
+
+import AppError from '@shared/errors/AppError';
+import routes from './routes';
+
+import '@shared/container';
 
 const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.use(routes);
+app.use(errors());
 
 app.use((err: Error, request: Request, response: Response) => {
   if (err instanceof AppError) {
