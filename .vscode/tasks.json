@@ -1,8 +1,8 @@
 {
 	"version": "2.0.0",
 	"tasks": [
-		{ //Start-Client (Portfolio)
-      "label": "Start-Client (Portfolio)",
+		{ //Client (Portfolio)
+      "label": "Client (Portfolio)",
       "type": "shell",
       "command": "yarn",
       "args": ["start"],
@@ -28,8 +28,8 @@
         }
       ]
     },
-    { //Start-Server (Portfolio)
-			"label": "Start-Server (Portfolio)",
+    { //Server (Portfolio)
+			"label": "Server (Portfolio)",
 			"type": "shell",
 			"command": "yarn",
 			"args": ["dev:server"],
