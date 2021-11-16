@@ -11,14 +11,12 @@ import { Container } from './styles';
 
 type InputProps = InputHTMLAttributes<HTMLInputElement> & {
   name: string;
-  inputType: 'input' | 'text';
   containerHolder: string;
   containerStyle?: Record<string, unknown>;
 };
 
 const Input: React.FC<InputProps> = ({
   name,
-  inputType,
   containerHolder,
   containerStyle = {},
   ...rest
@@ -64,17 +62,13 @@ const Input: React.FC<InputProps> = ({
       <label>{containerHolder}</label>
       <p>{error}</p>
 
-      {inputType === 'input' ? (
-        <input
-          onFocus={handleInputFocus}
-          onBlur={handleInputBlur}
-          defaultValue={defaultValue}
-          ref={inputRef}
-          {...rest}
-        />
-      ) : (
-        <textarea cols={0} rows={7} />
-      )}
+      <input
+        onFocus={handleInputFocus}
+        onBlur={handleInputBlur}
+        defaultValue={defaultValue}
+        ref={inputRef}
+        {...rest}
+      />
     </Container>
   );
 };

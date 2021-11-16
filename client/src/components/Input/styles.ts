@@ -21,10 +21,6 @@ export const Container = styled.div<ContainerProps>`
   padding: 0.75rem 1rem 0.25rem;
   border: 2px solid transparent;
 
-  /* & + div {
-    margin-top: -80px;
-  } */
-
   label {
     ${SmallerFontSize}
     color: ${(props) => props.theme.colors.title};
@@ -34,7 +30,7 @@ export const Container = styled.div<ContainerProps>`
     ${SmallFontSize}
     height: 20px;
     font-style: italic;
-    color: ${lighten(0.2, '#c53030')};
+    color: ${lighten(0.1, '#c53030')};
     font-family: ${BodyFont};
   }
 
