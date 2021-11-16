@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useCallback, useRef } from 'react';
+import { FormHandles } from '@unform/core';
+import { Form } from '@unform/web';
+import * as Yup from 'yup';
 
+import Input from '../../../components/Input';
 import Button from '../../../components/Button';
 import Icon, { IconProps } from '../../../components/Unicons';
+import getValidationErrors from '../../../utils/getValidationErrors';
 
 import {
   Contact,
   ContactContainer,
-  ContactContent,
-  ContactForm,
   ContactInformation,
   ContactInputs,
 } from './styles';
+import TextArea from '../../../components/TextArea';
 
 interface Contacts {
   title: string;
@@ -19,7 +23,15 @@ interface Contacts {
   icon: IconProps['icon'];
 }
 
+interface ContactMeFormData {
+  name: string;
+  email: string;
+  project: string;
+  message: string;
+}
+
 const DashboardContact: React.FC = () => {
+  const formRef = useRef<FormHandles>(null);
   const contacts: Contacts[] = [
     {
       title: 'Call Me',
@@ -41,6 +53,43 @@ const DashboardContact: React.FC = () => {
     },
   ];
 
+  const handleSubmit = useCallback(async (data: ContactMeFormData) => {
+    try {
+      formRef.current?.setErrors({});
+
+      const schema = Yup.object().shape({
+        name: Yup.string().required('Insert a name'),
+        email: Yup.string()
+          .required('Insert an email')
+          .email('Insert a valid email'),
+        project: Yup.string().required('Insert a project'),
+        message: Yup.string()
+          .required('Insert a message')
+          .min(10, 'Insert at least 10 words'),
+      });
+
+      await schema.validate(data, {
+        abortEarly: false,
+      });
+
+      // await api.post('/users', data);
+    } catch (err) {
+      if (err instanceof Yup.ValidationError) {
+        const errors = getValidationErrors(err);
+
+        formRef.current?.setErrors(errors);
+
+        return;
+      }
+
+      // addToast({
+      //   type: 'error',
+      //   title: 'Erro no cadastro',
+      //   description: 'Ocorreu um erro ao fazer o cadastro, tente novamente.'
+      // });
+    }
+  }, []);
+
   return (
     <Contact id="contactme">
       <h2>Contact Me</h2>
@@ -60,35 +109,22 @@ const DashboardContact: React.FC = () => {
           ))}
         </div>
 
-        <ContactForm>
+        <Form ref={formRef} onSubmit={handleSubmit}>
           <ContactInputs>
-            <ContactContent>
-              <label htmlFor="">Name</label>
-              <input type="text" />
-            </ContactContent>
+            <Input name="name" containerHolder="Name" />
 
-            <ContactContent>
-              <label htmlFor="">Email</label>
-              <input type="email" />
-            </ContactContent>
+            <Input name="email" containerHolder="Email" />
           </ContactInputs>
-          <ContactContent>
-            <label htmlFor="">Project</label>
-            <input type="text" />
-          </ContactContent>
+          <Input name="project" containerHolder="Project" />
 
-          <ContactContent>
-            <label htmlFor="">Message</label>
-            <textarea cols={0} rows={7} />
-          </ContactContent>
-
+          <TextArea name="message" containerHolder="Message" />
           <div>
-            <Button isFlex>
+            <Button isFlex type="submit">
               Send Message
               <Icon icon="UilMessage" />
             </Button>
           </div>
-        </ContactForm>
+        </Form>
       </ContactContainer>
     </Contact>
   );
