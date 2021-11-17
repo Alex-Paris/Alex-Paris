@@ -4,6 +4,7 @@ import { lighten } from 'polished';
 import { FontMedium, Mb05 } from '../../styles/variables';
 
 interface ContainerProps {
+  loading?: boolean;
   isFlex?: boolean;
   isSimple?: boolean;
   isActive?: boolean;
@@ -45,6 +46,16 @@ export const Container = styled.button<ContainerProps>`
       ${props.isPressed &&
       css`
         transform: translateY(0.2rem);
+      `}
+
+      ${props.loading &&
+      css`
+        cursor: default;
+        background-color: ${lighten(0.12, props.theme.colors.primary)};
+
+        &:hover {
+          background-color: ${lighten(0.12, props.theme.colors.primary)};
+        }
       `}
     `}
 

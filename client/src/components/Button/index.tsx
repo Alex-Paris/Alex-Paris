@@ -42,7 +42,9 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <Container
       type="button"
+      disabled={loading}
       onClick={handleOnClick}
+      loading={loading}
       isFlex={isFlex}
       isSimple={isSimple}
       isPressed={isPressed}
@@ -52,7 +54,7 @@ const Button: React.FC<ButtonProps> = ({
       isLink={isLink}
       {...rest}
     >
-      {loading ? 'Carregando...' : children}
+      {loading ? 'Loading...' : children}
     </Container>
   );
 };

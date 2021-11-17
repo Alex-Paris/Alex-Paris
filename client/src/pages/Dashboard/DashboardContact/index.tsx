@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import { FormHandles } from '@unform/core';
 import { toast } from 'react-toastify';
 import { Form } from '@unform/web';
@@ -35,6 +35,7 @@ interface ContactMeFormData {
 
 const DashboardContact: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
+  const [loading, setLoading] = useState(false);
   const contacts: Contacts[] = [
     {
       title: 'Call Me',
@@ -58,6 +59,7 @@ const DashboardContact: React.FC = () => {
 
   const handleSubmit = useCallback(async (data: ContactMeFormData) => {
     try {
+      await setLoading(true);
       formRef.current?.setErrors({});
 
       const schema = Yup.object().shape({
@@ -75,7 +77,7 @@ const DashboardContact: React.FC = () => {
         abortEarly: false,
       });
 
-      toast
+      await toast
         .promise(api.post('/portfolio/contactme', data), {
           pending: 'Sending your message...',
           success: 'Message Sent! Thank you! 👻',
@@ -92,7 +94,8 @@ const DashboardContact: React.FC = () => {
 
         return;
       }
-      toast.error('An error has been detected! 🤯 Please, try again later');
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -125,7 +128,7 @@ const DashboardContact: React.FC = () => {
 
           <TextArea name="message" containerHolder="Message" />
           <div>
-            <Button isFlex type="submit">
+            <Button isFlex loading={loading} type="submit">
               Send Message
               <Icon icon="UilMessage" />
             </Button>
