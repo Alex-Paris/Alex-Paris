@@ -59,7 +59,7 @@ const DashboardContact: React.FC = () => {
 
   const handleSubmit = useCallback(async (data: ContactMeFormData) => {
     try {
-      await setLoading(true);
+      setLoading(true);
       formRef.current?.setErrors({});
 
       const schema = Yup.object().shape({
