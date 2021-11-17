@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle, css } from 'styled-components';
 
 import {
   NormalFontSize,
@@ -9,63 +9,75 @@ import {
 import { device } from './device';
 
 export default createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+  ${(props) =>
+    props.theme.title !== 'demo' &&
+    css`
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-  body {
-    ${NormalFontSize}
-    margin: 0 0 ${HeaderHeight} 0;
-    font-family: ${BodyFont};
-    background-color: ${(props) => props.theme.colors.background};
-    color: ${(props) => props.theme.colors.text};
+      body {
+        ${NormalFontSize}
+        margin: 0 0 ${HeaderHeight} 0;
+        font-family: ${BodyFont};
+        background-color: ${(props) => props.theme.colors.background};
+        color: ${(props) => props.theme.colors.text};
 
-    @media ${device.laptopMin} {
-      margin: 0;
-    }
-  }
+        @media ${device.laptopMin} {
+          margin: 0;
+        }
+      }
 
-  h1, h2, h3, h4, h5, h6, strong {
-    color: ${(props) => props.theme.colors.title};
-    font-weight: ${FontSemiBold};
-  }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6,
+      strong {
+        color: ${(props) => props.theme.colors.title};
+        font-weight: ${FontSemiBold};
+      }
 
-  ul {
-    list-style: none;
-  }
+      ul {
+        list-style: none;
+      }
 
-  a {
-    text-decoration: none;
-  }
+      a {
+        text-decoration: none;
+      }
 
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
 
-  input, button {
-    font-family: ${BodyFont};
-    font-size: 16px;
-  }
+      input,
+      button {
+        font-family: ${BodyFont};
+        font-size: 16px;
+      }
 
-  button, a {
-    cursor: pointer;
-  }
+      button,
+      a {
+        cursor: pointer;
+      }
 
-  ::-webkit-scrollbar {
-    width: 0.60rem;
-    background-color: ${(props) => props.theme.colors.scrollBar};
-    border-radius: 0.5rem;
-  }
+      ::-webkit-scrollbar {
+        width: 0.6rem;
+        background-color: ${(props) => props.theme.colors.scrollBar};
+        border-radius: 0.5rem;
+      }
 
-  ::-webkit-scrollbar-thumb {
-    background-color: ${(props) => props.theme.colors.scrollThumb};
-    border-radius: 0.5rem;
+      ::-webkit-scrollbar-thumb {
+        background-color: ${(props) => props.theme.colors.scrollThumb};
+        border-radius: 0.5rem;
 
-    &:hover {
-      background-color: ${(props) => props.theme.colors.textLight};
-    }
-  }
+        &:hover {
+          background-color: ${(props) => props.theme.colors.textLight};
+        }
+      }
+    `};
 `;
