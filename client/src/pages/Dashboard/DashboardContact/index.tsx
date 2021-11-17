@@ -1,12 +1,16 @@
 import React, { useCallback, useRef } from 'react';
 import { FormHandles } from '@unform/core';
+import { toast } from 'react-toastify';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
+import TextArea from '../../../components/TextArea';
 import Icon, { IconProps } from '../../../components/Unicons';
 import getValidationErrors from '../../../utils/getValidationErrors';
+
+import api from '../../../services/api';
 
 import {
   Contact,
@@ -14,7 +18,6 @@ import {
   ContactInformation,
   ContactInputs,
 } from './styles';
-import TextArea from '../../../components/TextArea';
 
 interface Contacts {
   title: string;
@@ -72,7 +75,15 @@ const DashboardContact: React.FC = () => {
         abortEarly: false,
       });
 
-      // await api.post('/users', data);
+      toast
+        .promise(api.post('/portfolio/contactme', data), {
+          pending: 'Sending your message...',
+          success: 'Message Sent! Thank you! 👻',
+          error: 'An error has been detected! 🤯 Please, try again later',
+        })
+        .then(() => {
+          formRef.current?.reset(data);
+        });
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
         const errors = getValidationErrors(err);
@@ -81,12 +92,7 @@ const DashboardContact: React.FC = () => {
 
         return;
       }
-
-      // addToast({
-      //   type: 'error',
-      //   title: 'Erro no cadastro',
-      //   description: 'Ocorreu um erro ao fazer o cadastro, tente novamente.'
-      // });
+      toast.error('An error has been detected! 🤯 Please, try again later');
     }
   }, []);
 
