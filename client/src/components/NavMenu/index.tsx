@@ -71,104 +71,109 @@ const NavMenu: React.FC = () => {
           Alex
         </HashLink>
 
-        {navExibitionMobile(
-          (styles, item) =>
-            item && (
-              <NavList style={styles}>
-                <ul>
-                  <NavItem>
-                    <HashLink
-                      activeClass="active"
-                      to="home"
-                      spy
-                      smooth
-                      offset={-70}
-                      duration={500}
-                      onClick={handleShowNav}
-                    >
-                      <Icon icon="UilEstate" /> Home
-                    </HashLink>
-                  </NavItem>
-                  <NavItem>
-                    <HashLink
-                      activeClass="active"
-                      to="about"
-                      spy
-                      smooth
-                      offset={-70}
-                      duration={500}
-                      onClick={handleShowNav}
-                    >
-                      <Icon icon="UilUser" /> About
-                    </HashLink>
-                  </NavItem>
-                  <NavItem>
-                    <HashLink
-                      activeClass="active"
-                      to="skills"
-                      spy
-                      smooth
-                      offset={-70}
-                      duration={500}
-                      onClick={handleShowNav}
-                    >
-                      <Icon icon="UilFileAlt" /> Skills
-                    </HashLink>
-                  </NavItem>
-                  <NavItem>
-                    <HashLink
-                      activeClass="active"
-                      to="services"
-                      spy
-                      smooth
-                      offset={-70}
-                      duration={500}
-                      onClick={handleShowNav}
-                    >
-                      <Icon icon="UilBriefcaseAlt" /> Services
-                    </HashLink>
-                  </NavItem>
-                  <NavItem>
-                    <HashLink
-                      activeClass="active"
-                      to="portfolio"
-                      spy
-                      smooth
-                      offset={-70}
-                      duration={500}
-                      onClick={handleShowNav}
-                    >
-                      <Icon icon="UilScenery" /> Portfolio
-                    </HashLink>
-                  </NavItem>
-                  <NavItem>
-                    <HashLink
-                      activeClass="active"
-                      to="contactme"
-                      spy
-                      smooth
-                      offset={-70}
-                      duration={500}
-                      onClick={handleShowNav}
-                    >
-                      <Icon icon="UilMessage" /> Contactme
-                    </HashLink>
-                  </NavItem>
-                </ul>
-                <Icon icon="UilTimes" onClick={handleShowNav} />
-              </NavList>
-            )
-        )}
+        {!actualTheme('demo') &&
+          navExibitionMobile(
+            (styles, item) =>
+              item && (
+                <NavList style={styles}>
+                  <ul>
+                    <NavItem>
+                      <HashLink
+                        activeClass="active"
+                        to="home"
+                        spy
+                        smooth
+                        offset={-70}
+                        duration={500}
+                        onClick={handleShowNav}
+                      >
+                        <Icon icon="UilEstate" /> Home
+                      </HashLink>
+                    </NavItem>
+                    <NavItem>
+                      <HashLink
+                        activeClass="active"
+                        to="about"
+                        spy
+                        smooth
+                        offset={-70}
+                        duration={500}
+                        onClick={handleShowNav}
+                      >
+                        <Icon icon="UilUser" /> About
+                      </HashLink>
+                    </NavItem>
+                    <NavItem>
+                      <HashLink
+                        activeClass="active"
+                        to="skills"
+                        spy
+                        smooth
+                        offset={-70}
+                        duration={500}
+                        onClick={handleShowNav}
+                      >
+                        <Icon icon="UilFileAlt" /> Skills
+                      </HashLink>
+                    </NavItem>
+                    <NavItem>
+                      <HashLink
+                        activeClass="active"
+                        to="services"
+                        spy
+                        smooth
+                        offset={-70}
+                        duration={500}
+                        onClick={handleShowNav}
+                      >
+                        <Icon icon="UilBriefcaseAlt" /> Services
+                      </HashLink>
+                    </NavItem>
+                    <NavItem>
+                      <HashLink
+                        activeClass="active"
+                        to="portfolio"
+                        spy
+                        smooth
+                        offset={-70}
+                        duration={500}
+                        onClick={handleShowNav}
+                      >
+                        <Icon icon="UilScenery" /> Portfolio
+                      </HashLink>
+                    </NavItem>
+                    <NavItem>
+                      <HashLink
+                        activeClass="active"
+                        to="contactme"
+                        spy
+                        smooth
+                        offset={-70}
+                        duration={500}
+                        onClick={handleShowNav}
+                      >
+                        <Icon icon="UilMessage" /> Contactme
+                      </HashLink>
+                    </NavItem>
+                  </ul>
+                  <Icon icon="UilTimes" onClick={handleShowNav} />
+                </NavList>
+              )
+          )}
 
         <NavBtns>
-          <Icon
-            icon={actualTheme('light') ? 'UilMoon' : 'UilSun'}
-            onClick={() => toggleTheme()}
-          />
+          {!actualTheme('demo') && (
+            <>
+              <Icon
+                icon={actualTheme('light') ? 'UilMoon' : 'UilSun'}
+                onClick={() => toggleTheme()}
+              />
 
-          <NavToggle onClick={handleShowNav}>
-            <Icon icon="UilApps" />
-          </NavToggle>
+              <NavToggle onClick={handleShowNav}>
+                <Icon icon="UilApps" />
+              </NavToggle>
+            </>
+          )}
         </NavBtns>
       </Nav>
     </Header>

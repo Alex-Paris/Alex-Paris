@@ -3,6 +3,7 @@ import { DefaultTheme, ThemeProvider } from 'styled-components';
 
 import light from '../../styles/themes/light';
 import dark from '../../styles/themes/dark';
+import demo from '../../styles/themes/demo';
 
 interface ThemeContextData {
   actualTheme(isTitle: string): boolean;
@@ -12,7 +13,7 @@ interface ThemeContextData {
 const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData);
 
 export const ThemeToggleProvider: React.FC = ({ children }) => {
-  const [theme, setTheme] = useState(light);
+  const [theme, setTheme] = useState(demo);
 
   const toggleTheme = useCallback(
     (definedTheme) => {

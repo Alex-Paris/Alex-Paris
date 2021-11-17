@@ -28,18 +28,22 @@ export const Header = styled.header<HeaderProps>`
   background-color: ${(props) => props.theme.colors.background};
 
   ${(props) =>
-    props.isBordered &&
+    (props.theme.title === 'demo' || props.isBordered) &&
     css`
       box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.55);
       background-color: ${(props) =>
         shade(0.01, props.theme.colors.background)};
     `}
 
-  @media ${device.laptopMin} {
-    top: 0;
-    bottom: initial;
-    padding: 0 1rem;
-  }
+  ${(props) =>
+    props.theme.title !== 'demo' &&
+    css`
+      @media ${device.laptopMin} {
+        top: 0;
+        bottom: initial;
+        padding: 0 1rem;
+      }
+    `}
 
   @media ${device.desktopMin} {
     padding: 0;
