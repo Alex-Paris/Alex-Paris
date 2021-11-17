@@ -123,6 +123,30 @@ const DashboardSkills: React.FC = () => {
         },
       ],
     },
+    {
+      title: 'Game developer',
+      description: 'More than ' + (actualYear - 2021) + ' years',
+      icon: 'UilTvRetro',
+      isOpened: true,
+      items: [
+        {
+          name: 'Unreal (Blueprint)',
+          porcent: 70,
+        },
+        {
+          name: 'Unreal (C++)',
+          porcent: 50,
+        },
+        {
+          name: 'Unity',
+          porcent: 30,
+        },
+        {
+          name: 'Blender',
+          porcent: 20,
+        },
+      ],
+    },
   ]);
 
   const handleShowSkillsList = useCallback(

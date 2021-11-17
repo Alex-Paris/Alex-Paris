@@ -71,6 +71,19 @@ const DashboardServices: React.FC = () => {
         },
       ],
     },
+    {
+      title: 'Game',
+      subtitle: 'Developer',
+      icon: 'UilTvRetro',
+      items: [
+        {
+          description: 'I can create basic 2D games.',
+        },
+        {
+          description: 'I can develop to different type of platforms.',
+        },
+      ],
+    },
   ]);
 
   const handleShowServicesList = useCallback(
