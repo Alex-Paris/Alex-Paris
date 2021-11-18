@@ -12,6 +12,7 @@ import {
   FontMedium,
   SmallFontSize,
   Mb1,
+  BodyFont,
 } from '../../styles/variables';
 
 interface HeaderProps {
@@ -23,9 +24,15 @@ export const Header = styled.header<HeaderProps>`
   position: fixed;
   bottom: 0;
   transition: 0.3s;
+  font-family: ${BodyFont};
   left: 0;
   z-index: ${ZFixed};
   background-color: ${(props) => props.theme.colors.background};
+
+  a,
+  button {
+    cursor: pointer;
+  }
 
   ${(props) =>
     (props.theme.title === 'demo' || props.isBordered) &&
@@ -59,20 +66,28 @@ export const Nav = styled.nav`
   justify-content: space-between;
   align-items: center;
 
-  > a {
+  a,
+  button {
     color: ${(props) => props.theme.colors.title};
     font-weight: ${FontMedium};
     transition: 0.3s;
 
     &:hover {
       color: ${(props) => props.theme.colors.primary};
+      svg {
+        color: ${(props) => props.theme.colors.primary};
+      }
     }
   }
 
-  @media ${device.laptopMin} {
-    height: calc(${HeaderHeight} + 1.5rem);
-    column-gap: 1rem;
-  }
+  ${(props) =>
+    props.theme.title !== 'demo' &&
+    css`
+      @media ${device.laptopMin} {
+        height: calc(${HeaderHeight} + 1.5rem);
+        column-gap: 1rem;
+      }
+    `}
 `;
 
 export const NavList = styled(animated.div)`
