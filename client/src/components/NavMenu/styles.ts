@@ -32,6 +32,7 @@ export const Header = styled.header<HeaderProps>`
   a,
   button {
     cursor: pointer;
+    font-family: ${BodyFont};
   }
 
   ${(props) =>

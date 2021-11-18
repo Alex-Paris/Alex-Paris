@@ -127,7 +127,7 @@ const DashboardSkills: React.FC = () => {
       title: 'Game developer',
       description: 'More than ' + (actualYear - 2021) + ' years',
       icon: 'UilTvRetro',
-      isOpened: true,
+      isOpened: false,
       items: [
         {
           name: 'Unreal (Blueprint)',
