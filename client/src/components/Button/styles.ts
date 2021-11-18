@@ -4,7 +4,7 @@ import { lighten } from 'polished';
 import { FontMedium, Mb05 } from '../../styles/variables';
 
 interface ContainerProps {
-  loading?: boolean;
+  isLoading?: boolean;
   isFlex?: boolean;
   isSimple?: boolean;
   isActive?: boolean;
@@ -48,7 +48,7 @@ export const Container = styled.button<ContainerProps>`
         transform: translateY(0.2rem);
       `}
 
-      ${props.loading &&
+      ${props.isLoading &&
       css`
         cursor: default;
         background-color: ${lighten(0.12, props.theme.colors.primary)};
