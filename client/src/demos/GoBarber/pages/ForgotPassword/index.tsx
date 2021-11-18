@@ -35,8 +35,8 @@ const ForgotPassword: React.FC = () => {
 
         const schema = Yup.object().shape({
           email: Yup.string()
-            .required('E-mail obrigatório')
-            .email('Digite um e-mail válido'),
+            .required('Insert an email')
+            .email('Insert a valid email'),
         });
 
         await schema.validate(data, {
@@ -49,9 +49,9 @@ const ForgotPassword: React.FC = () => {
 
         addToast({
           type: 'success',
-          title: 'E-mail de recuperação enviado',
+          title: 'Recovery mail sended',
           description:
-            'Enviamos um e-mail para confirmar a recuperação de seha, cheque sua caixa de entrada',
+            'We send you an email to confirm password recovery, check your inbox ',
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
@@ -64,9 +64,9 @@ const ForgotPassword: React.FC = () => {
 
         addToast({
           type: 'error',
-          title: 'Erro na recuperação de senha',
+          title: 'Password recovery error',
           description:
-            'Ocorreu um erro ao tentar realizar a recuperação de senha, tente novamente.',
+            'An error occurred while trying to perform password recovery, try again.',
         });
       } finally {
         setLoading(false);
@@ -82,18 +82,18 @@ const ForgotPassword: React.FC = () => {
           <img src={logoImg} alt="GoBarber" />
 
           <Form ref={formRef} onSubmit={handleSubmit}>
-            <h1>Recuperar senha</h1>
+            <h1>Recovery Password</h1>
 
-            <Input name="email" icon={FiMail} placeholder="E-mail" />
+            <Input name="email" icon={FiMail} placeholder="Email" />
 
             <Button loading={loading} type="submit">
-              Recuperar
+              Recover
             </Button>
           </Form>
 
           <Link to="/demos/GoBarber/">
             <FiLogIn />
-            Voltar ao login
+            Back to login
           </Link>
         </AnimationContainer>
       </Content>

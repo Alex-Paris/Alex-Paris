@@ -105,7 +105,7 @@ const Dashboard: React.FC = () => {
   }, [currentMonth, monthAvailability]);
 
   const selectedDateAsText = useMemo(() => {
-    return format(selectedDate, "'Dia' dd 'de' MMMM", {
+    return format(selectedDate, "'Day' dd 'of' MMMM", {
       locale: ptBR,
     });
   }, [selectedDate]);
@@ -141,7 +141,7 @@ const Dashboard: React.FC = () => {
           <Profile>
             <img src={user.avatar_url} alt={user.name} />
             <div>
-              <span>Bem-vindo,</span>
+              <span>Welcome,</span>
               <Link to="/demos/GoBarber/profile">
                 <strong>{user.name}</strong>
               </Link>
@@ -156,16 +156,16 @@ const Dashboard: React.FC = () => {
 
       <Content>
         <Schedule>
-          <h1>Horários agendados</h1>
+          <h1>Appointments</h1>
           <p>
-            {isToday(selectedDate) && <span>Hoje</span>}
+            {isToday(selectedDate) && <span>Today</span>}
             <span>{selectedDateAsText}</span>
             <span>{selectedWeekDay}</span>
           </p>
 
           {isToday(selectedDate) && nextAppointment && (
             <NextAppointment>
-              <strong>Agendamento a seguir</strong>
+              <strong>Next appointment</strong>
               <div>
                 <img
                   src={
@@ -186,10 +186,10 @@ const Dashboard: React.FC = () => {
           )}
 
           <Section>
-            <strong>Manhã</strong>
+            <strong>Morning</strong>
 
             {morningAppointments.length === 0 && (
-              <p>Nenhum agendamento neste período</p>
+              <p>No appointments in this period</p>
             )}
 
             {morningAppointments.map((appointment) => (
@@ -216,10 +216,10 @@ const Dashboard: React.FC = () => {
           </Section>
 
           <Section>
-            <strong>Tarde</strong>
+            <strong>Evening</strong>
 
             {afternoonAppointments.length === 0 && (
-              <p>Nenhum agendamento neste período</p>
+              <p>No appointments in this period</p>
             )}
 
             {afternoonAppointments.map((appointment) => (
@@ -247,7 +247,7 @@ const Dashboard: React.FC = () => {
         </Schedule>
         <Calendar>
           <DayPicker
-            weekdaysShort={['D', 'S', 'T', 'Q', 'Q', 'S', 'S']}
+            weekdaysShort={['S', 'M', 'T', 'W', 'T', 'F', 'S']}
             fromMonth={new Date()}
             disabledDays={[{ daysOfWeek: [0, 6] }, ...disabledDays]}
             modifiers={{
