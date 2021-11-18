@@ -10,6 +10,7 @@ import { size } from '../../styles/device';
 import Icon from '../Unicons';
 
 import { Header, Nav, NavList, NavToggle, NavItem, NavBtns } from './styles';
+import Button from '../Button';
 
 const NavMenu: React.FC = () => {
   const [show, setShow] = useState(false);
@@ -162,7 +163,12 @@ const NavMenu: React.FC = () => {
           )}
 
         <NavBtns>
-          {!actualTheme('demo') && (
+          {actualTheme('demo') ? (
+            <Button isFlex isSimple isLink hrefPage="/">
+              <Icon icon="UilArrowLeft" onClick={() => toggleTheme()} />
+              Back to Portfolio
+            </Button>
+          ) : (
             <>
               <Icon
                 icon={actualTheme('light') ? 'UilMoon' : 'UilSun'}

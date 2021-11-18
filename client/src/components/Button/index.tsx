@@ -1,10 +1,12 @@
 import React, { ButtonHTMLAttributes, useCallback, useState } from 'react';
+import { useHistory } from 'react-router';
 
 import { Container } from './styles';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
   hrefLink?: string;
+  hrefPage?: string;
   isFlex?: boolean;
   isSimple?: boolean;
   isActive?: boolean;
@@ -17,6 +19,7 @@ const Button: React.FC<ButtonProps> = ({
   children,
   loading,
   hrefLink,
+  hrefPage,
   isFlex,
   isSimple,
   isActive,
@@ -26,6 +29,7 @@ const Button: React.FC<ButtonProps> = ({
   ...rest
 }) => {
   const [isPressed, setIsPressed] = useState(false);
+  const history = useHistory();
 
   const handleOnClick = useCallback(() => {
     setIsPressed(true);
@@ -34,10 +38,14 @@ const Button: React.FC<ButtonProps> = ({
       open(hrefLink, '_blank');
     }
 
+    if (hrefPage) {
+      history.push(hrefPage);
+    }
+
     setTimeout(() => {
       setIsPressed(false);
     }, 150);
-  }, [hrefLink]);
+  }, [hrefLink, hrefPage, history]);
 
   return (
     <Container
