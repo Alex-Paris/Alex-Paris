@@ -11,14 +11,15 @@ import {
   UilMessage,
   UilMouseAlt,
   UilArrowDown,
-  UilAngleDown,
   UilBracketsCurly,
   UilServerNetwork,
   UilSwatchbook,
   UilWebGrid,
-  UilArrow,
   UilPen,
+  UilArrow,
+  UilAngleDown,
   UilArrowRight,
+  UilArrowLeft,
   UilTimes,
   UilCheckCircle,
   UilAngleLeftB,
@@ -55,15 +56,16 @@ export type IconProps = SVGAttributes<SVGAElement> & {
     | 'UilGithubAlt'
     | 'UilMessage'
     | 'UilMouseAlt'
-    | 'UilArrowDown'
     | 'UilAngleDown'
     | 'UilBracketsCurly'
     | 'UilServerNetwork'
     | 'UilSwatchbook'
     | 'UilWebGrid'
-    | 'UilArrow'
     | 'UilPen'
+    | 'UilArrow'
+    | 'UilArrowDown'
     | 'UilArrowRight'
+    | 'UilArrowLeft'
     | 'UilTimes'
     | 'UilCheckCircle'
     | 'UilAngleLeftB'
@@ -98,15 +100,16 @@ const iconType = {
   UilGithubAlt: UilGithubAlt,
   UilMessage: UilMessage,
   UilMouseAlt: UilMouseAlt,
-  UilArrowDown: UilArrowDown,
   UilAngleDown: UilAngleDown,
   UilBracketsCurly: UilBracketsCurly,
   UilServerNetwork: UilServerNetwork,
   UilSwatchbook: UilSwatchbook,
   UilWebGrid: UilWebGrid,
   UilArrow: UilArrow,
-  UilPen: UilPen,
+  UilArrowDown: UilArrowDown,
   UilArrowRight: UilArrowRight,
+  UilArrowLeft: UilArrowLeft,
+  UilPen: UilPen,
   UilTimes: UilTimes,
   UilCheckCircle: UilCheckCircle,
   UilAngleLeftB: UilAngleLeftB,

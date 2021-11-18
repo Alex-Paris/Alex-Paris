@@ -33,7 +33,7 @@ const DashboardPortfolio: React.FC = () => {
       description:
         'Website to make appointments with a barber shop, using React, React Native and Node.',
       image: portfolio1Img,
-      link: 'http://gobarber.alexparis.dev/',
+      link: '/demos/GoBarber/',
     },
   ];
 
@@ -75,7 +75,7 @@ const DashboardPortfolio: React.FC = () => {
                 <div>
                   <h3>{portfolio.title}</h3>
                   <p>{portfolio.description}</p>
-                  <Button isFlex isSmall hrefLink={portfolio.link}>
+                  <Button isFlex isSmall hrefPage={portfolio.link}>
                     Demo
                     <Icon icon="UilArrowRight" />
                   </Button>

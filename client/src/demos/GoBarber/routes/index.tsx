@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 
 import Route from './Route';
 
@@ -20,6 +20,8 @@ const Routes: React.FC = () => (
 
     <Route path="/demos/GoBarber/dashboard" component={Dashboard} isPrivate />
     <Route path="/demos/GoBarber/profile" component={Profile} isPrivate />
+
+    <Redirect to="/" />
   </Switch>
 );
 
