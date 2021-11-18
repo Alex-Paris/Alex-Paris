@@ -43,7 +43,6 @@ export const ThemeToggleProvider: React.FC = ({ children }) => {
 
   const demoTheme = useCallback(
     (isActive) => {
-      console.log('active?' + theme.title);
       if (
         (theme.title === 'demo' && isActive) ||
         (theme.title !== 'demo' && !isActive)
