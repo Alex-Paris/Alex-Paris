@@ -6,6 +6,8 @@ import Dashboard from '../pages/Dashboard';
 import DemoRoutes from '../demos';
 import Route from './Route';
 
+import DashboardPreview from '../pages/Dashboard/index-preview';
+
 const Routes: React.FC = () => (
   <>
     <RouteDom path="/" component={NavMenu} />
@@ -13,6 +15,7 @@ const Routes: React.FC = () => (
       <Route exact path="/" component={Dashboard} />
 
       <Route path="/demos" isDemo component={DemoRoutes} />
+      <Route exact path="/preview" component={DashboardPreview} />
       <Redirect to="/" />
     </Switch>
   </>
