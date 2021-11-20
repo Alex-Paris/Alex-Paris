@@ -2,7 +2,9 @@ import React from 'react';
 import { Route as RouteDom, Switch, Redirect } from 'react-router-dom';
 
 import NavMenu from '../components/NavMenu';
+
 import Dashboard from '../pages/Dashboard';
+
 import DemoRoutes from '../demos';
 import Route from './Route';
 

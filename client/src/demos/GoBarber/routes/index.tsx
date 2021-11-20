@@ -11,18 +11,26 @@ import ResetPassword from '../pages/ResetPassword';
 import Dashboard from '../pages/Dashboard';
 import Profile from '../pages/Profile';
 
+import MobilePreview from '../../../components/MobilePreview';
+
 const Routes: React.FC = () => (
-  <Switch>
-    <Route path="/demos/GoBarber/" exact component={SignIn} />
-    <Route path="/demos/GoBarber/signup" component={SignUp} />
-    <Route path="/demos/GoBarber/forgot-password" component={ForgotPassword} />
-    <Route path="/demos/GoBarber/reset-password" component={ResetPassword} />
+  <>
+    <Switch>
+      <Route path="/demos/GoBarber/" exact component={SignIn} />
+      <Route path="/demos/GoBarber/signup" component={SignUp} />
+      <Route
+        path="/demos/GoBarber/forgot-password"
+        component={ForgotPassword}
+      />
+      <Route path="/demos/GoBarber/reset-password" component={ResetPassword} />
 
-    <Route path="/demos/GoBarber/dashboard" component={Dashboard} isPrivate />
-    <Route path="/demos/GoBarber/profile" component={Profile} isPrivate />
+      <Route path="/demos/GoBarber/dashboard" component={Dashboard} isPrivate />
+      <Route path="/demos/GoBarber/profile" component={Profile} isPrivate />
 
-    <Redirect to="/" />
-  </Switch>
+      <Redirect to="/" />
+    </Switch>
+    <MobilePreview />
+  </>
 );
 
 export default Routes;
