@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useCallback, useState } from 'react';
-import api from '../../services/api';
+import { useStorage } from './storage';
 
 interface User {
   id: string;
@@ -20,52 +20,51 @@ interface SignInCredentials {
 
 interface AuthContextData {
   user: User;
-  signIn(credentials: SignInCredentials): Promise<void>;
+  signIn(credentials: SignInCredentials): void;
   signOut(): void;
-  updateUser(user: User): void;
+  updateAuth(user: User): void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
+  const { authUser } = useStorage();
+
   const [data, setData] = useState<AuthState>(() => {
-    const token = localStorage.getItem('@GoBarber:token');
-    const user = localStorage.getItem('@GoBarber:user');
+    const token = localStorage.getItem('Portfolio@GoBarber:token');
+    const user = localStorage.getItem('Portfolio@GoBarber:user');
 
     if (token && user) {
-      api.defaults.headers.common.authorization = `Bearer ${token}`;
       return { token, user: JSON.parse(user) };
     }
 
     return {} as AuthState;
   });
 
-  const signIn = useCallback(async ({ email, password }) => {
-    const response = await api.post('sessions', {
-      email,
-      password,
-    });
+  const signIn = useCallback(
+    ({ email, password }) => {
+      const response = authUser({ email, password });
 
-    const { token, user } = response.data;
+      const { token, user } = response;
 
-    localStorage.setItem('@GoBarber:token', token);
-    localStorage.setItem('@GoBarber:user', JSON.stringify(user));
+      localStorage.setItem('Portfolio@GoBarber:token', token);
+      localStorage.setItem('Portfolio@GoBarber:user', JSON.stringify(user));
 
-    api.defaults.headers.common.authorization = `Bearer ${token}`;
-
-    setData({ token, user });
-  }, []);
+      setData({ token, user });
+    },
+    [authUser]
+  );
 
   const signOut = useCallback(() => {
-    localStorage.removeItem('@GoBarber:token');
-    localStorage.removeItem('@GoBarber:user');
+    localStorage.removeItem('Portfolio@GoBarber:token');
+    localStorage.removeItem('Portfolio@GoBarber:user');
 
     setData({} as AuthState);
   }, []);
 
-  const updateUser = useCallback(
+  const updateAuth = useCallback(
     (user: User) => {
-      localStorage.setItem('@GoBarber:user', JSON.stringify(user));
+      localStorage.setItem('Portfolio@GoBarber:user', JSON.stringify(user));
 
       setData({
         token: data.token,
@@ -77,7 +76,7 @@ export const AuthProvider: React.FC = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user: data.user, signIn, signOut, updateUser }}
+      value={{ user: data.user, signIn, signOut, updateAuth }}
     >
       {children}
     </AuthContext.Provider>

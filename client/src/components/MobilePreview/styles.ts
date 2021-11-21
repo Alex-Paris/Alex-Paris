@@ -6,6 +6,7 @@ interface ContainerProps {
 
 export const Container = styled.div<ContainerProps>`
   position: fixed;
+  visibility: hidden;
   width: 390px;
   height: 682px;
   right: 20px;

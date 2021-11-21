@@ -6,9 +6,8 @@ import * as Yup from 'yup';
 import getValidationErrors from '../../utils/getValidationErrors';
 import { Link, useHistory } from 'react-router-dom';
 
-import api from '../../services/api';
-
 import { useToast } from '../../hooks/context/toast';
+import { useStorage } from '../../hooks/context/storage';
 
 import logoImg from '../../assets/logo.svg';
 
@@ -27,6 +26,7 @@ const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { addToast } = useToast();
   const history = useHistory();
+  const { addUser } = useStorage();
 
   const handleSubmit = useCallback(
     async (data: SignUpFormData) => {
@@ -45,7 +45,7 @@ const SignUp: React.FC = () => {
           abortEarly: false,
         });
 
-        await api.post('/users', data);
+        addUser(data);
 
         history.push('/demos/GoBarber/');
 
@@ -70,7 +70,7 @@ const SignUp: React.FC = () => {
         });
       }
     },
-    [addToast, history]
+    [addToast, history, addUser]
   );
 
   return (

@@ -6,15 +6,14 @@ import * as Yup from 'yup';
 import getValidationErrors from '../../utils/getValidationErrors';
 import { Link, useHistory } from 'react-router-dom';
 
-import api from '../../services/api';
-
+import { useAuth } from '../../hooks/context/auth';
 import { useToast } from '../../hooks/context/toast';
+import { useStorage } from '../../hooks/context/storage';
 
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
 import { Container, Content, AvatarInput } from './styles';
-import { useAuth } from '../../hooks/context/auth';
 
 interface ProfileFormData {
   name: string;
@@ -28,8 +27,8 @@ const Profile: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { addToast } = useToast();
   const history = useHistory();
-
-  const { user, updateUser } = useAuth();
+  const { user, updateAuth } = useAuth();
+  const { updateUser, updateUserAvatar } = useStorage();
 
   const handleSubmit = useCallback(
     async (data: ProfileFormData) => {
@@ -76,9 +75,9 @@ const Profile: React.FC = () => {
             : {}),
         };
 
-        const response = await api.put('/profile', formData);
+        const response = updateUser(formData);
 
-        updateUser(response.data);
+        updateAuth(response);
 
         history.push('/demos/GoBarber/dashboard');
 
@@ -105,27 +104,32 @@ const Profile: React.FC = () => {
         });
       }
     },
-    [addToast, history, updateUser]
+    [addToast, history, updateUser, updateAuth]
   );
 
   const handleAvatarChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>) => {
       if (e.target.files) {
-        const data = new FormData();
+        try {
+          const updatedUser = updateUserAvatar(user.id, e.target.files[0]);
 
-        data.append('avatar', e.target.files[0]);
-
-        api.patch('/users/avatar', data).then((response) => {
-          updateUser(response.data);
+          updateAuth(updatedUser);
 
           addToast({
             type: 'success',
             title: 'Avatar updated!',
           });
-        });
+        } catch {
+          addToast({
+            type: 'error',
+            title: 'Update avatar error',
+            description:
+              'An error occurred while updating the avatar, try again.',
+          });
+        }
       }
     },
-    [addToast, updateUser]
+    [addToast, updateUserAvatar, user.id, updateAuth]
   );
 
   return (
@@ -148,7 +152,15 @@ const Profile: React.FC = () => {
           }}
         >
           <AvatarInput>
-            <img src={user.avatar_url} alt={user.name} />
+            <img
+              src={
+                user.avatar_url
+                  ? user.avatar_url
+                  : 'http://cdn.onlinewebfonts.com/svg/img_261106.png'
+              }
+              // src={"file:/C:/perfil.png/"}
+              alt={user.name}
+            />
             <label htmlFor="avatar">
               <FiCamera />
 

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { FiClock, FiPower } from 'react-icons/fi';
 import { isToday, format, parseISO, isAfter } from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR';
+import enUS from 'date-fns/locale/en-US';
 import DayPicker, { DayModifiers } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
@@ -106,12 +106,12 @@ const Dashboard: React.FC = () => {
 
   const selectedDateAsText = useMemo(() => {
     return format(selectedDate, "'Day' dd 'of' MMMM", {
-      locale: ptBR,
+      locale: enUS,
     });
   }, [selectedDate]);
 
   const selectedWeekDay = useMemo(() => {
-    return format(selectedDate, 'cccc', { locale: ptBR });
+    return format(selectedDate, 'cccc', { locale: enUS });
   }, [selectedDate]);
 
   const morningAppointments = useMemo(() => {
@@ -139,7 +139,14 @@ const Dashboard: React.FC = () => {
           <img src={logoImg} alt="GoBarber" />
 
           <Profile>
-            <img src={user.avatar_url} alt={user.name} />
+            <img
+              src={
+                user.avatar_url
+                  ? user.avatar_url
+                  : 'http://cdn.onlinewebfonts.com/svg/img_261106.png'
+              }
+              alt={user.name}
+            />
             <div>
               <span>Welcome,</span>
               <Link to="/demos/GoBarber/profile">
@@ -247,7 +254,6 @@ const Dashboard: React.FC = () => {
         </Schedule>
         <Calendar>
           <DayPicker
-            weekdaysShort={['S', 'M', 'T', 'W', 'T', 'F', 'S']}
             fromMonth={new Date()}
             disabledDays={[{ daysOfWeek: [0, 6] }, ...disabledDays]}
             modifiers={{
@@ -256,20 +262,6 @@ const Dashboard: React.FC = () => {
             onMonthChange={handleMonthChange}
             selectedDays={selectedDate}
             onDayClick={handleDateChange}
-            months={[
-              'Janeiro',
-              'Fevereiro',
-              'Março',
-              'Abril',
-              'Maio',
-              'Junho',
-              'Julho',
-              'Agosto',
-              'Setembro',
-              'Outubro',
-              'Novembro',
-              'Dezembro',
-            ]}
           />
         </Calendar>
       </Content>
