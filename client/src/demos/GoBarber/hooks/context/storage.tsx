@@ -50,7 +50,7 @@ interface ProfileFormData {
 
 interface StorageContextData {
   authUser(credentials: AuthCredentials): AuthReturn;
-  updateUserAvatar(userId: string, avatar: File): User;
+  updateUserAvatar(userId: string, avatar: string): User;
   addUser(user: SignUpFormData): void;
   updateUser(profile: ProfileFormData): User;
   addAppointment(appointment: Appointment): void;
@@ -183,26 +183,19 @@ export const StorageProvider: React.FC = ({ children }) => {
   );
 
   const updateUserAvatar = useCallback(
-    (userId: string, avatar: File) => {
-      console.log(userId);
+    (userId: string, avatar: string) => {
       const userIndex = users.findIndex((p) => p.id === userId);
-      console.log(userIndex);
+
       if (userIndex < 0) {
         throw new Error();
       }
 
-      console.log(avatar);
+      users[userIndex] = {
+        ...users[userIndex],
+        avatar_url: avatar,
+      };
 
-      console.log(users);
-
-      console.log(users[userIndex]);
-
-      // users[userIndex] = {
-      //   ...users[userIndex],
-      //   avatar_url: avatar,
-      // };
-
-      // setUsers([...users]);
+      setUsers([...users]);
 
       return users[userIndex];
     },

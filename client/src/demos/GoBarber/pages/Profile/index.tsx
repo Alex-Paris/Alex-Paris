@@ -111,9 +111,20 @@ const Profile: React.FC = () => {
     (e: ChangeEvent<HTMLInputElement>) => {
       if (e.target.files) {
         try {
-          const updatedUser = updateUserAvatar(user.id, e.target.files[0]);
+          const reader = new FileReader();
 
-          updateAuth(updatedUser);
+          reader.addEventListener('load', () => {
+            if (reader.result) {
+              const updatedUser = updateUserAvatar(
+                user.id,
+                reader.result.toString()
+              );
+
+              updateAuth(updatedUser);
+            }
+          });
+
+          reader.readAsDataURL(e.target.files[0]);
 
           addToast({
             type: 'success',
@@ -158,7 +169,6 @@ const Profile: React.FC = () => {
                   ? user.avatar_url
                   : 'http://cdn.onlinewebfonts.com/svg/img_261106.png'
               }
-              // src={"file:/C:/perfil.png/"}
               alt={user.name}
             />
             <label htmlFor="avatar">
