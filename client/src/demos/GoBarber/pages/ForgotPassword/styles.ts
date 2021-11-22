@@ -1,7 +1,14 @@
-import styled, { keyframes } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 import { shade } from 'polished';
 
+import { FontMedium, H3FontSize, Mb15 } from '../../../../styles/variables';
+import { device } from '../../../../styles/device';
+
 import signInBackgroundImg from '../../assets/sign-in-background.png';
+
+interface FakeMaillProps {
+  isOpened?: boolean;
+}
 
 export const Container = styled.div`
   height: 100vh;
@@ -86,4 +93,48 @@ export const Background = styled.div`
   flex: 1;
   background: url(${signInBackgroundImg});
   background-size: cover;
+`;
+
+export const FakeMail = styled.div<FakeMaillProps>`
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1rem;
+  transition: 0.3s;
+  opacity: 0;
+  visibility: hidden;
+
+  ${(props) =>
+    props.isOpened &&
+    css`
+      opacity: 1;
+      visibility: visible;
+    `}
+
+  @media ${device.mobileMax} {
+    padding: 0 0.5rem;
+  }
+`;
+
+export const FakeMailContent = styled.div`
+  position: relative;
+  background-color: #312e38;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+
+  > h4 {
+    ${H3FontSize}
+    font-weight: ${FontMedium};
+    margin-bottom: ${Mb15};
+  }
+
+  @media ${device.laptopMin} {
+    width: 650px;
+  }
 `;

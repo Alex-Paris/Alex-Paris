@@ -5,7 +5,6 @@ import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 
-import api from '../../services/api';
 import { useToast } from '../../hooks/context/toast';
 import getValidationErrors from '../../utils/getValidationErrors';
 
@@ -14,17 +13,33 @@ import logoImg from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-import { Container, Content, Background, AnimationContainer } from './styles';
+import {
+  Container,
+  Content,
+  Background,
+  AnimationContainer,
+  FakeMail,
+  FakeMailContent,
+} from './styles';
+import { useStorage } from '../../hooks/context/storage';
 
 interface ForgotPasswordFormData {
   email: string;
 }
 
+interface MailProps {
+  open: boolean;
+  link: string;
+  name: string;
+}
+
 const ForgotPassword: React.FC = () => {
   const [loading, setLoading] = useState(false);
+  const [mail, setMail] = useState<MailProps>();
   const formRef = useRef<FormHandles>(null);
 
   const { addToast } = useToast();
+  const { forgotUser } = useStorage();
 
   const handleSubmit = useCallback(
     async (data: ForgotPasswordFormData) => {
@@ -43,8 +58,12 @@ const ForgotPassword: React.FC = () => {
           abortEarly: false,
         });
 
-        await api.post('/password/forgot', {
-          email: data.email,
+        const { id, name } = forgotUser(data.email);
+
+        setMail({
+          open: true,
+          link: `/demos/GoBarber/reset-password?token=${id}`,
+          name,
         });
 
         addToast({
@@ -72,7 +91,7 @@ const ForgotPassword: React.FC = () => {
         setLoading(false);
       }
     },
-    [addToast]
+    [addToast, forgotUser]
   );
 
   return (
@@ -95,6 +114,32 @@ const ForgotPassword: React.FC = () => {
             <FiLogIn />
             Back to login
           </Link>
+
+          <FakeMail isOpened={mail?.open}>
+            <FakeMailContent>
+              <h4>Fake Mail Recovery Password:</h4>
+              <h3>&quot;</h3>
+              <p>Hello, {mail?.name}</p>
+              <p>
+                It appears that a password change for your account has been
+                requested.
+              </p>
+              <p>
+                If that was you, then click on the link below to choose a new
+                one. password:
+              </p>
+              <p>
+                <Link to={mail?.link || ''}>Reset my password</Link>
+              </p>
+              <p>If was not you, then simple discard this email!</p>
+              <p>
+                Thank you!
+                <br />
+                <strong>Team GoBarber</strong>
+              </p>
+              <h3>&quot;</h3>
+            </FakeMailContent>
+          </FakeMail>
         </AnimationContainer>
       </Content>
 
