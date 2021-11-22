@@ -64,6 +64,7 @@ const Profile: React.FC = () => {
           data;
 
         const formData = {
+          id: user.id,
           name,
           email,
           ...(old_password
@@ -104,7 +105,7 @@ const Profile: React.FC = () => {
         });
       }
     },
-    [addToast, history, updateUser, updateAuth]
+    [addToast, history, updateUser, updateAuth, user.id]
   );
 
   const handleAvatarChange = useCallback(

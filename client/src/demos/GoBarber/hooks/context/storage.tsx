@@ -51,6 +51,7 @@ interface ProfileFormData {
 interface StorageContextData {
   authUser(credentials: AuthCredentials): AuthReturn;
   forgotUser(email: string): User;
+  resetUser(id: number, password: string): void;
   updateUserAvatar(userId: string, avatar: string): User;
   addUser(user: SignUpFormData): void;
   updateUser(profile: ProfileFormData): User;
@@ -111,10 +112,8 @@ export const StorageProvider: React.FC = ({ children }) => {
   );
 
   const updateUser = useCallback(
-    ({ name, email, old_password, password }) => {
-      const userIndex = users.findIndex(
-        (p) => p.email == email && p.password == old_password
-      );
+    ({ id, name, email, old_password, password }) => {
+      const userIndex = users.findIndex((p) => p.id == id);
 
       if (userIndex < 0) {
         throw new Error();
@@ -196,6 +195,24 @@ export const StorageProvider: React.FC = ({ children }) => {
     [users]
   );
 
+  const resetUser = useCallback(
+    (id: number, password: string) => {
+      const index = id - 1;
+
+      if (!users[index]) {
+        throw new Error();
+      }
+
+      users[index] = {
+        ...users[index],
+        password,
+      };
+
+      setUsers([...users]);
+    },
+    [users]
+  );
+
   const updateUserAvatar = useCallback(
     (userId: string, avatar: string) => {
       const userIndex = users.findIndex((p) => p.id === userId);
@@ -221,6 +238,7 @@ export const StorageProvider: React.FC = ({ children }) => {
       value={{
         authUser,
         forgotUser,
+        resetUser,
         updateUserAvatar,
         addUser,
         updateUser,

@@ -5,8 +5,8 @@ import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { useHistory, useLocation } from 'react-router-dom';
 
-import api from '../../services/api';
 import { useToast } from '../../hooks/context/toast';
+import { useStorage } from '../../hooks/context/storage';
 import getValidationErrors from '../../utils/getValidationErrors';
 
 import logoImg from '../../assets/logo.svg';
@@ -26,6 +26,7 @@ const ResetPassword: React.FC = () => {
   const { addToast } = useToast();
   const history = useHistory();
   const search = useLocation().search;
+  const { resetUser } = useStorage();
 
   const handleSubmit = useCallback(
     async (data: ResetPasswordFormData) => {
@@ -44,18 +45,14 @@ const ResetPassword: React.FC = () => {
           abortEarly: false,
         });
 
-        const { password, password_confirmation } = data;
+        const { password } = data;
         const token = new URLSearchParams(search).get('token');
 
         if (!token) {
           throw new Error();
         }
 
-        await api.post('/password/reset', {
-          password,
-          password_confirmation,
-          token,
-        });
+        resetUser(parseInt(token), password);
 
         history.push('/demos/GoBarber/');
       } catch (err) {
@@ -74,7 +71,7 @@ const ResetPassword: React.FC = () => {
         });
       }
     },
-    [addToast, history, search]
+    [addToast, resetUser, history, search]
   );
 
   return (
