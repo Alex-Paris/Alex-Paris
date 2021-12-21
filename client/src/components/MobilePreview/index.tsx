@@ -3,10 +3,8 @@ import useDraggableScroll from 'use-draggable-scroll';
 
 import { Container, MobileSnatch, MobileView } from './styles';
 
-import SignIn from '../../demos/GoBarber/pages/SignIn';
-
 interface MobileProps {
-  preview?: boolean;
+  preview?: boolean; //Maybe I don't need this
 }
 
 const MobilePreview: React.FC<MobileProps> = ({ children, ...rest }) => {
@@ -16,10 +14,9 @@ const MobilePreview: React.FC<MobileProps> = ({ children, ...rest }) => {
   return (
     <Container {...rest}>
       <MobileView ref={ref} onMouseDown={onMouseDown}>
-        <SignIn />
+        {children}
       </MobileView>
       <MobileSnatch />
-      {children}
     </Container>
   );
 };

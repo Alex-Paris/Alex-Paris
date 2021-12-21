@@ -11,7 +11,7 @@ import ResetPassword from '../pages/ResetPassword';
 import Dashboard from '../pages/Dashboard';
 import Profile from '../pages/Profile';
 
-import MobilePreview from '../../../components/MobilePreview';
+import MobileRoute from './MobileRoute';
 
 const Routes: React.FC = () => (
   <>
@@ -29,7 +29,7 @@ const Routes: React.FC = () => (
 
       <Redirect to="/" />
     </Switch>
-    <MobilePreview />
+    <MobileRoute />
   </>
 );
 
