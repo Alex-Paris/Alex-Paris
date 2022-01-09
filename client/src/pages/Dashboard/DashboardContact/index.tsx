@@ -128,10 +128,11 @@ const DashboardContact: React.FC = () => {
 
           <TextArea name="message" containerHolder="Message" />
           <div>
-            <Button isFlex loading={loading} type="submit">
+            <Button isFlex loading={!loading} type="submit">
               Send Message
               <Icon icon="UilMessage" />
             </Button>
+            <i> (in maintenance...)</i>
           </div>
         </Form>
       </ContactContainer>
