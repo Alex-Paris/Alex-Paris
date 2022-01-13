@@ -1,13 +1,19 @@
-import React, { createContext, useCallback, useContext, useState } from 'react';
+import React, {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 
-interface MobilePages {
+interface MobilePage {
   page: React.FC;
   pageTitle: string;
   isActive?: boolean;
 }
 
 interface MobileRouteProps {
-  propPages: MobilePages[];
+  propPages: MobilePage[];
 }
 
 interface MobileRouteContextData {
@@ -23,11 +29,15 @@ export const MobileRouteProvider: React.FC<MobileRouteProps> = ({
   // children,
 }) => {
   const [pages, setPages] = useState(propPages);
+  const [activePage, setActivePage] = useState<MobilePage>();
 
   const togglePage = useCallback(
     (pageTitle) => {
       pages.map((page) => {
         page.isActive = pageTitle === page.pageTitle ? true : false;
+        if (page.isActive) {
+          setActivePage(page);
+        }
       });
 
       setPages(pages);
@@ -35,10 +45,18 @@ export const MobileRouteProvider: React.FC<MobileRouteProps> = ({
     [pages]
   );
 
+  useEffect(() => {
+    pages.map((page) => {
+      if (page.isActive) {
+        setActivePage(page);
+      }
+    });
+  }, [pages]);
+
   return (
     <MobileRouteContext.Provider value={{ togglePage }}>
       {/* {children} */}
-      {pages.map((page) => page.isActive && <page.page />)}
+      {!!activePage && <activePage.page />}
     </MobileRouteContext.Provider>
   );
 };

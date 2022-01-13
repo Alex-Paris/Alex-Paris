@@ -7,9 +7,9 @@ import { Container, Header, HeaderContent, Profile } from './styles';
 import { useAuth } from '../../hooks/context/auth';
 
 const Dashboard: React.FC = () => {
-  const { signOut, user } = useAuth();
+  const { signOutMobile, userMobile } = useAuth();
 
-  let tmpUser = user;
+  let tmpUser = userMobile;
 
   if (!tmpUser) {
     tmpUser = {
@@ -30,7 +30,7 @@ const Dashboard: React.FC = () => {
               <strong>{tmpUser.name}</strong>
             </div>
           </Profile>
-          <button type="button" onClick={signOut}>
+          <button type="button" onClick={signOutMobile}>
             Sair
           </button>
 

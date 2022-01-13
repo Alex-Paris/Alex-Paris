@@ -3,10 +3,11 @@ import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
-import { Link, useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../hooks/context/auth';
 import { useToast } from '../../hooks/context/toast';
+import { useMobileRoute } from '../../../../hooks/context/mobileRoute';
 import getValidationErrors from '../../utils/getValidationErrors';
 
 import logoImg from '../../assets/logo.svg';
@@ -14,7 +15,7 @@ import logoImg from '../../assets/logo.svg';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
-import { Container, Content } from './styles';
+import { Container, Content, CreateAccountButton } from './styles';
 
 interface SignInFormData {
   email: string;
@@ -24,9 +25,9 @@ interface SignInFormData {
 const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const { signIn } = useAuth();
+  const { signInMobile } = useAuth();
   const { addToast } = useToast();
-  const history = useHistory();
+  const { togglePage } = useMobileRoute();
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
@@ -44,12 +45,12 @@ const SignIn: React.FC = () => {
           abortEarly: false,
         });
 
-        signIn({
+        signInMobile({
           email: data.email,
           password: data.password,
         });
 
-        history.push('/demos/GoBarber/dashboard');
+        togglePage('Dashboard');
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -66,8 +67,16 @@ const SignIn: React.FC = () => {
         });
       }
     },
-    [signIn, addToast, history]
+    [signInMobile, addToast, togglePage]
   );
+
+  const forgotPage = useCallback(() => {
+    togglePage('Dashboard');
+  }, [togglePage]);
+
+  const createAccountPage = useCallback(() => {
+    togglePage('SignUp');
+  }, [togglePage]);
 
   return (
     <Container>
@@ -89,13 +98,17 @@ const SignIn: React.FC = () => {
 
           <Button type="submit">Log in</Button>
 
-          <Link to="/demos/GoBarber/forgot-password">Forgot my password</Link>
+          <Link onClick={forgotPage} to="#">
+            Forgot my password
+          </Link>
         </Form>
 
-        <Link to="/demos/GoBarber/signup">
-          <FiLogIn />
-          Create an account
-        </Link>
+        <CreateAccountButton>
+          <Link onClick={createAccountPage} to="#">
+            <FiLogIn />
+            Create an account
+          </Link>
+        </CreateAccountButton>
       </Content>
     </Container>
   );
