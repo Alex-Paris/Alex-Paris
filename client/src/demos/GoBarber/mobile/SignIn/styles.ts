@@ -45,12 +45,21 @@ export const Content = styled.div`
       }
     }
   }
+`;
+
+export const CreateAccountButton = styled.div`
+  display: flex;
+  border-top: 2px solid #232129;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
 
   > a {
     color: #ff9000;
     display: block;
     margin-top: 24px;
     text-decoration: none;
+    font-size: 18px;
     transition: color 0.2s;
 
     display: flex;
