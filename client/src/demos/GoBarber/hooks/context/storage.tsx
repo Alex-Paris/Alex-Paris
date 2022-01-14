@@ -49,6 +49,9 @@ interface ProfileFormData {
 }
 
 interface StorageContextData {
+  users: User[];
+  usersMobile: User[];
+  appointments: Appointment[];
   authUser(credentials: AuthCredentials): AuthReturn;
   forgotUser(email: string): User;
   resetUser(id: number, password: string): void;
@@ -378,6 +381,9 @@ export const StorageProvider: React.FC = ({ children }) => {
   return (
     <StorageContext.Provider
       value={{
+        users,
+        usersMobile,
+        appointments,
         authUser,
         forgotUser,
         resetUser,
