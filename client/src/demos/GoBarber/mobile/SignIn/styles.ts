@@ -49,7 +49,7 @@ export const Content = styled.div`
 
 export const CreateAccountButton = styled.div`
   display: flex;
-  border-top: 2px solid #232129;
+  border-top: 4px solid #232129;
   width: 100%;
   align-items: center;
   justify-content: center;
