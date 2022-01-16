@@ -154,7 +154,9 @@ export const StorageProvider: React.FC = ({ children }) => {
 
   const updateUser = useCallback(
     ({ id, name, email, old_password, password }) => {
-      const userIndex = users.findIndex((p) => p.id == id);
+      const userIndex = users.findIndex((p) =>
+        old_password ? p.id == id && p.password == old_password : p.id == id
+      );
 
       if (userIndex < 0) {
         throw new Error();
@@ -178,7 +180,9 @@ export const StorageProvider: React.FC = ({ children }) => {
 
   const updateUserMobile = useCallback(
     ({ id, name, email, old_password, password }) => {
-      const userMobileIndex = usersMobile.findIndex((p) => p.id == id);
+      const userMobileIndex = usersMobile.findIndex((p) =>
+        old_password ? p.id == id && p.password == old_password : p.id == id
+      );
 
       if (userMobileIndex < 0) {
         throw new Error();
