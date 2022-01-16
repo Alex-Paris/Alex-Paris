@@ -38,6 +38,8 @@ export const HeaderContent = styled.div`
   a {
     width: 56px;
     height: 56px;
+    border-radius: 50%;
+
     img {
       width: 56px;
       height: 56px;
@@ -76,6 +78,7 @@ export const Profile = styled.div`
 
 export const ProvidersList = styled.div`
   padding: 32px 24px 16px;
+  background: #312e38;
 
   > p {
     font-size: 24px;

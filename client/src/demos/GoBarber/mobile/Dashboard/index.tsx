@@ -22,6 +22,10 @@ const Dashboard: React.FC = () => {
   const { togglePage } = useMobileRoute();
   const { users } = useStorage();
 
+  const handleProfilePage = useCallback(() => {
+    togglePage('Profile');
+  }, [togglePage]);
+
   const handleSignOut = useCallback(() => {
     signOutMobile();
     togglePage('SignIn');
@@ -41,7 +45,7 @@ const Dashboard: React.FC = () => {
             Logout
           </button>
 
-          <Link to="/demos/GoBarber/profile">
+          <Link to="#" onClick={handleProfilePage}>
             <img
               src={
                 userMobile.avatar_url
