@@ -21,13 +21,14 @@ export const HeaderContent = styled.div`
   align-items: center;
 
   button {
+    margin-right: 10px;
     margin-left: auto;
     background: transparent;
     border: 0;
 
     background: #3e3b47;
-    border-radius: 10px;
-    padding: 16px;
+    border-radius: 30px;
+    padding: 10px;
     flex-direction: row;
     align-items: center;
 
@@ -44,7 +45,6 @@ export const HeaderContent = styled.div`
       width: 56px;
       height: 56px;
       border-radius: 50%;
-      margin-left: 10px;
     }
   }
 `;
