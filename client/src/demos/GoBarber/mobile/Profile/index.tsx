@@ -129,10 +129,10 @@ const Profile: React.FC = () => {
 
           reader.readAsDataURL(e.target.files[0]);
 
-          addToast({
-            type: 'success',
-            title: 'Avatar updated!',
-          });
+          // addToast({
+          //   type: 'success',
+          //   title: 'Avatar updated!',
+          // });
         } catch {
           addToast({
             type: 'error',
