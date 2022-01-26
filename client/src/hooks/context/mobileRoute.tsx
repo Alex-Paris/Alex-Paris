@@ -17,6 +17,8 @@ interface MobileRouteProps {
 }
 
 interface MobileRouteContextData {
+  routeParam: string;
+  setRouteParam(route: string): void;
   togglePage(pageTitle: string): void;
 }
 
@@ -30,6 +32,7 @@ export const MobileRouteProvider: React.FC<MobileRouteProps> = ({
 }) => {
   const [pages, setPages] = useState(propPages);
   const [activePage, setActivePage] = useState<MobilePage>();
+  const [routeParam, setRouteParam] = useState('');
 
   const togglePage = useCallback(
     (pageTitle) => {
@@ -54,7 +57,9 @@ export const MobileRouteProvider: React.FC<MobileRouteProps> = ({
   }, [pages]);
 
   return (
-    <MobileRouteContext.Provider value={{ togglePage }}>
+    <MobileRouteContext.Provider
+      value={{ routeParam, setRouteParam, togglePage }}
+    >
       {/* {children} */}
       {!!activePage && <activePage.page />}
     </MobileRouteContext.Provider>
