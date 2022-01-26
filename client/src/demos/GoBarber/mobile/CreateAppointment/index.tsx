@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import useDraggableScroll from 'use-draggable-scroll';
 import { FiChevronLeft } from 'react-icons/fi';
-import { isAfter, getTime } from 'date-fns';
+import { isAfter, getTime, format } from 'date-fns';
 import DayPicker, { DayModifiers } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
@@ -33,7 +33,6 @@ import {
   ScheduleSectionHour,
   ScheduleSectionList,
 } from './styles';
-import { format } from 'date-fns';
 
 interface AvailabilityItem {
   hour: number;
@@ -91,6 +90,19 @@ const CreateAppointment: React.FC = () => {
         return;
       }
 
+      const userProvider = users.find((provider) => {
+        return provider.id === selectedProvider;
+      });
+
+      if (!userProvider) {
+        addToast({
+          type: 'error',
+          title: 'Error creating schedule',
+          description: 'Barber not found.',
+        });
+        return;
+      }
+
       const date = new Date(selectedDate);
       date.setHours(selectedHour);
       date.setMinutes(0);
@@ -99,7 +111,8 @@ const CreateAppointment: React.FC = () => {
 
       addAppointment({
         date,
-        user: selectedProvider,
+        user: userMobile,
+        provider: userProvider,
         hourFormatted: format(new Date().setHours(selectedHour), 'HH:00'),
       });
 
@@ -113,9 +126,11 @@ const CreateAppointment: React.FC = () => {
       });
     }
   }, [
+    users,
     selectedDate,
     selectedHour,
     selectedProvider,
+    userMobile,
     addAppointment,
     addToast,
     togglePage,
@@ -173,7 +188,7 @@ const CreateAppointment: React.FC = () => {
         dateAppointment.setMilliseconds(0);
 
         return (
-          appointment.user === selectedProvider &&
+          appointment.provider.id === selectedProvider &&
           getTime(dateAppointment) === getTime(dateSelected)
         );
       });
