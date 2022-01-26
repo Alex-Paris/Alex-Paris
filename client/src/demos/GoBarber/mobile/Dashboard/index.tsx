@@ -4,6 +4,7 @@ import 'react-day-picker/lib/style.css';
 import { FiCalendar, FiClock } from 'react-icons/fi';
 
 import { useAuth } from '../../hooks/context/auth';
+import { useStorage } from '../../hooks/context/storage';
 import { useMobileRoute } from '../../../../hooks/context/mobileRoute';
 
 import {
@@ -15,16 +16,23 @@ import {
   ProvidersList,
   ProvidersMeta,
 } from './styles';
-import { useStorage } from '../../hooks/context/storage';
 
 const Dashboard: React.FC = () => {
   const { signOutMobile, userMobile } = useAuth();
-  const { togglePage } = useMobileRoute();
+  const { setRouteParam, togglePage } = useMobileRoute();
   const { users } = useStorage();
 
   const handleProfilePage = useCallback(() => {
     togglePage('Profile');
   }, [togglePage]);
+
+  const handleSelectedBarber = useCallback(
+    (barberId: string) => {
+      setRouteParam(barberId);
+      togglePage('CreateAppointment');
+    },
+    [setRouteParam, togglePage]
+  );
 
   const handleSignOut = useCallback(() => {
     signOutMobile();
@@ -61,7 +69,10 @@ const Dashboard: React.FC = () => {
         <p>Barbers</p>
 
         {users.map((barber) => (
-          <ProvidersContainer key={barber.id}>
+          <ProvidersContainer
+            key={barber.id}
+            onClick={() => handleSelectedBarber(barber.id)}
+          >
             <img
               src={
                 barber.avatar_url
