@@ -16,12 +16,15 @@ interface User {
 
 interface Appointment {
   id: string;
-  date: string;
+  date: Date;
   hourFormatted: string;
-  user: {
-    name: string;
-    avatar_url: string;
-  };
+  user: string;
+}
+
+interface AppointmentFormData {
+  date: Date;
+  hourFormatted: string;
+  user: string;
 }
 
 interface SignUpFormData {
@@ -64,7 +67,7 @@ interface StorageContextData {
   updateUser(profile: ProfileFormData): User;
   addUserMobile(user: SignUpFormData): void;
   updateUserMobile(profile: ProfileFormData): User;
-  addAppointment(appointment: Appointment): void;
+  addAppointment(appointment: AppointmentFormData): void;
   updateAppointment(appointment: Appointment): void;
 }
 
@@ -146,7 +149,12 @@ export const StorageProvider: React.FC = ({ children }) => {
   );
 
   const addAppointment = useCallback(
-    (appointment: Appointment) => {
+    ({ ...rest }) => {
+      const appointment: Appointment = {
+        id: appointments.length + 1,
+        ...rest,
+      };
+
       setAppointments([...appointments, appointment]);
     },
     [appointments]
