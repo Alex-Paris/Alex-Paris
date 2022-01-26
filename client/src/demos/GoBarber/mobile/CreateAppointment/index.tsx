@@ -103,7 +103,7 @@ const CreateAppointment: React.FC = () => {
         hourFormatted: format(new Date().setHours(selectedHour), 'HH:00'),
       });
 
-      // navigate('AppointmentCreated', { date: date.getTime() });
+      togglePage('AppointmentCreated');
     } catch (err) {
       addToast({
         type: 'error',
@@ -112,7 +112,14 @@ const CreateAppointment: React.FC = () => {
           'There was an error trying to create the schedule, please try again.',
       });
     }
-  }, [selectedDate, selectedHour, selectedProvider, addAppointment, addToast]);
+  }, [
+    selectedDate,
+    selectedHour,
+    selectedProvider,
+    addAppointment,
+    addToast,
+    togglePage,
+  ]);
 
   const handleGoBack = useCallback(() => {
     togglePage('Dashboard');

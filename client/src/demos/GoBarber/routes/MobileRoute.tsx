@@ -5,6 +5,7 @@ import SignUp from '../mobile/SignUp';
 import Dashboard from '../mobile/Dashboard';
 import Profile from '../mobile/Profile';
 import CreateAppointment from '../mobile/CreateAppointment';
+import AppointmentCreated from '../mobile/AppointmentCreated';
 
 import { useAuth } from '../hooks/context/auth';
 
@@ -26,6 +27,7 @@ const MobileRoute: React.FC = () => {
     { page: Dashboard, pageTitle: 'Dashboard', isActive: !!userMobile },
     { page: Profile, pageTitle: 'Profile' },
     { page: CreateAppointment, pageTitle: 'CreateAppointment' },
+    { page: AppointmentCreated, pageTitle: 'AppointmentCreated' },
   ];
 
   return (
