@@ -113,11 +113,19 @@ const Profile: React.FC = () => {
     (e: ChangeEvent<HTMLInputElement>) => {
       if (e.target.files) {
         try {
+          if (e.target.files[0].size > 1e6) {
+            addToast({
+              type: 'error',
+              title: 'Update avatar error',
+              description: 'Please upload a file smaller than 1 MB.',
+            });
+            return false;
+          }
+
           const reader = new FileReader();
 
           reader.addEventListener('load', () => {
             if (reader.result) {
-              console.log('id: ' + userMobile.id);
               const updatedUserMobile = updateUserMobileAvatar(
                 userMobile.id,
                 reader.result.toString()
@@ -129,10 +137,10 @@ const Profile: React.FC = () => {
 
           reader.readAsDataURL(e.target.files[0]);
 
-          // addToast({
-          //   type: 'success',
-          //   title: 'Avatar updated!',
-          // });
+          addToast({
+            type: 'success',
+            title: 'Avatar updated!',
+          });
         } catch {
           addToast({
             type: 'error',
