@@ -10,7 +10,7 @@ interface User {
   id: string;
   name: string;
   email: string;
-  password: string;
+  password?: string;
   avatar_url: string;
 }
 
@@ -18,13 +18,15 @@ interface Appointment {
   id: string;
   date: Date;
   hourFormatted: string;
-  user: string;
+  provider: User;
+  user: User;
 }
 
 interface AppointmentFormData {
   date: Date;
   hourFormatted: string;
-  user: string;
+  provider: User;
+  user: User;
 }
 
 interface SignUpFormData {
