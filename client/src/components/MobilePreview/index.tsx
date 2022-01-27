@@ -16,7 +16,9 @@ const MobilePreview: React.FC<MobileProps> = ({ children, ...rest }) => {
       <MobileView ref={ref} onMouseDown={onMouseDown}>
         {children}
       </MobileView>
-      <MobileSnatch />
+      <MobileSnatch>
+        <div>Show Mobile</div>
+      </MobileSnatch>
     </Container>
   );
 };
