@@ -20,19 +20,34 @@ interface SignInCredentials {
 
 interface AuthContextData {
   user: User;
+  userMobile: User;
   signIn(credentials: SignInCredentials): void;
   signOut(): void;
   updateAuth(user: User): void;
+  signInMobile(credentials: SignInCredentials): void;
+  signOutMobile(): void;
+  updateAuthMobile(user: User): void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
 
 export const AuthProvider: React.FC = ({ children }) => {
-  const { authUser } = useStorage();
+  const { authUser, authUserMobile } = useStorage();
 
   const [data, setData] = useState<AuthState>(() => {
     const token = localStorage.getItem('Portfolio@GoBarber:token');
     const user = localStorage.getItem('Portfolio@GoBarber:user');
+
+    if (token && user) {
+      return { token, user: JSON.parse(user) };
+    }
+
+    return {} as AuthState;
+  });
+
+  const [dataMobile, setDataMobile] = useState<AuthState>(() => {
+    const token = localStorage.getItem('Portfolio@GoBarber:tokenMobile');
+    const user = localStorage.getItem('Portfolio@GoBarber:userMobile');
 
     if (token && user) {
       return { token, user: JSON.parse(user) };
@@ -55,11 +70,35 @@ export const AuthProvider: React.FC = ({ children }) => {
     [authUser]
   );
 
+  const signInMobile = useCallback(
+    ({ email, password }) => {
+      const response = authUserMobile({ email, password });
+
+      const { token, user } = response;
+
+      localStorage.setItem('Portfolio@GoBarber:tokenMobile', token);
+      localStorage.setItem(
+        'Portfolio@GoBarber:userMobile',
+        JSON.stringify(user)
+      );
+
+      setDataMobile({ token, user });
+    },
+    [authUserMobile]
+  );
+
   const signOut = useCallback(() => {
     localStorage.removeItem('Portfolio@GoBarber:token');
     localStorage.removeItem('Portfolio@GoBarber:user');
 
     setData({} as AuthState);
+  }, []);
+
+  const signOutMobile = useCallback(() => {
+    localStorage.removeItem('Portfolio@GoBarber:tokenMobile');
+    localStorage.removeItem('Portfolio@GoBarber:userMobile');
+
+    setDataMobile({} as AuthState);
   }, []);
 
   const updateAuth = useCallback(
@@ -74,9 +113,33 @@ export const AuthProvider: React.FC = ({ children }) => {
     [setData, data.token]
   );
 
+  const updateAuthMobile = useCallback(
+    (user: User) => {
+      localStorage.setItem(
+        'Portfolio@GoBarber:userMobile',
+        JSON.stringify(user)
+      );
+
+      setDataMobile({
+        token: dataMobile.token,
+        user,
+      });
+    },
+    [setDataMobile, dataMobile.token]
+  );
+
   return (
     <AuthContext.Provider
-      value={{ user: data.user, signIn, signOut, updateAuth }}
+      value={{
+        user: data.user,
+        userMobile: dataMobile.user,
+        signIn,
+        signOut,
+        updateAuth,
+        signInMobile,
+        signOutMobile,
+        updateAuthMobile,
+      }}
     >
       {children}
     </AuthContext.Provider>

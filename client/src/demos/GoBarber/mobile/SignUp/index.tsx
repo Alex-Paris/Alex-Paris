@@ -1,11 +1,11 @@
 import React, { useCallback, useRef } from 'react';
-import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
+import { FiMail, FiLock, FiUser, FiArrowLeft } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 
-import { useAuth } from '../../hooks/context/auth';
+import { useStorage } from '../../hooks/context/storage';
 import { useToast } from '../../hooks/context/toast';
 import { useMobileRoute } from '../../../../hooks/context/mobileRoute';
 import getValidationErrors from '../../utils/getValidationErrors';
@@ -17,40 +17,45 @@ import Button from '../../components/Button';
 
 import { Container, Content, CreateAccountButton } from './styles';
 
-interface SignInFormData {
+interface SignUpFormData {
+  name: string;
   email: string;
   password: string;
 }
 
-const SignIn: React.FC = () => {
+const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
-  const { signInMobile } = useAuth();
+  const { addUserMobile } = useStorage();
   const { addToast } = useToast();
   const { togglePage } = useMobileRoute();
 
   const handleSubmit = useCallback(
-    async (data: SignInFormData) => {
+    async (data: SignUpFormData) => {
       try {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
+          name: Yup.string().required('Insert a name'),
           email: Yup.string()
             .required('Insert an email')
             .email('Insert a valid email'),
-          password: Yup.string().required('Required password'),
+          password: Yup.string().min(6, 'Need at least 6 digits'),
         });
 
         await schema.validate(data, {
           abortEarly: false,
         });
 
-        signInMobile({
-          email: data.email,
-          password: data.password,
-        });
+        addUserMobile(data);
 
-        togglePage('Dashboard');
+        togglePage('SignIn');
+
+        addToast({
+          type: 'success',
+          title: 'Registration performed!',
+          description: 'You can now login to GoBarber!',
+        });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -62,20 +67,16 @@ const SignIn: React.FC = () => {
 
         addToast({
           type: 'error',
-          title: 'Authentication error',
-          description: 'There was an error logging in, check the credentials.',
+          title: 'Registration error',
+          description: 'An error occurred while registering, try again.',
         });
       }
     },
-    [signInMobile, addToast, togglePage]
+    [addUserMobile, addToast, togglePage]
   );
 
-  const forgotPage = useCallback(() => {
-    togglePage('Dashboard');
-  }, [togglePage]);
-
-  const createAccountPage = useCallback(() => {
-    togglePage('SignUp');
+  const signInPage = useCallback(() => {
+    togglePage('SignIn');
   }, [togglePage]);
 
   return (
@@ -84,7 +85,9 @@ const SignIn: React.FC = () => {
         <img src={logoImg} alt="GoBarber" />
 
         <Form ref={formRef} onSubmit={handleSubmit}>
-          <h1>Login - Client</h1>
+          <h1>Create your account</h1>
+
+          <Input name="name" icon={FiUser} placeholder="Name" />
 
           <Input name="email" icon={FiMail} placeholder="Email" />
 
@@ -96,17 +99,13 @@ const SignIn: React.FC = () => {
             autoComplete="password"
           />
 
-          <Button type="submit">Log in</Button>
-
-          <Link onClick={forgotPage} to="#">
-            Forgot my password
-          </Link>
+          <Button type="submit">Create</Button>
         </Form>
 
         <CreateAccountButton>
-          <Link onClick={createAccountPage} to="#">
-            <FiLogIn />
-            Create an account
+          <Link onClick={signInPage} to="#">
+            <FiArrowLeft />
+            Back to login
           </Link>
         </CreateAccountButton>
       </Content>
@@ -114,4 +113,4 @@ const SignIn: React.FC = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;

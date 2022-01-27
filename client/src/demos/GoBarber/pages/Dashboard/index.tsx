@@ -1,9 +1,14 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 import { FiClock, FiPower } from 'react-icons/fi';
-import { isToday, format, parseISO, isAfter } from 'date-fns';
+import { isToday, format, getTime } from 'date-fns';
 import enUS from 'date-fns/locale/en-US';
 import DayPicker, { DayModifiers } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
+
+import { useAuth } from '../../hooks/context/auth';
+import { useStorage } from '../../hooks/context/storage';
+import logoImg from '../../assets/logo.svg';
+import { Link } from 'react-router-dom';
 
 import {
   Container,
@@ -18,16 +23,6 @@ import {
   Calendar,
 } from './styles';
 
-import { useAuth } from '../../hooks/context/auth';
-import logoImg from '../../assets/logo.svg';
-import api from '../../services/api';
-import { Link } from 'react-router-dom';
-
-interface MonthAvailabilityItem {
-  day: number;
-  available: boolean;
-}
-
 interface Appointment {
   id: string;
   date: string;
@@ -40,69 +35,15 @@ interface Appointment {
 
 const Dashboard: React.FC = () => {
   const { signOut, user } = useAuth();
+  const { appointments } = useStorage();
+
   const [selectedDate, setSelectedDate] = useState(new Date());
-  const [currentMonth, setCurrentMonth] = useState(new Date());
-  const [monthAvailability, setMonthAvailability] = useState<
-    MonthAvailabilityItem[]
-  >([]);
-  const [appointments, setAppointments] = useState<Appointment[]>([]);
 
   const handleDateChange = useCallback((day: Date, modifiers: DayModifiers) => {
     if (modifiers.available && !modifiers.disabled) {
       setSelectedDate(day);
     }
   }, []);
-
-  const handleMonthChange = useCallback((month: Date) => {
-    setCurrentMonth(month);
-  }, []);
-
-  useEffect(() => {
-    api
-      .get(`/providers/${user.id}/month-availability`, {
-        params: {
-          year: currentMonth.getFullYear(),
-          month: currentMonth.getMonth() + 1,
-        },
-      })
-      .then((response) => {
-        setMonthAvailability(response.data);
-      });
-  }, [currentMonth, user.id]);
-
-  useEffect(() => {
-    api
-      .get<Appointment[]>('/appointments/me', {
-        params: {
-          year: selectedDate.getFullYear(),
-          month: selectedDate.getMonth() + 1,
-          day: selectedDate.getDate(),
-        },
-      })
-      .then((response) => {
-        const appointmentsFormatted = response.data.map((appointment) => {
-          return {
-            ...appointment,
-            hourFormatted: format(parseISO(appointment.date), 'HH:mm'),
-          };
-        });
-
-        setAppointments(appointmentsFormatted);
-      });
-  }, [selectedDate]);
-
-  const disabledDays = useMemo(() => {
-    const dates = monthAvailability
-      .filter((monthDay) => monthDay.available === false)
-      .map((monthDay) => {
-        const year = currentMonth.getFullYear();
-        const month = currentMonth.getMonth();
-
-        return new Date(year, month, monthDay.day);
-      });
-
-    return dates;
-  }, [currentMonth, monthAvailability]);
 
   const selectedDateAsText = useMemo(() => {
     return format(selectedDate, "'Day' dd 'of' MMMM", {
@@ -116,21 +57,56 @@ const Dashboard: React.FC = () => {
 
   const morningAppointments = useMemo(() => {
     return appointments.filter((appointment) => {
-      return parseISO(appointment.date).getHours() < 12;
+      const dateAppointment = new Date(appointment.date);
+      dateAppointment.setMinutes(0);
+      dateAppointment.setSeconds(0);
+      dateAppointment.setMilliseconds(0);
+
+      const dateSelected = new Date(selectedDate);
+      dateSelected.setHours(dateAppointment.getHours());
+      dateSelected.setMinutes(0);
+      dateSelected.setSeconds(0);
+      dateSelected.setMilliseconds(0);
+
+      return (
+        appointment.provider.id === user.id &&
+        getTime(dateAppointment) === getTime(dateSelected) &&
+        dateAppointment.getHours() <= 12
+      );
     });
-  }, [appointments]);
+  }, [appointments, selectedDate, user.id]);
 
   const afternoonAppointments = useMemo(() => {
     return appointments.filter((appointment) => {
-      return parseISO(appointment.date).getHours() >= 12;
+      const dateAppointment = new Date(appointment.date);
+      dateAppointment.setMinutes(0);
+      dateAppointment.setSeconds(0);
+      dateAppointment.setMilliseconds(0);
+
+      const dateSelected = new Date(selectedDate);
+      dateSelected.setHours(dateAppointment.getHours());
+      dateSelected.setMinutes(0);
+      dateSelected.setSeconds(0);
+      dateSelected.setMilliseconds(0);
+
+      return (
+        appointment.provider.id === user.id &&
+        getTime(dateAppointment) === getTime(dateSelected) &&
+        dateAppointment.getHours() > 12
+      );
     });
-  }, [appointments]);
+  }, [appointments, selectedDate, user.id]);
 
   const nextAppointment = useMemo(() => {
-    return appointments.find((appointment) => {
-      isAfter(parseISO(appointment.date), new Date());
+    const test = appointments.find((appointment) => {
+      return (
+        appointment.provider.id === user.id &&
+        isToday(new Date(appointment.date))
+      );
     });
-  }, [appointments]);
+    console.log(test);
+    return test;
+  }, [appointments, user.id]);
 
   return (
     <Container>
@@ -255,11 +231,10 @@ const Dashboard: React.FC = () => {
         <Calendar>
           <DayPicker
             fromMonth={new Date()}
-            disabledDays={[{ daysOfWeek: [0, 6] }, ...disabledDays]}
+            disabledDays={[{ daysOfWeek: [0, 6] }, { before: new Date() }]}
             modifiers={{
               available: { daysOfWeek: [1, 2, 3, 4, 5] },
             }}
-            onMonthChange={handleMonthChange}
             selectedDays={selectedDate}
             onDayClick={handleDateChange}
           />

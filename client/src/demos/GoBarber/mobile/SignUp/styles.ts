@@ -52,11 +52,12 @@ export const CreateAccountButton = styled.div`
   display: flex;
   border-top: 4px solid #232129;
   width: 100%;
+  margin-top: -22px;
   align-items: center;
   justify-content: center;
 
   > a {
-    color: #ff9000;
+    color: #f4ede8;
     display: block;
     margin-top: 24px;
     text-decoration: none;
@@ -71,7 +72,7 @@ export const CreateAccountButton = styled.div`
     }
 
     &:hover {
-      color: ${shade(0.2, '#ff9000')};
+      color: ${shade(0.2, '#f4ede8')};
     }
   }
 `;

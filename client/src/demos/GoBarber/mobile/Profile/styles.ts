@@ -5,9 +5,13 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
-  font-size: 14px;
+
+  color: #f4ede8;
+  font-size: 20px;
   font-weight: 400;
+
+  height: 100%;
+  background: #312e38;
 `;
 
 export const Content = styled.div`
@@ -16,21 +20,48 @@ export const Content = styled.div`
   align-items: center;
   justify-content: center;
 
-  /* place-content: center; */
-
   width: 100%;
   max-width: 700px;
 
-  > img {
-    width: 200px;
+  > button {
+    width: 48px;
+    height: 48px;
+    border-radius: 24px;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #312e38;
+
+    border: none;
+    outline: none;
+    margin-right: 82%;
+    margin-top: 32px;
+  }
+
+  > label {
+    margin-top: -34px;
+    border-radius: 50%;
+    cursor: pointer;
+
+    img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      align-self: center;
+    }
+
+    input {
+      display: none;
+    }
   }
 
   form {
-    margin: 60px 0;
+    margin: 20px 0;
     width: 320px;
     text-align: center;
 
-    h1 {
+    p {
       margin-bottom: 24px;
     }
 
@@ -44,34 +75,6 @@ export const Content = styled.div`
       &:hover {
         color: ${shade(0.2, '#f4ede8')};
       }
-    }
-  }
-`;
-
-export const CreateAccountButton = styled.div`
-  display: flex;
-  border-top: 4px solid #232129;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-
-  > a {
-    color: #ff9000;
-    display: block;
-    margin-top: 24px;
-    text-decoration: none;
-    font-size: 18px;
-    transition: color 0.2s;
-
-    display: flex;
-    align-items: center;
-
-    svg {
-      margin-right: 16px;
-    }
-
-    &:hover {
-      color: ${shade(0.2, '#ff9000')};
     }
   }
 `;
