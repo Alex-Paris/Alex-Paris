@@ -1,17 +1,18 @@
-import { shade } from 'polished';
 import styled from 'styled-components';
+import { animated } from 'react-spring';
+import { shade } from 'polished';
 
 interface ContainerProps {
   isLoading?: boolean;
+  isHidden?: boolean;
 }
 
-export const Container = styled.div<ContainerProps>`
+export const Container = styled(animated.div)<ContainerProps>`
   position: fixed;
-  /* visibility: hidden; */
   width: 390px;
   height: 682px;
   right: 20px;
-  bottom: -580px;
+  bottom: 60px;
 
   background: #4f4e55;
   border-radius: 45px;
@@ -51,13 +52,14 @@ export const MobileSnatch = styled.div<ContainerProps>`
   border: 0;
 
   div {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 110px;
     height: 25px;
     left: 25%;
     top: 5px;
+    color: ${shade(0.2, 'white')};
     border-radius: 0px 0px 10px 10px;
     background-image: linear-gradient(
       to top,
@@ -65,5 +67,15 @@ export const MobileSnatch = styled.div<ContainerProps>`
       #4f4e55,
       #4f4e55
     );
+
+    :hover {
+      color: ${shade(0.3, 'white')};
+      transition: 0.2s;
+      background-image: linear-gradient(
+        to top,
+        ${shade(0.3, '#4f4e55')},
+        #4f4e55
+      );
+    }
   }
 `;
