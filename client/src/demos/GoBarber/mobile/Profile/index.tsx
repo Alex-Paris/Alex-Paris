@@ -5,7 +5,6 @@ import { Form } from '@unform/web';
 import * as Yup from 'yup';
 
 import { useAuth } from '../../hooks/context/auth';
-import { useToast } from '../../hooks/context/toast';
 import { useStorage } from '../../hooks/context/storage';
 import { useMobileRoute } from '../../../../hooks/context/mobileRoute';
 import getValidationErrors from '../../utils/getValidationErrors';
@@ -27,8 +26,7 @@ const Profile: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const { userMobile, updateAuthMobile } = useAuth();
-  const { addToast } = useToast();
-  const { togglePage } = useMobileRoute();
+  const { togglePage, sendNotification } = useMobileRoute();
   const { updateUserMobile, updateUserMobileAvatar } = useStorage();
 
   const handleSubmit = useCallback(
@@ -83,7 +81,7 @@ const Profile: React.FC = () => {
 
         togglePage('Dashboard');
 
-        addToast({
+        sendNotification({
           type: 'success',
           title: 'Updated profile!',
           description:
@@ -98,7 +96,7 @@ const Profile: React.FC = () => {
           return;
         }
 
-        addToast({
+        sendNotification({
           type: 'error',
           title: 'Update error',
           description:
@@ -106,7 +104,13 @@ const Profile: React.FC = () => {
         });
       }
     },
-    [addToast, updateUserMobile, updateAuthMobile, userMobile.id, togglePage]
+    [
+      sendNotification,
+      updateUserMobile,
+      updateAuthMobile,
+      userMobile.id,
+      togglePage,
+    ]
   );
 
   const handleAvatarChange = useCallback(
@@ -114,7 +118,7 @@ const Profile: React.FC = () => {
       if (e.target.files) {
         try {
           if (e.target.files[0].size > 1e6) {
-            addToast({
+            sendNotification({
               type: 'error',
               title: 'Update avatar error',
               description: 'Please upload a file smaller than 1 MB.',
@@ -137,12 +141,12 @@ const Profile: React.FC = () => {
 
           reader.readAsDataURL(e.target.files[0]);
 
-          addToast({
+          sendNotification({
             type: 'success',
             title: 'Avatar updated!',
           });
         } catch {
-          addToast({
+          sendNotification({
             type: 'error',
             title: 'Update avatar error',
             description:
@@ -151,7 +155,7 @@ const Profile: React.FC = () => {
         }
       }
     },
-    [addToast, updateUserMobileAvatar, userMobile.id, updateAuthMobile]
+    [sendNotification, updateUserMobileAvatar, userMobile.id, updateAuthMobile]
   );
 
   const handleGoBack = useCallback(() => {

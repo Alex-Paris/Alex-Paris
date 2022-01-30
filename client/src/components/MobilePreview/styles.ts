@@ -105,7 +105,6 @@ export const MobileNotification = styled(animated.div)<MobileNotificationProps>`
   display: flex;
   position: absolute;
   align-items: center;
-  justify-content: center;
   height: 100px;
   width: 100%;
 

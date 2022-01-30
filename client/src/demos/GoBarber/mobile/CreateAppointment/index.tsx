@@ -12,7 +12,6 @@ import DayPicker, { DayModifiers } from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
 import { useAuth } from '../../hooks/context/auth';
-import { useToast } from '../../hooks/context/toast';
 import { useStorage } from '../../hooks/context/storage';
 import { useMobileRoute } from '../../../../hooks/context/mobileRoute';
 
@@ -48,8 +47,7 @@ const CreateAppointment: React.FC = () => {
   const mouseScheduleAfternoon = useDraggableScroll(refScheduleAfternoon);
 
   const { userMobile } = useAuth();
-  const { addToast } = useToast();
-  const { routeParam, togglePage } = useMobileRoute();
+  const { routeParam, togglePage, sendNotification } = useMobileRoute();
   const { users, appointments, addAppointment } = useStorage();
 
   const [showDatePicker, setShowDatePicker] = useState(false);
@@ -82,7 +80,7 @@ const CreateAppointment: React.FC = () => {
   const handleCreateAppointment = useCallback(async () => {
     try {
       if (selectedHour === 0) {
-        addToast({
+        sendNotification({
           type: 'error',
           title: 'Error creating schedule',
           description: 'Select a valid hour time.',
@@ -95,7 +93,7 @@ const CreateAppointment: React.FC = () => {
       });
 
       if (!userProvider) {
-        addToast({
+        sendNotification({
           type: 'error',
           title: 'Error creating schedule',
           description: 'Barber not found.',
@@ -118,7 +116,7 @@ const CreateAppointment: React.FC = () => {
 
       togglePage('AppointmentCreated');
     } catch (err) {
-      addToast({
+      sendNotification({
         type: 'error',
         title: 'Error creating schedule',
         description:
@@ -132,7 +130,7 @@ const CreateAppointment: React.FC = () => {
     selectedProvider,
     userMobile,
     addAppointment,
-    addToast,
+    sendNotification,
     togglePage,
   ]);
 

@@ -6,7 +6,6 @@ import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 
 import { useAuth } from '../../hooks/context/auth';
-import { useToast } from '../../hooks/context/toast';
 import { useMobileRoute } from '../../../../hooks/context/mobileRoute';
 import getValidationErrors from '../../utils/getValidationErrors';
 
@@ -26,8 +25,7 @@ const SignIn: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const { signInMobile } = useAuth();
-  const { addToast } = useToast();
-  const { togglePage } = useMobileRoute();
+  const { togglePage, sendNotification } = useMobileRoute();
 
   const handleSubmit = useCallback(
     async (data: SignInFormData) => {
@@ -60,14 +58,14 @@ const SignIn: React.FC = () => {
           return;
         }
 
-        addToast({
+        sendNotification({
           type: 'error',
           title: 'Authentication error',
           description: 'There was an error logging in, check the credentials.',
         });
       }
     },
-    [signInMobile, addToast, togglePage]
+    [signInMobile, sendNotification, togglePage]
   );
 
   const forgotPage = useCallback(() => {

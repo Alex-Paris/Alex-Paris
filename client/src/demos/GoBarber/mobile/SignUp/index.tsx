@@ -6,7 +6,6 @@ import * as Yup from 'yup';
 import { Link } from 'react-router-dom';
 
 import { useStorage } from '../../hooks/context/storage';
-import { useToast } from '../../hooks/context/toast';
 import { useMobileRoute } from '../../../../hooks/context/mobileRoute';
 import getValidationErrors from '../../utils/getValidationErrors';
 
@@ -27,8 +26,7 @@ const SignUp: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const { addUserMobile } = useStorage();
-  const { addToast } = useToast();
-  const { togglePage } = useMobileRoute();
+  const { togglePage, sendNotification } = useMobileRoute();
 
   const handleSubmit = useCallback(
     async (data: SignUpFormData) => {
@@ -51,7 +49,7 @@ const SignUp: React.FC = () => {
 
         togglePage('SignIn');
 
-        addToast({
+        sendNotification({
           type: 'success',
           title: 'Registration performed!',
           description: 'You can now login to GoBarber!',
@@ -65,14 +63,14 @@ const SignUp: React.FC = () => {
           return;
         }
 
-        addToast({
+        sendNotification({
           type: 'error',
           title: 'Registration error',
           description: 'An error occurred while registering, try again.',
         });
       }
     },
-    [addUserMobile, addToast, togglePage]
+    [addUserMobile, sendNotification, togglePage]
   );
 
   const signInPage = useCallback(() => {
