@@ -35,6 +35,12 @@ const DashboardPortfolio: React.FC = () => {
       image: portfolio1Img,
       link: '/demos/GoBarber/',
     },
+    {
+      title: 'HordeProject',
+      description: '.',
+      image: portfolio1Img,
+      link: '/demos/HordeProject/',
+    },
   ];
 
   const navigationConfig: NavigationOptions = {

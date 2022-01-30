@@ -9761,6 +9761,11 @@ react-toastify@^8.1.0:
   dependencies:
     clsx "^1.1.1"
 
+react-unity-webgl@^8.7.4:
+  version "8.7.4"
+  resolved "https://registry.yarnpkg.com/react-unity-webgl/-/react-unity-webgl-8.7.4.tgz#fb28914f73409779656ab156fcfc4e95c295c405"
+  integrity sha512-36iCbNf9oe8jC6oR6RS2NMwQi5uc5lsmFGMVbiZf57JI87LRulikO/aNIL4QSbtUjBDZ0urILwcFKXaRq5Bi5Q==
+
 "react@>=15.0.0 <17.0.0":
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.14.0.tgz#94d776ddd0aaa37da3eda8fc5b6b18a4c9a3114d"
