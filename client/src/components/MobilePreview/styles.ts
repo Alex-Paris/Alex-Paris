@@ -1,11 +1,32 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { animated } from 'react-spring';
 import { shade } from 'polished';
 
+import {
+  FontMedium,
+  NormalFontSize,
+  SmallFontSize,
+} from '../../styles/variables';
+
 interface ContainerProps {
   isLoading?: boolean;
-  isHidden?: boolean;
 }
+
+interface MobileNotificationProps {
+  type?: 'success' | 'error' | 'info';
+}
+
+const toastTypeVariations = {
+  info: css`
+    color: #3172b7;
+  `,
+  success: css`
+    color: #2e656a;
+  `,
+  error: css`
+    color: #c53030;
+  `,
+};
 
 export const Container = styled(animated.div)<ContainerProps>`
   position: fixed;
@@ -37,7 +58,7 @@ export const MobileView = styled.div<ContainerProps>`
   }
 `;
 
-export const MobileSnatch = styled.div<ContainerProps>`
+export const MobileSnatch = styled.div`
   position: absolute;
   display: flex;
   align-items: center;
@@ -76,6 +97,51 @@ export const MobileSnatch = styled.div<ContainerProps>`
         ${shade(0.3, '#4f4e55')},
         #4f4e55
       );
+    }
+  }
+`;
+
+export const MobileNotification = styled(animated.div)<MobileNotificationProps>`
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 100%;
+
+  margin-top: 35px;
+  padding: 20px;
+
+  cursor: pointer;
+  border: 0;
+  border-radius: 21px;
+  background-image: linear-gradient(
+    to bottom,
+    white,
+    ${shade(0.1, 'white')},
+    ${shade(0.3, 'white')}
+  );
+
+  svg {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 10px;
+    ${(props) => toastTypeVariations[props.type || 'info']}
+  }
+
+  div {
+    display: flex;
+    flex-direction: column;
+
+    strong {
+      ${NormalFontSize}
+      color: ${(props) => props.theme.colors.title};
+      font-weight: ${FontMedium};
+    }
+
+    p {
+      ${SmallFontSize}
+      color: ${(props) => props.theme.colors.title};
     }
   }
 `;

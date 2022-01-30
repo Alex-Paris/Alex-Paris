@@ -18,10 +18,18 @@ interface MobileRouteProps {
   propPages: MobilePage[];
 }
 
+export interface MobileNotificationMessage {
+  isActive?: boolean;
+  type?: 'success' | 'error' | 'info';
+  title?: string;
+  description?: string;
+}
+
 interface MobileRouteContextData {
   routeParam: string;
   setRouteParam(route: string): void;
   togglePage(pageTitle: string): void;
+  sendNotification(message: MobileNotificationMessage): void;
 }
 
 const MobileRouteContext = createContext<MobileRouteContextData>(
@@ -33,6 +41,7 @@ export const MobileRouteProvider: React.FC<MobileRouteProps> = ({
   // children,
 }) => {
   const [pages, setPages] = useState(propPages);
+  const [message, setMessage] = useState<MobileNotificationMessage>();
   const [activePage, setActivePage] = useState<MobilePage>();
   const [routeParam, setRouteParam] = useState('');
 
@@ -50,6 +59,22 @@ export const MobileRouteProvider: React.FC<MobileRouteProps> = ({
     [pages]
   );
 
+  const sendNotification = useCallback((message) => {
+    const sendMessage: MobileNotificationMessage = {
+      isActive: true,
+      ...message,
+    };
+
+    setMessage(sendMessage);
+
+    setTimeout(() => {
+      setMessage({
+        isActive: false,
+        ...message,
+      });
+    }, 3000);
+  }, []);
+
   useEffect(() => {
     pages.map((page) => {
       if (page.isActive) {
@@ -60,10 +85,17 @@ export const MobileRouteProvider: React.FC<MobileRouteProps> = ({
 
   return (
     <MobileRouteContext.Provider
-      value={{ routeParam, setRouteParam, togglePage }}
+      value={{
+        routeParam,
+        setRouteParam,
+        togglePage,
+        sendNotification,
+      }}
     >
       {/* {children} */}
-      <MobilePreview>{!!activePage && <activePage.page />}</MobilePreview>
+      <MobilePreview message={message}>
+        {!!activePage && <activePage.page />}
+      </MobilePreview>
     </MobileRouteContext.Provider>
   );
 };
