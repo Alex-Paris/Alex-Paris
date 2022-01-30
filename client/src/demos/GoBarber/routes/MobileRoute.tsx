@@ -9,7 +9,6 @@ import AppointmentCreated from '../mobile/AppointmentCreated';
 
 import { useAuth } from '../hooks/context/auth';
 
-import MobilePreview from '../../../components/MobilePreview';
 import { MobileRouteProvider } from '../../../hooks/context/mobileRoute';
 
 interface MobilePage {
@@ -32,9 +31,7 @@ const MobileRoute: React.FC = () => {
 
   return (
     <>
-      <MobilePreview>
-        <MobileRouteProvider propPages={pages} />
-      </MobilePreview>
+      <MobileRouteProvider propPages={pages} />
     </>
   );
 };

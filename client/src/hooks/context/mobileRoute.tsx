@@ -6,6 +6,8 @@ import React, {
   useState,
 } from 'react';
 
+import MobilePreview from '../../components/MobilePreview';
+
 interface MobilePage {
   page: React.FC;
   pageTitle: string;
@@ -61,7 +63,7 @@ export const MobileRouteProvider: React.FC<MobileRouteProps> = ({
       value={{ routeParam, setRouteParam, togglePage }}
     >
       {/* {children} */}
-      {!!activePage && <activePage.page />}
+      <MobilePreview>{!!activePage && <activePage.page />}</MobilePreview>
     </MobileRouteContext.Provider>
   );
 };
