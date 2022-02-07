@@ -133,6 +133,19 @@ const NavMenu: React.FC = () => {
                     <NavItem>
                       <HashLink
                         activeClass="active"
+                        to="games"
+                        spy
+                        smooth
+                        offset={-70}
+                        duration={500}
+                        onClick={handleShowNav}
+                      >
+                        <Icon icon="UilTvRetro" /> Games
+                      </HashLink>
+                    </NavItem>
+                    <NavItem>
+                      <HashLink
+                        activeClass="active"
                         to="portfolio"
                         spy
                         smooth
