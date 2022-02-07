@@ -14,6 +14,7 @@ import 'swiper/modules/pagination/pagination.min.css';
 import Icon from '../../../components/Unicons';
 import Button from '../../../components/Button';
 import portfolio1Img from '../../../assets/portfolio1.png';
+import portfolio2Img from '../../../assets/portfolio2.png';
 
 import { Portfolio, PortfolioContainer, PortfolioContent } from './styles';
 
@@ -37,8 +38,9 @@ const DashboardPortfolio: React.FC = () => {
     },
     {
       title: 'HordeProject',
-      description: '.',
-      image: portfolio1Img,
+      description:
+        'A 2D side platform game with hordes of enemies, using Unity.',
+      image: portfolio2Img,
       link: '/demos/HordeProject/',
     },
   ];
