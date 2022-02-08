@@ -2,12 +2,12 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import GoBarberApp from './GoBarber/App';
-import HordeProjectGame from './HordeProject/App';
+import GithubExplorerApp from './GithubExplorer/App';
 
 const DemoRoutes: React.FC = () => (
   <>
     <Route path="/demos/GoBarber/" component={GoBarberApp} />
-    <Route path="/demos/HordeProject/" component={HordeProjectGame} />
+    <Route path="/demos/GithubExplorer/" component={GithubExplorerApp} />
   </>
 );
 

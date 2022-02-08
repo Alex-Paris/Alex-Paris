@@ -43,6 +43,8 @@ import {
   UilTvRetro,
   UilInfoCircle,
   UilExclamationOctagon,
+  UilKeyboard,
+  UilSpaceKey,
   // @ts-expect-error: React-Unicons doesnt have @types yet
 } from '@iconscout/react-unicons';
 
@@ -90,7 +92,9 @@ export type IconProps = SVGAttributes<SVGAElement> & {
     | 'UilDatabase'
     | 'UilTvRetro'
     | 'UilInfoCircle'
-    | 'UilExclamationOctagon';
+    | 'UilExclamationOctagon'
+    | 'UilKeyboard'
+    | 'UilSpaceKey';
 };
 
 const iconType = {
@@ -137,6 +141,8 @@ const iconType = {
   UilTvRetro: UilTvRetro,
   UilInfoCircle: UilInfoCircle,
   UilExclamationOctagon: UilExclamationOctagon,
+  UilKeyboard: UilKeyboard,
+  UilSpaceKey: UilSpaceKey,
 };
 
 const Icon: React.FC<IconProps> = ({ icon, ...rest }) => {

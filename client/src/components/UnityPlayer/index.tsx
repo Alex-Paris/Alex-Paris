@@ -12,6 +12,9 @@ interface UnityPlayerProps {
   dataUrl: string;
   frameworkUrl: string;
   codeUrl: string;
+  // The close needs a time to put the player to rest. set a timeout in page
+  // before closing it with about 1000ms
+  close?: boolean;
 }
 
 const UnityPlayer: React.FC<UnityPlayerProps> = ({
@@ -20,25 +23,11 @@ const UnityPlayer: React.FC<UnityPlayerProps> = ({
   dataUrl,
   frameworkUrl,
   codeUrl,
+  close,
 }) => {
   // The app's state.
   const [isLoaded, setIsLoaded] = useState<boolean>(false);
   const [progression, setProgression] = useState<number>(0);
-  // const [unityContext, setUnityContext] = useState<UnityContext>(() => {
-  //   const unity = new UnityContext({
-  //     productName,
-  //     loaderUrl,
-  //     dataUrl,
-  //     frameworkUrl,
-  //     codeUrl,
-  //     companyName: 'Alex Paris',
-  //     webglContextAttributes: {
-  //       preserveDrawingBuffer: true,
-  //     },
-  //   });
-
-  //   return unity;
-  // });
 
   const unityContext = useMemo(() => {
     return new UnityContext({
@@ -69,19 +58,11 @@ const UnityPlayer: React.FC<UnityPlayerProps> = ({
     setIsLoaded(true);
   }, []);
 
-  // Built-in event invoked when the Unity app occurs an error.
-  const handleOnError = useCallback(() => {
-    console.log(
-      'bubyeaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa'
-    );
-  }, []);
-
   // When the component is mounted, we'll register some event listener.
   useEffect(() => {
     unityContext.on('canvas', handleOnUnityCanvas);
     unityContext.on('progress', handleOnUnityProgress);
     unityContext.on('loaded', handleOnUnityLoaded);
-    unityContext.on('error', handleOnError);
 
     // When the component is unmounted, we'll unregister the event listener.
     return () => {
@@ -92,8 +73,14 @@ const UnityPlayer: React.FC<UnityPlayerProps> = ({
     handleOnUnityCanvas,
     handleOnUnityProgress,
     handleOnUnityLoaded,
-    handleOnError,
   ]);
+
+  // When the component is unmounted, we'll quit instance.
+  useEffect(() => {
+    if (close) {
+      unityContext.quitUnityInstance();
+    }
+  }, [close, unityContext]);
 
   return (
     <Container>

@@ -4,7 +4,7 @@ import GlobalStyle from './styles/global';
 
 import Routes from './routes';
 
-const HordeProjectGame: React.FC = () => (
+const GithubExplorerApp: React.FC = () => (
   <>
     <Routes />
 
@@ -12,4 +12,4 @@ const HordeProjectGame: React.FC = () => (
   </>
 );
 
-export default HordeProjectGame;
+export default GithubExplorerApp;

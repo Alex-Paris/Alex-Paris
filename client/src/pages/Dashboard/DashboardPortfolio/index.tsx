@@ -37,11 +37,11 @@ const DashboardPortfolio: React.FC = () => {
       link: '/demos/GoBarber/',
     },
     {
-      title: 'HordeProject',
+      title: 'GithubExplorer',
       description:
-        'A 2D side platform game with hordes of enemies, using Unity.',
+        'This website was made to study external API using React. You can get public project informations of Github.',
       image: portfolio2Img,
-      link: '/demos/HordeProject/',
+      link: '/demos/GithubExplorer/',
     },
   ];
 
