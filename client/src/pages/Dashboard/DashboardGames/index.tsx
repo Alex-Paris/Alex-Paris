@@ -49,7 +49,11 @@ const DashboardGames: React.FC = () => {
       keys: [
         {
           icon: 'UilKeyboard',
-          description: 'Move: W, A, S, D',
+          description: 'Move: A, D',
+        },
+        {
+          icon: 'UilSpaceKey',
+          description: 'Jump: Space',
         },
         {
           icon: 'UilMouseAlt',
