@@ -1,5 +1,6 @@
 # Alex Paris 
 
+[![Portfolio Badge](https://img.shields.io/badge/-Portfolio-6633cc?style=flat-square&logo=aiohttp&logoColor=white&link=https://alexparis.dev/)](https://alexparis.dev/)
 [![Linkedin Badge](https://img.shields.io/badge/-Alex%20Paris-6633cc?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/alex-paris/)](https://www.linkedin.com/in/alex-paris/)
 [![Instagram Badge](https://img.shields.io/badge/-@lexparis__-6633cc?style=flat-square&logo=Instagram&logoColor=white&link=https://www.instagram.com/lexparis_/)](https://www.instagram.com/lexparis_/)
 
