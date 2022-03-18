@@ -40,7 +40,7 @@ const DashboardHome: React.FC = () => {
         <HomeContent>
           <HomeSocial>
             <a
-              href="https://www.linkedin.com/in/alex-paris/"
+              href="https://www.linkedin.com/in/alex-paris/?locale=en_US"
               target="_blank"
               rel="noreferrer"
             >
