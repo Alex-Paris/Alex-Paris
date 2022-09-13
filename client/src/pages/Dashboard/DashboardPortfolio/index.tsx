@@ -15,6 +15,7 @@ import Icon from '../../../components/Unicons';
 import Button from '../../../components/Button';
 import portfolio1Img from '../../../assets/portfolio1.png';
 import portfolio2Img from '../../../assets/portfolio2.png';
+import portfolio3Img from '../../../assets/portfolio3.png';
 
 import { Portfolio, PortfolioContainer, PortfolioContent } from './styles';
 
@@ -42,6 +43,12 @@ const DashboardPortfolio: React.FC = () => {
         'This website was made to study external API using React. You can get public project informations of Github.',
       image: portfolio2Img,
       link: '/demos/GithubExplorer/',
+    },
+    {
+      title: 'ToDoList',
+      description: 'A ToDo List website.',
+      image: portfolio3Img,
+      link: '/demos/ToDoList/',
     },
   ];
 
