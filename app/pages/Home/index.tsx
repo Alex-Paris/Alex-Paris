@@ -1,47 +1,56 @@
 import { useEffect } from 'react'
 
-import { personalInfo } from '~/data/portfolio'
-import { generateMeta } from '~/utils/meta'
-import { handleHashNavigation } from '~/utils/scroll'
+import About from '~/components/About'
+import Contact from '~/components/Contact'
+import Footer from '~/components/Footer'
+import Hero from '~/components/Hero'
+import Nav from '~/components/Nav'
+import Projects from '~/components/Projects'
+import Skills from '~/components/Skills'
+import UnityGames from '~/components/UnityGames'
+import { personalInfo, webProjects, unityGames, skills } from '~/data/portfolio'
+import { useParallax } from '~/hooks/useParallax'
 
-import { AboutSection } from './section/about'
-import { ContactSection } from './section/contact'
-import { GamesSection } from './section/games'
-import { HeroSection } from './section/hero'
-import { ProjectsSection } from './section/projects'
-import { SkillsSection } from './section/skills'
-
-export function meta() {
-  return generateMeta({
-    title: `${personalInfo.name} - ${personalInfo.role}`,
-    description: personalInfo.tagline,
-  })
-}
-
+/**
+ * Main single-page portfolio application
+ * Features:
+ * - Smooth scroll navigation
+ * - Parallax effects
+ * - All sections in one page
+ * - Responsive design
+ * - Dark mode support
+ */
 export default function Home() {
-  // Handle hash navigation on mount and hash changes
+  const { prefersReducedMotion } = useParallax()
+
   useEffect(() => {
-    handleHashNavigation()
-
-    const handleHashChange = () => {
-      handleHashNavigation()
-    }
-
-    window.addEventListener('hashchange', handleHashChange)
+    // Ensure smooth scrolling is enabled
+    document.documentElement.style.scrollBehavior = prefersReducedMotion
+      ? 'auto'
+      : 'smooth'
 
     return () => {
-      window.removeEventListener('hashchange', handleHashChange)
+      document.documentElement.style.scrollBehavior = 'auto'
     }
-  }, [])
+  }, [prefersReducedMotion])
 
   return (
-    <div className="single-page-portfolio">
-      <HeroSection />
-      <AboutSection />
-      <ProjectsSection />
-      <GamesSection />
-      <SkillsSection />
-      <ContactSection />
+    <div className="min-h-screen bg-white dark:bg-slate-900">
+      {/* Sticky navigation */}
+      <Nav />
+
+      {/* Main content sections */}
+      <main>
+        <Hero personalInfo={personalInfo} imageSrc="/images/profile.jpg" />
+        <About personalInfo={personalInfo} />
+        <Projects projects={webProjects} />
+        <UnityGames games={unityGames} />
+        <Skills skills={skills} />
+        <Contact personalInfo={personalInfo} />
+      </main>
+
+      {/* Footer */}
+      <Footer />
     </div>
   )
 }

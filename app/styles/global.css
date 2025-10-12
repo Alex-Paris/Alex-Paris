@@ -1,142 +1,252 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
-/* Custom CSS Variables for Theme */
-@theme {
-    --color-primary: oklch(0.6 0.2 240);
-    --color-secondary: oklch(0.7 0.15 280);
+/* Custom CSS Variables */
+:root {
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 20px 60px rgba(0, 0, 0, 0.15);
+  --shadow-elevated: 0 30px 80px rgba(0, 0, 0, 0.2);
 }
 
-/* Smooth Scroll Behavior */
+/* Dark mode variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 20px 60px rgba(0, 0, 0, 0.4);
+    --shadow-elevated: 0 30px 80px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Custom theme class overrides */
+[data-theme='light'] {
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+}
+
+/* Smooth scrolling with reduced motion support */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
-/* Disable smooth scroll for users who prefer reduced motion */
 @media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-/* Custom Scrollbar Styling */
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgb(243, 244, 246);
-}
-
-.dark ::-webkit-scrollbar-track {
-    background: rgb(17, 24, 39);
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgb(209, 213, 219);
-    border-radius: 5px;
-}
-
-.dark ::-webkit-scrollbar-thumb {
-    background: rgb(55, 65, 81);
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgb(156, 163, 175);
-}
-
-.dark ::-webkit-scrollbar-thumb:hover {
-    background: rgb(75, 85, 99);
-}
-
-/* Parallax Container Styles */
-.parallax-layer {
-    will-change: transform;
-}
-
-/* Smooth transitions for parallax */
-@media (prefers-reduced-motion: no-preference) {
-    .parallax-layer {
-        transition: transform 0.1s ease-out;
-    }
-}
-
-/* Glassmorphism Card Effect */
-.glass-card {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.dark .glass-card {
-    background: rgba(17, 24, 39, 0.8);
-    border: 1px solid rgba(55, 65, 81, 0.2);
-}
-
-/* Fade-in animation for sections */
+/* Custom animations */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animate-fade-in-up {
-    animation: fadeInUp 0.6s ease-out forwards;
-}
-
-/* Section visibility */
-.section-hidden {
+  from {
     opacity: 0;
     transform: translateY(30px);
-}
-
-.section-visible {
+  }
+  to {
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
 }
 
-/* Skill bar animation */
-@keyframes fillBar {
-    from {
-        width: 0;
-    }
-    to {
-        width: 100%;
-    }
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
-.skill-bar-fill {
-    animation: fillBar 1.5s ease-out forwards;
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* Animation utilities */
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.6s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+/* Stagger animation delays */
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-400 {
+  animation-delay: 400ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+/* Custom gradient backgrounds */
+.gradient-primary {
+  background: var(--gradient-primary);
+}
+
+.gradient-secondary {
+  background: var(--gradient-secondary);
+}
+
+.gradient-accent {
+  background: var(--gradient-accent);
+}
+
+/* Glass morphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@media (prefers-color-scheme: dark) {
+  .glass {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Custom shadows */
+.shadow-soft {
+  box-shadow: var(--shadow-soft);
+}
+
+.shadow-medium {
+  box-shadow: var(--shadow-medium);
+}
+
+.shadow-elevated {
+  box-shadow: var(--shadow-elevated);
+}
+
+/* Parallax layer utilities */
+.parallax-layer {
+  will-change: transform;
+}
+
+/* Section spacing */
+.section-padding {
+  @apply py-20 md:py-32;
 }
 
 /* Focus visible for accessibility */
 *:focus-visible {
-    outline: 2px solid rgb(59, 130, 246);
-    outline-offset: 2px;
+  outline: 2px solid #667eea;
+  outline-offset: 4px;
+  border-radius: 4px;
 }
 
-.dark *:focus-visible {
-    outline-color: rgb(96, 165, 250);
+/* Custom scrollbar (webkit) */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-/* Skip link styles */
-.skip-link {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    background: rgb(59, 130, 246);
-    color: white;
-    padding: 8px 16px;
-    text-decoration: none;
-    z-index: 100;
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
-.skip-link:focus {
-    top: 0;
+::-webkit-scrollbar-thumb {
+  background: #667eea;
+  border-radius: 5px;
 }
+
+::-webkit-scrollbar-thumb:hover {
+  background: #764ba2;
+}
+
+/* Selection color */
+::selection {
+  background-color: #667eea;
+  color: white;
+}
+

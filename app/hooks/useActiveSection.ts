@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react'
 
-export function useSectionObserver(sectionIds: string[]) {
+/**
+ * Hook to track which section is currently active in the viewport
+ * Uses IntersectionObserver for performance
+ */
+export function useActiveSection(sectionIds: string[]) {
   const [activeSection, setActiveSection] = useState<string>(
     sectionIds[0] || '',
   )
@@ -8,7 +12,7 @@ export function useSectionObserver(sectionIds: string[]) {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '-20% 0px -70% 0px', // Trigger when section is in the middle third of viewport
+      rootMargin: '-50% 0px -50% 0px', // Trigger when section crosses the middle of viewport
       threshold: 0,
     }
 
@@ -31,7 +35,12 @@ export function useSectionObserver(sectionIds: string[]) {
     })
 
     return () => {
-      observer.disconnect()
+      sectionIds.forEach((id) => {
+        const element = document.getElementById(id)
+        if (element) {
+          observer.unobserve(element)
+        }
+      })
     }
   }, [sectionIds])
 

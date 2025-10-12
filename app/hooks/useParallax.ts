@@ -1,34 +1,31 @@
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState } from 'react'
 
 /**
- * useParallax Hook
- * Creates parallax effect on scroll with performance optimizations
- * Automatically disables on mobile and for users with reduced motion preference
+ * Hook to provide parallax scroll offset
+ * Respects prefers-reduced-motion
  */
-interface ParallaxOptions {
-  speed?: number // Multiplier for parallax effect (0.1 - 1.0)
-  disabled?: boolean // Manually disable parallax
-}
-
-export function useParallax({
-  speed = 0.5,
-  disabled = false,
-}: ParallaxOptions = {}) {
-  const [offset, setOffset] = useState(0)
-  const [isDisabled, setIsDisabled] = useState(disabled)
+export function useParallax() {
+  const [scrollY, setScrollY] = useState(0)
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
 
   useEffect(() => {
     // Check for reduced motion preference
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)',
-    ).matches
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setPrefersReducedMotion(mediaQuery.matches)
 
-    // Check for small screen (mobile)
-    const isMobile = window.matchMedia('(max-width: 768px)').matches
+    const handleChange = (e: MediaQueryListEvent) => {
+      setPrefersReducedMotion(e.matches)
+    }
 
-    // Disable parallax if user prefers reduced motion or on mobile
-    if (prefersReducedMotion || isMobile || disabled) {
-      setIsDisabled(true)
+    mediaQuery.addEventListener('change', handleChange)
+
+    return () => {
+      mediaQuery.removeEventListener('change', handleChange)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (prefersReducedMotion) {
       return
     }
 
@@ -37,7 +34,7 @@ export function useParallax({
     const handleScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          setOffset(window.pageYOffset)
+          setScrollY(window.scrollY)
           ticking = false
         })
         ticking = true
@@ -45,28 +42,17 @@ export function useParallax({
     }
 
     window.addEventListener('scroll', handleScroll, { passive: true })
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [prefersReducedMotion])
 
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [disabled])
-
-  const transform = useCallback(
-    (multiplier = 1) => {
-      if (isDisabled) return 'translateY(0)'
-      const yOffset = offset * speed * multiplier
-      return `translate3d(0, ${yOffset}px, 0)`
-    },
-    [offset, speed, isDisabled],
-  )
-
-  return {
-    offset,
-    transform,
-    isDisabled,
-    style: (multiplier = 1) => ({
-      transform: transform(multiplier),
-      willChange: isDisabled ? 'auto' : 'transform',
-    }),
+  /**
+   * Calculate parallax offset for a given speed multiplier
+   * @param speed - Lower values move slower (0.5 = half speed)
+   */
+  const getParallaxOffset = (speed: number = 0.5) => {
+    if (prefersReducedMotion) return 0
+    return scrollY * speed
   }
+
+  return { scrollY, getParallaxOffset, prefersReducedMotion }
 }

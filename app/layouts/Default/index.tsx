@@ -1,16 +1,9 @@
 import { Outlet } from 'react-router'
 
-import { Footer } from './components/footer'
-import { Header } from './components/header'
-
+/**
+ * Default layout wrapper
+ * Simply renders the page content
+ */
 export default function DefaultLayout() {
-  return (
-    <div className="flex min-h-screen flex-col">
-      <Header />
-      <main id="main-content" className="flex-1">
-        <Outlet />
-      </main>
-      <Footer />
-    </div>
-  )
+  return <Outlet />
 }
