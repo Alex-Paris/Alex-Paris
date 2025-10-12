@@ -1,12 +1,8 @@
 import { Code2, Gamepad2, Palette } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
-import type { PersonalInfo } from '~/data/portfolio'
+import { personalInfo } from '~/data/portfolio'
 import { useParallax } from '~/hooks/useParallax'
-
-interface AboutProps {
-  personalInfo: PersonalInfo
-}
 
 /**
  * About section with parallax effects and bio
@@ -15,7 +11,7 @@ interface AboutProps {
  * - Animated entrance on scroll
  * - Icon highlights
  */
-export default function About({ personalInfo }: AboutProps) {
+export default function About() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
   const { getParallaxOffset } = useParallax()

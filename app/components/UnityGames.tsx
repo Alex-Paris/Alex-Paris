@@ -1,12 +1,8 @@
 import { Play, Maximize2, ExternalLink, Github, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
-import type { UnityGame } from '~/data/portfolio'
+import { type UnityGame, unityGames } from '~/data/portfolio'
 import { useLazyImage } from '~/hooks/useLazyImage'
-
-interface UnityGamesProps {
-  games: UnityGame[]
-}
 
 interface GameCardProps {
   game: UnityGame
@@ -300,7 +296,7 @@ function UnityPlayerModal({
  * - WebGL and external link support
  * - Featured games
  */
-export default function UnityGames({ games }: UnityGamesProps) {
+export default function UnityGames() {
   const [isVisible, setIsVisible] = useState(false)
   const [selectedGame, setSelectedGame] = useState<UnityGame | null>(null)
   const sectionRef = useRef<HTMLElement>(null)
@@ -362,7 +358,7 @@ export default function UnityGames({ games }: UnityGamesProps) {
 
           {/* Games grid */}
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {games.map((game, index) => (
+            {unityGames.map((game, index) => (
               <div
                 key={game.id}
                 className={`transition-all duration-700 ${
@@ -377,7 +373,7 @@ export default function UnityGames({ games }: UnityGamesProps) {
             ))}
           </div>
 
-          {games.length === 0 && (
+          {unityGames.length === 0 && (
             <div className="py-12 text-center">
               <p className="text-lg text-slate-300">
                 No games available yet. Check back soon!

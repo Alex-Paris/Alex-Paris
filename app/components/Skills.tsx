@@ -1,13 +1,7 @@
 import { Code2, Gamepad2, Wrench } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-interface SkillsProps {
-  skills: {
-    webDevelopment: string[]
-    gameDevelopment: string[]
-    tools: string[]
-  }
-}
+import { skills } from '~/data/portfolio'
 
 interface SkillCategoryProps {
   icon: React.ReactNode
@@ -71,7 +65,7 @@ function SkillCategory({
  * - Hover effects
  * - Responsive grid layout
  */
-export default function Skills({ skills }: SkillsProps) {
+export default function Skills() {
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
 

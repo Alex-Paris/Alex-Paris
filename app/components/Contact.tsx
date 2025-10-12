@@ -7,13 +7,9 @@ import {
   CheckCircle,
   AlertCircle,
 } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 
-import type { PersonalInfo } from '~/data/portfolio'
-
-interface ContactProps {
-  personalInfo: PersonalInfo
-}
+import { personalInfo } from '~/data/portfolio'
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -25,7 +21,7 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
  * - Animated entrance
  * - Form submission handling
  */
-export default function Contact({ personalInfo }: ContactProps) {
+export default function Contact() {
   const [isVisible, setIsVisible] = useState(false)
   const [formStatus, setFormStatus] = useState<FormStatus>('idle')
   const [formData, setFormData] = useState({
@@ -98,19 +94,19 @@ export default function Contact({ personalInfo }: ContactProps) {
       href: `mailto:${personalInfo.email}`,
       color: 'hover:text-red-500',
     },
-    personalInfo.github && {
+    {
       icon: <Github size={24} />,
       label: 'GitHub',
       href: personalInfo.github,
       color: 'hover:text-slate-700 dark:hover:text-white',
     },
-    personalInfo.linkedin && {
+    {
       icon: <Linkedin size={24} />,
       label: 'LinkedIn',
       href: personalInfo.linkedin,
       color: 'hover:text-blue-600',
     },
-    personalInfo.twitter && {
+    {
       icon: <Twitter size={24} />,
       label: 'Twitter',
       href: personalInfo.twitter,
@@ -243,7 +239,7 @@ export default function Contact({ personalInfo }: ContactProps) {
 
               {formStatus === 'success' && (
                 <p className="text-center text-sm text-green-600 dark:text-green-400">
-                  Thank you! I'll get back to you soon.
+                  Thank you! I&#39;ll get back to you soon.
                 </p>
               )}
 
@@ -266,12 +262,12 @@ export default function Contact({ personalInfo }: ContactProps) {
             <div className="flex h-full flex-col justify-between rounded-2xl bg-slate-50 p-8 dark:bg-slate-800">
               <div>
                 <h3 className="mb-4 text-2xl font-bold text-slate-900 dark:text-white">
-                  Let's Connect
+                  Let&#39;s Connect
                 </h3>
                 <p className="mb-8 leading-relaxed text-slate-600 dark:text-slate-400">
-                  I'm always interested in hearing about new projects,
+                  I&#39;m always interested in hearing about new projects,
                   collaboration opportunities, or just having a chat about web
-                  development and game design. Don't hesitate to reach out!
+                  development and game design. Don&#39;t hesitate to reach out!
                 </p>
 
                 <div className="mb-8 space-y-4">
@@ -295,7 +291,7 @@ export default function Contact({ personalInfo }: ContactProps) {
                   Find me online
                 </h4>
                 <div className="flex gap-4">
-                  {socialLinks.map((link: any) => (
+                  {socialLinks.map((link) => (
                     <a
                       key={link.label}
                       href={link.href}

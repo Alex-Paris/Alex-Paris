@@ -8,7 +8,6 @@ import Nav from '~/components/Nav'
 import Projects from '~/components/Projects'
 import Skills from '~/components/Skills'
 import UnityGames from '~/components/UnityGames'
-import { personalInfo, webProjects, unityGames, skills } from '~/data/portfolio'
 import { useParallax } from '~/hooks/useParallax'
 
 /**
@@ -41,12 +40,12 @@ export default function Home() {
 
       {/* Main content sections */}
       <main>
-        <Hero personalInfo={personalInfo} imageSrc="/images/profile.jpg" />
-        <About personalInfo={personalInfo} />
-        <Projects projects={webProjects} />
-        <UnityGames games={unityGames} />
-        <Skills skills={skills} />
-        <Contact personalInfo={personalInfo} />
+        <Hero />
+        <About />
+        <Projects />
+        <UnityGames />
+        <Skills />
+        <Contact />
       </main>
 
       {/* Footer */}

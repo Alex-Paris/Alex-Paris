@@ -1,12 +1,7 @@
 import { ArrowDown } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
-import type { PersonalInfo } from '~/data/portfolio'
-
-interface HeroProps {
-  personalInfo: PersonalInfo
-  imageSrc?: string
-}
+import { personalInfo } from '~/data/portfolio'
 
 /**
  * Hero section with animated entrance and SVG-masked portrait
@@ -16,10 +11,7 @@ interface HeroProps {
  * - Responsive layout
  * - Smooth scroll to next section
  */
-export default function Hero({
-  personalInfo,
-  imageSrc = '/images/profile.jpg',
-}: HeroProps) {
+export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)
 
   useEffect(() => {
@@ -173,7 +165,7 @@ export default function Hero({
 
                   {/* Image with clip path */}
                   <image
-                    href={imageSrc}
+                    href="/images/profile.jpg"
                     width="100%"
                     height="100%"
                     preserveAspectRatio="xMidYMid slice"
@@ -190,19 +182,6 @@ export default function Hero({
                     className="pointer-events-none"
                   />
                 </svg>
-
-                {/* Fallback for browsers without SVG support (uses CSS clip-path) */}
-                <noscript>
-                  <img
-                    src={imageSrc}
-                    alt={`Portrait of ${personalInfo.name}`}
-                    className="h-64 w-64 object-cover md:h-80 md:w-80 lg:h-96 lg:w-96"
-                    style={{
-                      clipPath:
-                        'polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%)',
-                    }}
-                  />
-                </noscript>
 
                 {/* Decorative elements */}
                 <div className="absolute -inset-4 -z-10 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 opacity-20 blur-2xl transition-opacity duration-500 group-hover:opacity-30" />

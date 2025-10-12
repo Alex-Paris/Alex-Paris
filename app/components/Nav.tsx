@@ -1,5 +1,5 @@
 import { Menu, X, Moon, Sun } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { useActiveSection } from '~/hooks/useActiveSection'
 import { useTheme } from '~/hooks/useTheme'

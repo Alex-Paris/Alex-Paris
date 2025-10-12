@@ -1,12 +1,8 @@
 import { ExternalLink, Github, ChevronDown } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
-import type { WebProject } from '~/data/portfolio'
+import { type WebProject, webProjects } from '~/data/portfolio'
 import { useLazyImage } from '~/hooks/useLazyImage'
-
-interface ProjectsProps {
-  projects: WebProject[]
-}
 
 interface ProjectCardProps {
   project: WebProject
@@ -131,7 +127,7 @@ function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
  * - Featured/All toggle
  * - Project detail modal
  */
-export default function Projects({ projects }: ProjectsProps) {
+export default function Projects() {
   const [isVisible, setIsVisible] = useState(false)
   const [filter, setFilter] = useState<'all' | 'featured'>('all')
   const [selectedTech, setSelectedTech] = useState<string | null>(null)
@@ -164,10 +160,10 @@ export default function Projects({ projects }: ProjectsProps) {
   }, [])
 
   // Get all unique technologies
-  const allTech = Array.from(new Set(projects.flatMap((p) => p.tech))).sort()
+  const allTech = Array.from(new Set(webProjects.flatMap((p) => p.tech))).sort()
 
   // Filter projects
-  const filteredProjects = projects.filter((project) => {
+  const filteredProjects = webProjects.filter((project) => {
     if (filter === 'featured' && !project.featured) return false
     if (selectedTech && !project.tech.includes(selectedTech)) return false
     return true
@@ -191,8 +187,8 @@ export default function Projects({ projects }: ProjectsProps) {
           </h2>
           <div className="mx-auto mb-6 h-1 w-24 rounded-full bg-gradient-to-r from-purple-600 to-blue-600" />
           <p className="mx-auto max-w-2xl text-lg text-slate-600 dark:text-slate-400">
-            A showcase of web applications I've built using modern technologies
-            and best practices
+            A showcase of web applications I&#39;ve built using modern
+            technologies and best practices
           </p>
         </div>
 
