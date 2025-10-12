@@ -9,7 +9,7 @@ import { ContactSection } from './section/contact'
 import { GamesSection } from './section/games'
 import { HeroSection } from './section/hero'
 import { ProjectsSection } from './section/projects'
-import { SkillsSection } from './section/SkillsSection'
+import { SkillsSection } from './section/skills'
 
 export function meta() {
   return generateMeta({

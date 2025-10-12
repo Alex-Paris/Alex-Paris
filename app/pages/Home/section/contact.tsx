@@ -11,9 +11,7 @@ export function ContactSection() {
       id="contact"
       ref={ref}
       isInView={isInView}
-      className={
-        'bg-gradient-to-b from-white to-blue-50 py-20 transition-all duration-700 dark:from-gray-950 dark:to-gray-900'
-      }
+      className="bg-gradient-to-b from-white to-blue-50 py-20 transition-all duration-700 dark:from-gray-950 dark:to-gray-900"
     >
       <Container size="md">
         <div className="space-y-12">

@@ -14,9 +14,7 @@ export function GamesSection() {
       id="games"
       ref={ref}
       isInView={isInView}
-      className={
-        'relative overflow-hidden bg-gradient-to-b from-blue-50 to-purple-50 py-20 transition-all duration-700 dark:from-gray-900 dark:to-gray-950'
-      }
+      className="relative overflow-hidden bg-gradient-to-b from-blue-50 to-purple-50 py-20 transition-all duration-700 dark:from-gray-900 dark:to-gray-950"
     >
       {/* Subtle parallax background decoration */}
       <div

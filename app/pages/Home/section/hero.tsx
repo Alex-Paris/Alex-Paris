@@ -1,6 +1,6 @@
 import { ArrowDown } from 'lucide-react'
 
-import { Button } from '~/components/ui/Button'
+import { Button } from '~/components/ui/button'
 import { Container } from '~/components/ui/container'
 import { personalInfo } from '~/data/portfolio'
 import { useParallax } from '~/hooks/useParallax'

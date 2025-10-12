@@ -4,6 +4,7 @@ import { Container } from '~/components/ui/container'
 import { Section } from '~/components/ui/section'
 import { skills } from '~/data/portfolio'
 import { useInViewAnimation } from '~/hooks/useInViewAnimation'
+import { cn } from '~/lib/cn'
 
 export function SkillsSection() {
   const { ref, isInView } = useInViewAnimation()
@@ -55,7 +56,7 @@ export function SkillsSection() {
       id="skills"
       ref={ref}
       isInView={isInView}
-      className={'bg-white py-20 transition-all duration-700 dark:bg-gray-950'}
+      className="bg-white py-20 transition-all duration-700 dark:bg-gray-950"
     >
       <Container>
         <div className="space-y-12">
@@ -79,11 +80,14 @@ export function SkillsSection() {
               return (
                 <div
                   key={category.title}
-                  className={`rounded-lg border border-gray-200 p-6 dark:border-gray-800 ${colors.bg} transition-transform duration-300 hover:scale-105`}
+                  className={cn(
+                    'rounded-lg border border-gray-200 p-6 transition-transform duration-300 hover:scale-105 dark:border-gray-800',
+                    colors.bg,
+                  )}
                 >
                   <div className="mb-6 flex items-center gap-3">
-                    <Icon className={`h-6 w-6 ${colors.text}`} />
-                    <h3 className={`text-xl font-semibold ${colors.text}`}>
+                    <Icon className={cn('h-6 w-6', colors.text)} />
+                    <h3 className={cn('text-xl font-semibold', colors.text)}>
                       {category.title}
                     </h3>
                   </div>
@@ -98,7 +102,10 @@ export function SkillsSection() {
                         }}
                       >
                         <span
-                          className={`h-2 w-2 ${colors.dot} mr-3 rounded-full transition-transform duration-200 group-hover:scale-150`}
+                          className={cn(
+                            'mr-3 h-2 w-2 rounded-full transition-transform duration-200 group-hover:scale-150',
+                            colors.dot,
+                          )}
                         />
                         {skill}
                       </li>

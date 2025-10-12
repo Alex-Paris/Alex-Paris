@@ -11,7 +11,7 @@ export function AboutSection() {
       id="about"
       ref={ref}
       isInView={isInView}
-      className={'bg-white py-20 transition-all duration-700 dark:bg-gray-950'}
+      className="bg-white py-20 transition-all duration-700 dark:bg-gray-950"
     >
       <Container size="md">
         <div className="space-y-12">

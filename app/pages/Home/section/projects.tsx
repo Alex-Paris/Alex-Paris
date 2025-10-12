@@ -14,9 +14,7 @@ export function ProjectsSection() {
       id="projects"
       ref={ref}
       isInView={isInView}
-      className={
-        'relative overflow-hidden bg-gradient-to-b from-white to-blue-50 py-20 transition-all duration-700 dark:from-gray-950 dark:to-gray-900'
-      }
+      className="relative overflow-hidden bg-gradient-to-b from-white to-blue-50 py-20 transition-all duration-700 dark:from-gray-950 dark:to-gray-900"
     >
       {/* Subtle parallax background decoration */}
       <div
