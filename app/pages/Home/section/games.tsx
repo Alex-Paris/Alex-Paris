@@ -1,9 +1,10 @@
-import { UnityGrid } from '~/components/portfolio/UnityGrid'
 import { Container } from '~/components/ui/container'
 import { Section } from '~/components/ui/section'
 import { unityGames } from '~/data/portfolio'
 import { useInViewAnimation } from '~/hooks/useInViewAnimation'
 import { useParallax } from '~/hooks/useParallax'
+
+import { UnityGrid } from '../components/unity-grid'
 
 export function GamesSection() {
   const { ref, isInView } = useInViewAnimation()

@@ -1,10 +1,9 @@
-import { ExternalLink, Github, Play, X } from 'lucide-react'
+import { Github, Play, X } from 'lucide-react'
 import { useState } from 'react'
 
+import { Button, Link } from '~/components/ui/button'
+import { Card } from '~/components/ui/card'
 import type { UnityGame } from '~/data/portfolio'
-
-import { Button } from '../ui/Button'
-import { Card } from '../ui/Card'
 
 export interface UnityCardProps {
   game: UnityGame
@@ -25,7 +24,7 @@ export function UnityCard({ game }: UnityCardProps) {
 
   return (
     <>
-      <Card hover className="flex h-full flex-col">
+      <Card hover="on" className="flex h-full flex-col">
         {/* Game Thumbnail */}
         <div className="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-800">
           <img
@@ -85,24 +84,24 @@ export function UnityCard({ game }: UnityCardProps) {
                 size="sm"
                 onClick={handlePlay}
                 className="flex-1 bg-purple-600 hover:bg-purple-700 dark:bg-purple-500 dark:hover:bg-purple-600"
-                ariaLabel={`Play ${game.title}`}
+                aria-label={`Play ${game.title}`}
               >
                 <Play className="mr-2 h-4 w-4" />
                 Play Game
               </Button>
             )}
             {game.repoUrl && (
-              <Button
+              <Link
                 variant="outline"
                 size="sm"
                 href={game.repoUrl}
-                external
+                isExternal
                 className="flex-1"
-                ariaLabel={`View source code for ${game.title}`}
+                aria-label={`View source code for ${game.title}`}
               >
                 <Github className="mr-2 h-4 w-4" />
                 Code
-              </Button>
+              </Link>
             )}
           </div>
         </div>
@@ -118,7 +117,7 @@ export function UnityCard({ game }: UnityCardProps) {
             className="relative w-full max-w-6xl overflow-hidden rounded-xl bg-white dark:bg-gray-900"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Close Button */}
+            {/* Close Buttonaaaaaa */}
             <button
               onClick={() => setShowModal(false)}
               className="absolute top-4 right-4 z-10 rounded-full bg-red-600 p-2 text-white transition-colors duration-200 hover:bg-red-700"

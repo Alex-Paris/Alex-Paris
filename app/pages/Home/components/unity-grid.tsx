@@ -1,6 +1,6 @@
 import type { UnityGame } from '~/data/portfolio'
 
-import { UnityCard } from './UnityCard'
+import { UnityCard } from './unity-card'
 
 export interface UnityGridProps {
   games: UnityGame[]

@@ -1,9 +1,8 @@
 import { ExternalLink, Github } from 'lucide-react'
 
+import { Link } from '~/components/ui/button'
+import { Card } from '~/components/ui/card'
 import type { WebProject } from '~/data/portfolio'
-
-import { Button } from '../ui/Button'
-import { Card } from '../ui/Card'
 
 export interface ProjectCardProps {
   project: WebProject
@@ -11,7 +10,7 @@ export interface ProjectCardProps {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <Card hover className="flex h-full flex-col">
+    <Card hover="on" className="flex h-full flex-col">
       {/* Project Image */}
       <div className="relative h-48 overflow-hidden bg-gray-200 dark:bg-gray-800">
         <img
@@ -53,30 +52,30 @@ export function ProjectCard({ project }: ProjectCardProps) {
         {/* Action Buttons */}
         <div className="mt-auto flex gap-3 pt-4">
           {project.liveUrl && (
-            <Button
+            <Link
               variant="primary"
               size="sm"
               href={project.liveUrl}
-              external
+              isExternal
               className="flex-1"
-              ariaLabel={`View live demo of ${project.title}`}
+              aria-label={`View live demo of ${project.title}`}
             >
               <ExternalLink className="mr-2 h-4 w-4" />
               Live Demo
-            </Button>
+            </Link>
           )}
           {project.repoUrl && (
-            <Button
+            <Link
               variant="outline"
               size="sm"
               href={project.repoUrl}
-              external
+              isExternal
               className="flex-1"
-              ariaLabel={`View source code for ${project.title}`}
+              aria-label={`View source code for ${project.title}`}
             >
               <Github className="mr-2 h-4 w-4" />
               Code
-            </Button>
+            </Link>
           )}
         </div>
       </div>

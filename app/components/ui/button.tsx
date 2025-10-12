@@ -38,7 +38,7 @@ const Button = React.forwardRef<
 ))
 Button.displayName = 'Button'
 
-interface LinkProps extends React.HTMLAttributes<HTMLAnchorElement> {
+interface LinkProps extends React.ComponentPropsWithoutRef<'a'> {
   isExternal?: boolean
 }
 

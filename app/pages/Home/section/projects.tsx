@@ -1,9 +1,10 @@
-import { ProjectsGrid } from '~/components/portfolio/ProjectsGrid'
 import { Container } from '~/components/ui/container'
 import { Section } from '~/components/ui/section'
 import { webProjects } from '~/data/portfolio'
 import { useInViewAnimation } from '~/hooks/useInViewAnimation'
 import { useParallax } from '~/hooks/useParallax'
+
+import { ProjectsGrid } from '../components/project-grid'
 
 export function ProjectsSection() {
   const { ref, isInView } = useInViewAnimation()

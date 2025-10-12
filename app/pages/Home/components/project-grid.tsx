@@ -1,6 +1,6 @@
 import type { WebProject } from '~/data/portfolio'
 
-import { ProjectCard } from './ProjectCard'
+import { ProjectCard } from './project-card'
 
 export interface ProjectsGridProps {
   projects: WebProject[]
