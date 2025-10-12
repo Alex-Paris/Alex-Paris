@@ -1,5 +1,6 @@
 import { UnityGrid } from '~/components/portfolio/UnityGrid'
 import { Container } from '~/components/ui/Container'
+import { Section } from '~/components/ui/section'
 import { unityGames } from '~/data/portfolio'
 import { useInViewAnimation } from '~/hooks/useInViewAnimation'
 import { useParallax } from '~/hooks/useParallax'
@@ -9,10 +10,13 @@ export function GamesSection() {
   const parallax = useParallax({ speed: 0.1 })
 
   return (
-    <section
+    <Section
       id="games"
       ref={ref}
-      className={`relative overflow-hidden bg-gradient-to-b from-blue-50 to-purple-50 py-20 transition-all duration-700 dark:from-gray-900 dark:to-gray-950 ${isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+      isInView={isInView}
+      className={
+        'relative overflow-hidden bg-gradient-to-b from-blue-50 to-purple-50 py-20 transition-all duration-700 dark:from-gray-900 dark:to-gray-950'
+      }
     >
       {/* Subtle parallax background decoration */}
       <div
@@ -39,6 +43,6 @@ export function GamesSection() {
           <UnityGrid games={unityGames} />
         </div>
       </Container>
-    </section>
+    </Section>
   )
 }

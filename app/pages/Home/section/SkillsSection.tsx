@@ -1,6 +1,7 @@
 import { Code, Gamepad2, Wrench } from 'lucide-react'
 
 import { Container } from '~/components/ui/Container'
+import { Section } from '~/components/ui/section'
 import { skills } from '~/data/portfolio'
 import { useInViewAnimation } from '~/hooks/useInViewAnimation'
 
@@ -50,10 +51,11 @@ export function SkillsSection() {
   }
 
   return (
-    <section
+    <Section
       id="skills"
       ref={ref}
-      className={`bg-white py-20 transition-all duration-700 dark:bg-gray-950 ${isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+      isInView={isInView}
+      className={'bg-white py-20 transition-all duration-700 dark:bg-gray-950'}
     >
       <Container>
         <div className="space-y-12">
@@ -108,6 +110,6 @@ export function SkillsSection() {
           </div>
         </div>
       </Container>
-    </section>
+    </Section>
   )
 }

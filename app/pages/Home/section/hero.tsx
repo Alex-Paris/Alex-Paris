@@ -6,7 +6,7 @@ import { personalInfo } from '~/data/portfolio'
 import { useParallax } from '~/hooks/useParallax'
 import { scrollToSection } from '~/utils/scroll'
 
-export function ParallaxHero() {
+export function HeroSection() {
   const parallax = useParallax({ speed: 0.3 })
   const parallaxSlow = useParallax({ speed: 0.15 })
 

@@ -4,11 +4,11 @@ import { personalInfo } from '~/data/portfolio'
 import { generateMeta } from '~/utils/meta'
 import { handleHashNavigation } from '~/utils/scroll'
 
-import { AboutSection } from './section/AboutSection'
-import { ContactSection } from './section/ContactSection'
-import { GamesSection } from './section/GamesSection'
-import { ParallaxHero } from './section/ParallaxHero'
-import { ProjectsSection } from './section/ProjectsSection'
+import { AboutSection } from './section/about'
+import { ContactSection } from './section/contact'
+import { GamesSection } from './section/games'
+import { HeroSection } from './section/hero'
+import { ProjectsSection } from './section/projects'
 import { SkillsSection } from './section/SkillsSection'
 
 export function meta() {
@@ -36,7 +36,7 @@ export default function Home() {
 
   return (
     <div className="single-page-portfolio">
-      <ParallaxHero />
+      <HeroSection />
       <AboutSection />
       <ProjectsSection />
       <GamesSection />

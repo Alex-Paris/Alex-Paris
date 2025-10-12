@@ -1,8 +1,7 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState } from 'react'
 
-import Button from '../../../components/Button';
-import Icon, { IconProps } from '../../../components/Unicons';
-
+import Button from '../../../components/Button'
+import Icon, { IconProps } from '../../../components/Unicons'
 import {
   Services,
   ServicesContainer,
@@ -13,18 +12,18 @@ import {
   ServicesModalIcon,
   ServicesModalService,
   ServicesModalServices,
-} from './styles';
+} from './styles'
 
 interface Service {
-  title: string;
-  subtitle: string;
-  icon: IconProps['icon'];
-  items: ServiceItem[];
-  isOpened?: boolean;
+  title: string
+  subtitle: string
+  icon: IconProps['icon']
+  items: ServiceItem[]
+  isOpened?: boolean
 }
 
 interface ServiceItem {
-  description: string;
+  description: string
 }
 
 const DashboardServices: React.FC = () => {
@@ -77,25 +76,25 @@ const DashboardServices: React.FC = () => {
       icon: 'UilTvRetro',
       items: [
         {
-          description: 'I can create basic 2D games.',
+          description: 'I can create basic 2D games.tsx.',
         },
         {
           description: 'I can develop to different type of platforms.',
         },
       ],
     },
-  ]);
+  ])
 
   const handleShowServicesList = useCallback(
     (service: Service) => {
-      const indexService = services.findIndex((p) => p.title == service.title);
+      const indexService = services.findIndex((p) => p.title == service.title)
 
-      services[indexService].isOpened = !service.isOpened;
+      services[indexService].isOpened = !service.isOpened
 
-      setServices([...services]);
+      setServices([...services])
     },
-    [services]
-  );
+    [services],
+  )
 
   return (
     <Services id="services">
@@ -152,7 +151,7 @@ const DashboardServices: React.FC = () => {
         ))}
       </ServicesContainer>
     </Services>
-  );
-};
+  )
+}
 
-export default DashboardServices;
+export default DashboardServices

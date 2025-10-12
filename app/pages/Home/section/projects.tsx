@@ -1,5 +1,6 @@
 import { ProjectsGrid } from '~/components/portfolio/ProjectsGrid'
 import { Container } from '~/components/ui/Container'
+import { Section } from '~/components/ui/section'
 import { webProjects } from '~/data/portfolio'
 import { useInViewAnimation } from '~/hooks/useInViewAnimation'
 import { useParallax } from '~/hooks/useParallax'
@@ -9,10 +10,13 @@ export function ProjectsSection() {
   const parallax = useParallax({ speed: 0.1 })
 
   return (
-    <section
+    <Section
       id="projects"
       ref={ref}
-      className={`relative overflow-hidden bg-gradient-to-b from-white to-blue-50 py-20 transition-all duration-700 dark:from-gray-950 dark:to-gray-900 ${isInView ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+      isInView={isInView}
+      className={
+        'relative overflow-hidden bg-gradient-to-b from-white to-blue-50 py-20 transition-all duration-700 dark:from-gray-950 dark:to-gray-900'
+      }
     >
       {/* Subtle parallax background decoration */}
       <div
@@ -39,6 +43,6 @@ export function ProjectsSection() {
           <ProjectsGrid projects={webProjects} />
         </div>
       </Container>
-    </section>
+    </Section>
   )
 }
