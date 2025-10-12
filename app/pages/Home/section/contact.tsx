@@ -1,5 +1,5 @@
 import { ContactForm } from '~/components/portfolio/ContactForm'
-import { Container } from '~/components/ui/Container'
+import { Container } from '~/components/ui/container'
 import { Section } from '~/components/ui/section'
 import { useInViewAnimation } from '~/hooks/useInViewAnimation'
 

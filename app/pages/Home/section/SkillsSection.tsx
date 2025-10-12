@@ -1,6 +1,6 @@
 import { Code, Gamepad2, Wrench } from 'lucide-react'
 
-import { Container } from '~/components/ui/Container'
+import { Container } from '~/components/ui/container'
 import { Section } from '~/components/ui/section'
 import { skills } from '~/data/portfolio'
 import { useInViewAnimation } from '~/hooks/useInViewAnimation'

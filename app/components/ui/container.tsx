@@ -17,12 +17,12 @@ const style = tv({
   },
 })
 
-const Aaaaaaa = React.forwardRef<
+const Container = React.forwardRef<
   HTMLDivElement,
   React.ComponentPropsWithoutRef<'div'> & VariantProps<typeof style>
 >(({ className, size, ...props }, ref) => (
   <div ref={ref} className={style({ className, size })} {...props} />
 ))
-Aaaaaaa.displayName = 'Aaaaaaa'
+Container.displayName = 'Container'
 
-export { Aaaaaaa }
+export { Container }
