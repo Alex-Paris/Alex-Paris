@@ -3,7 +3,7 @@ import React, { useState, type FormEvent } from 'react'
 
 import { personalInfo } from '~/data/portfolio'
 
-import { Button } from '../ui/Button'
+import { Button } from '../ui/button'
 
 /**
  * ContactForm Component

@@ -1,11 +1,10 @@
 import { Menu, X } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
+import { Container } from '~/components/ui/container'
 import { personalInfo } from '~/data/portfolio'
 import { useSectionObserver } from '~/hooks/useSectionObserver'
 import { scrollToSection } from '~/utils/scroll'
-
-import { Container } from '../ui/Container'
 
 const sections = [
   { name: 'Home', id: 'hero' },
@@ -16,7 +15,7 @@ const sections = [
   { name: 'Contact', id: 'contact' },
 ]
 
-export function SinglePageNavigation() {
+export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const activeSection = useSectionObserver(sections.map((s) => s.id))
 

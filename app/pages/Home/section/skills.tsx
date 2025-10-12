@@ -60,7 +60,7 @@ export function SkillsSection() {
     >
       <Container>
         <div className="space-y-12">
-          {/* Section Header */}
+          {/* Section header.tsx */}
           <div className="text-center">
             <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
               Skills & Technologies

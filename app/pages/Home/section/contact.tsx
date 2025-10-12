@@ -15,7 +15,7 @@ export function ContactSection() {
     >
       <Container size="md">
         <div className="space-y-12">
-          {/* Section Header */}
+          {/* Section header.tsx */}
           <div className="text-center">
             <h2 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl dark:text-white">
               Get In Touch

@@ -1,8 +1,7 @@
 import { Github, Linkedin, Mail, Twitter, Gamepad2 } from 'lucide-react'
 
+import { Container } from '~/components/ui/container'
 import { personalInfo } from '~/data/portfolio'
-
-import { Container } from '../ui/Container'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -41,7 +40,7 @@ export function Footer() {
   ].filter((link) => link.show)
 
   return (
-    <footer className="mt-20 border-t border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
+    <footer className="border-t border-gray-200 bg-gray-100 dark:border-gray-800 dark:bg-gray-900">
       <Container className="py-12">
         <div className="flex flex-col items-center space-y-6">
           {/* Social Links */}
