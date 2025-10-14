@@ -1,7 +1,6 @@
 /**
  * Portfolio Data
  *
- * TODO: Replace this sample data with your actual projects and games.
  * - Add your own project titles, descriptions, and links
  * - Replace image URLs with your actual screenshots (store in /public/images/)
  * - Update tech stacks to match your projects
@@ -57,11 +56,10 @@ export const personalInfo: PersonalInfo = {
     'With expertise in React, Node.js, TypeScript, and Unity, I bridge the gap between traditional web development and interactive 3D experiences.',
     "When I'm not coding, I'm designing game mechanics, optimizing performance, or exploring new technologies.",
   ],
-  email: 'alex@example.com', // TODO: Replace with your email
-  github: 'https://github.com/yourusername', // TODO: Replace
-  linkedin: 'https://linkedin.com/in/yourprofile', // TODO: Replace
-  twitter: 'https://twitter.com/yourhandle', // TODO: Replace (optional)
-  itch: 'https://yourusername.itch.io', // TODO: Replace (optional)
+  email: 'me@alexparis.dev',
+  github: 'https://github.com/Alex-Paris',
+  linkedin: 'https://www.linkedin.com/in/alex-paris',
+  // itch: 'https://yourusername.itch.io',
 }
 
 // TODO: Replace with your actual web projects
@@ -157,18 +155,20 @@ export const skills = {
     'PostgreSQL / MongoDB',
     'REST APIs / GraphQL',
     'Tailwind CSS / CSS',
+    'Prismic / Strapi',
   ],
   gameDevelopment: [
     'Unity Engine',
     'C# Programming',
     'Game Physics',
-    '3D Modeling (Blender)',
+    // '3D Modeling (Blender)',
     'Shader Programming',
     'WebGL Deployment',
   ],
   tools: [
     'Git / GitHub',
     'Docker',
+    'AWS',
     'VS Code',
     'Figma',
     'Photoshop',

@@ -118,6 +118,21 @@ html {
   }
 }
 
+@keyframes blob-morph {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+  }
+  25% {
+    transform: scale(1.05) rotate(1deg);
+  }
+  50% {
+    transform: scale(0.98) rotate(-1deg);
+  }
+  75% {
+    transform: scale(1.02) rotate(0.5deg);
+  }
+}
+
 /* Animation utilities */
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
@@ -145,6 +160,10 @@ html {
 
 .animate-pulse-slow {
   animation: pulse-slow 4s ease-in-out infinite;
+}
+
+.animate-blob-morph {
+  animation: blob-morph 8s ease-in-out infinite;
 }
 
 /* Stagger animation delays */

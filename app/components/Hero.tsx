@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 
 import { personalInfo } from '~/data/portfolio'
 
+import BlobMask from './BlobMask'
+
 /**
  * Hero section with animated entrance and SVG-masked portrait
  * Features:
@@ -114,7 +116,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Portrait with SVG mask */}
+          {/* Portrait with custom blob mask */}
           <div className="flex w-full justify-center md:w-1/2 md:justify-end">
             <div
               className={`transition-all delay-200 duration-1000 ${
@@ -122,69 +124,30 @@ export default function Hero() {
               }`}
             >
               <div className="group relative">
-                {/* SVG mask version (modern browsers) */}
-                <svg
-                  viewBox="0 0 400 400"
-                  className="h-64 w-64 drop-shadow-2xl md:h-80 md:w-80 lg:h-96 lg:w-96"
-                  aria-label={`Portrait of ${personalInfo.name}`}
+                {/* Custom blob mask matching the provided SVG */}
+                <BlobMask
+                  className="h-64 w-64 drop-shadow-2xl md:h-80 md:w-80 lg:h-[30rem] lg:w-[30rem]"
+                  animated={true}
                 >
-                  <defs>
-                    {/* Organic blob mask */}
-                    <clipPath id="hero-mask">
-                      <path d="M200,50 C280,50 350,100 370,180 C390,260 360,340 280,360 C200,380 120,360 70,280 C20,200 50,100 130,70 C160,60 180,50 200,50 Z">
-                        {/* Subtle animation on the mask path */}
-                        <animate
-                          attributeName="d"
-                          dur="20s"
-                          repeatCount="indefinite"
-                          values="
-                            M200,50 C280,50 350,100 370,180 C390,260 360,340 280,360 C200,380 120,360 70,280 C20,200 50,100 130,70 C160,60 180,50 200,50 Z;
-                            M200,60 C270,40 340,110 360,190 C380,270 350,330 270,370 C190,390 110,350 60,270 C10,190 60,110 140,60 C170,50 180,60 200,60 Z;
-                            M200,50 C280,50 350,100 370,180 C390,260 360,340 280,360 C200,380 120,360 70,280 C20,200 50,100 130,70 C160,60 180,50 200,50 Z
-                          "
-                        />
-                      </path>
-                    </clipPath>
-
-                    {/* Gradient overlay */}
-                    <linearGradient
-                      id="hero-gradient"
-                      x1="0%"
-                      y1="0%"
-                      x2="100%"
-                      y2="100%"
-                    >
-                      <stop offset="0%" stopColor="#667eea" stopOpacity="0.2" />
-                      <stop
-                        offset="100%"
-                        stopColor="#764ba2"
-                        stopOpacity="0.2"
-                      />
-                    </linearGradient>
-                  </defs>
-
-                  {/* Image with clip path */}
                   <image
                     href="/images/profile.jpg"
                     width="100%"
                     height="100%"
                     preserveAspectRatio="xMidYMid slice"
-                    clipPath="url(#hero-mask)"
                     className="transform transition-transform duration-700 group-hover:scale-105"
                   />
 
-                  {/* Decorative gradient overlay */}
+                  {/* Gradient overlay for depth */}
                   <rect
                     width="100%"
                     height="100%"
-                    fill="url(#hero-gradient)"
-                    clipPath="url(#hero-mask)"
+                    fill="url(#blob-gradient)"
                     className="pointer-events-none"
                   />
-                </svg>
+                </BlobMask>
 
                 {/* Decorative elements */}
-                <div className="absolute -inset-4 -z-10 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 opacity-20 blur-2xl transition-opacity duration-500 group-hover:opacity-30" />
+                <div className="absolute -inset-4 -z-10 rounded-full bg-gradient-to-r from-pink-600 to-purple-600 opacity-20 blur-2xl transition-opacity duration-500 group-hover:opacity-30" />
               </div>
             </div>
           </div>

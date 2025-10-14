@@ -2,7 +2,6 @@ import {
   Mail,
   Github,
   Linkedin,
-  Twitter,
   Send,
   CheckCircle,
   AlertCircle,
@@ -106,13 +105,13 @@ export default function Contact() {
       href: personalInfo.linkedin,
       color: 'hover:text-blue-600',
     },
-    {
-      icon: <Twitter size={24} />,
-      label: 'Twitter',
-      href: personalInfo.twitter,
-      color: 'hover:text-sky-500',
-    },
-  ].filter(Boolean)
+    // {
+    //   icon: <Twitter size={24} />,
+    //   label: 'Twitter',
+    //   href: personalInfo.twitter,
+    //   color: 'hover:text-sky-500',
+    // },
+  ]
 
   return (
     <section
