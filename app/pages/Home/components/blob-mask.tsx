@@ -1,5 +1,7 @@
 import type { ReactNode } from 'react'
 
+import { cn } from '~/lib/cn'
+
 interface BlobMaskProps {
   children: ReactNode
   className?: string
@@ -24,7 +26,7 @@ export default function BlobMask({
   return (
     <svg
       viewBox="0 0 150 150"
-      className={`blob-mask ${className}`}
+      className={cn('blob-mask', className)}
       xmlns="http://www.w3.org/2000/svg"
       style={{ color }}
     >
@@ -115,7 +117,7 @@ export default function BlobMask({
       {/* Apply clip path to children */}
       <g
         clipPath="url(#custom-blob-mask)"
-        className={animated ? 'blob-animated' : ''}
+        className={cn(animated ? 'blob-animated' : '')}
       >
         {children}
       </g>

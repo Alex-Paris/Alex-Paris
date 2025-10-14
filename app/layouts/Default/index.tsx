@@ -1,9 +1,33 @@
+import { useEffect } from 'react'
 import { Outlet } from 'react-router'
+
+import Footer from '~/components/Footer'
+import Navbar from '~/components/navbar'
+import { useParallax } from '~/hooks/useParallax'
 
 /**
  * Default layout wrapper
  * Simply renders the page content
  */
 export default function DefaultLayout() {
-  return <Outlet />
+  const { prefersReducedMotion } = useParallax()
+
+  useEffect(() => {
+    // Ensure smooth scrolling is enabled
+    document.documentElement.style.scrollBehavior = prefersReducedMotion
+      ? 'auto'
+      : 'smooth'
+
+    return () => {
+      document.documentElement.style.scrollBehavior = 'auto'
+    }
+  }, [prefersReducedMotion])
+
+  return (
+    <div className="min-h-screen bg-white dark:bg-slate-900">
+      <Navbar />
+      <Outlet />
+      <Footer />
+    </div>
+  )
 }

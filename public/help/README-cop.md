@@ -102,7 +102,7 @@ For complete customization guide, deployment instructions, and troubleshooting:
 
 ```
 app/
-├── components/         # UI components (Nav, Hero, Projects, etc.)
+├── components/         # UI components (Navbar, Hero, Projects, etc.)
 ├── hooks/             # Custom React hooks
 ├── data/              # Portfolio data (CUSTOMIZE THIS!)
 ├── pages/             # Page components
@@ -151,7 +151,7 @@ npm run build
 
 1. Create component in `app/components/YourSection.tsx`
 2. Add to `app/pages/Home/index.tsx`
-3. Add nav item in `app/components/Nav.tsx`
+3. Add nav item in `app/components/Navbar.tsx`
 
 ### Customize Animations
 

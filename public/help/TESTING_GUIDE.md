@@ -7,7 +7,7 @@ This guide provides comprehensive testing steps to ensure your portfolio works p
 ### Desktop Testing (1920x1080)
 
 #### Navigation
-- [x] Nav bar is sticky and visible on scroll
+- [x] Navbar bar is sticky and visible on scroll
 - [x] Clicking nav links smoothly scrolls to sections
 - [x] Active nav item updates as you scroll through sections
 - [ ] Theme toggle button switches between light/dark mode

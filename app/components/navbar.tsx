@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 import { useActiveSection } from '~/hooks/useActiveSection'
 import { useTheme } from '~/hooks/useTheme'
+import { cn } from '~/lib/cn'
 
 interface NavItem {
   id: string
@@ -27,7 +28,7 @@ const navItems: NavItem[] = [
  * - Responsive hamburger menu
  * - Keyboard accessible
  */
-export default function Nav() {
+export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const activeSection = useActiveSection(navItems.map((item) => item.id))
@@ -80,11 +81,12 @@ export default function Nav() {
 
   return (
     <nav
-      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ${
+      className={cn(
+        'fixed top-0 right-0 left-0 z-50 transition-all duration-300',
         isScrolled
           ? 'bg-white/90 shadow-lg backdrop-blur-md dark:bg-slate-900/90'
-          : 'bg-transparent'
-      }`}
+          : 'bg-transparent',
+      )}
     >
       <div className="container mx-auto px-6 lg:px-12">
         <div className="flex h-16 items-center justify-between md:h-20">
@@ -103,11 +105,12 @@ export default function Nav() {
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => handleNavClick(e, item.id)}
-                className={`rounded-lg px-4 py-2 font-medium transition-all duration-300 ${
+                className={cn(
+                  'rounded-lg px-4 py-2 font-medium transition-all duration-300',
                   activeSection === item.id
                     ? 'bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400'
-                    : 'text-slate-700 hover:bg-slate-100 hover:text-purple-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-purple-400'
-                }`}
+                    : 'text-slate-700 hover:bg-slate-100 hover:text-purple-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-purple-400',
+                )}
               >
                 {item.label}
               </a>
@@ -156,11 +159,12 @@ export default function Nav() {
 
       {/* Mobile menu */}
       <div
-        className={`absolute top-full right-0 left-0 bg-white shadow-lg transition-all duration-300 md:hidden dark:bg-slate-900 ${
+        className={cn(
+          'absolute top-full right-0 left-0 bg-white shadow-lg transition-all duration-300 md:hidden dark:bg-slate-900',
           isMobileMenuOpen
             ? 'visible translate-y-0 opacity-100'
-            : 'invisible -translate-y-4 opacity-0'
-        }`}
+            : 'invisible -translate-y-4 opacity-0',
+        )}
       >
         <div className="container mx-auto px-6 py-4">
           <div className="flex flex-col space-y-2">
@@ -169,11 +173,12 @@ export default function Nav() {
                 key={item.id}
                 href={`#${item.id}`}
                 onClick={(e) => handleNavClick(e, item.id)}
-                className={`rounded-lg px-4 py-3 font-medium transition-all duration-300 ${
+                className={cn(
+                  'rounded-lg px-4 py-3 font-medium transition-all duration-300',
                   activeSection === item.id
                     ? 'bg-purple-50 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400'
-                    : 'text-slate-700 hover:bg-slate-100 hover:text-purple-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-purple-400'
-                }`}
+                    : 'text-slate-700 hover:bg-slate-100 hover:text-purple-600 dark:text-slate-300 dark:hover:bg-slate-800 dark:hover:text-purple-400',
+                )}
               >
                 {item.label}
               </a>

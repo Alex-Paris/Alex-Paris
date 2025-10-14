@@ -21,7 +21,7 @@ Welcome to your new single-page portfolio! This guide will help you customize an
 ```
 app/
 ├── components/          # Reusable UI components
-│   ├── Nav.tsx         # Sticky navigation with scroll-spy
+│   ├── navbar.tsx         # Sticky navigation with scroll-spy
 │   ├── Hero.tsx        # Hero section with masked image
 │   ├── About.tsx       # About section
 │   ├── Projects.tsx    # Web projects gallery
@@ -434,7 +434,7 @@ If you encounter issues:
 - [x] Parallax is present and respects prefers-reduced-motion
 - [x] Projects render from data/projects.js and images lazy-load
 - [x] UnityGames embeds load only upon play or near viewport
-- [x] Nav updates active link via IntersectionObserver
+- [x] Navbar updates active link via IntersectionObserver
 - [x] Mobile hamburger menu works and is keyboard accessible
 - [x] Integration steps are included
 

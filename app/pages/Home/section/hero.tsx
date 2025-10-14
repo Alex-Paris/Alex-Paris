@@ -2,8 +2,9 @@ import { ArrowDown } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
 import { personalInfo } from '~/data/portfolio'
+import { cn } from '~/lib/cn'
 
-import BlobMask from './BlobMask'
+import BlobMask from '../components/blob-mask'
 
 /**
  * Hero section with animated entrance and SVG-masked portrait
@@ -45,11 +46,12 @@ export default function Hero() {
           {/* Text content */}
           <div className="w-full text-center md:w-1/2 md:text-left">
             <div
-              className={`transition-all duration-700 ${
+              className={cn(
+                'transition-all duration-700',
                 isVisible
                   ? 'translate-y-0 opacity-100'
-                  : 'translate-y-8 opacity-0'
-              }`}
+                  : 'translate-y-8 opacity-0',
+              )}
             >
               <h1 className="mb-6 bg-gradient-to-r from-slate-900 via-purple-900 to-blue-900 bg-clip-text text-5xl leading-tight font-extrabold text-transparent md:text-6xl lg:text-7xl dark:from-white dark:via-purple-200 dark:to-blue-200">
                 Hi — I&#39;m {personalInfo.name}.
@@ -57,11 +59,12 @@ export default function Hero() {
             </div>
 
             <div
-              className={`transition-all delay-150 duration-700 ${
+              className={cn(
+                'transition-all delay-150 duration-700',
                 isVisible
                   ? 'translate-y-0 opacity-100'
-                  : 'translate-y-8 opacity-0'
-              }`}
+                  : 'translate-y-8 opacity-0',
+              )}
             >
               <p className="mb-4 text-2xl font-bold text-slate-700 md:text-3xl lg:text-4xl dark:text-slate-300">
                 {personalInfo.tagline}
@@ -69,11 +72,12 @@ export default function Hero() {
             </div>
 
             <div
-              className={`transition-all delay-300 duration-700 ${
+              className={cn(
+                'transition-all delay-300 duration-700',
                 isVisible
                   ? 'translate-y-0 opacity-100'
-                  : 'translate-y-8 opacity-0'
-              }`}
+                  : 'translate-y-8 opacity-0',
+              )}
             >
               <p className="mx-auto mb-8 max-w-xl text-lg text-slate-600 md:mx-0 md:text-xl dark:text-slate-400">
                 {personalInfo.role}
@@ -81,11 +85,12 @@ export default function Hero() {
             </div>
 
             <div
-              className={`transition-all delay-500 duration-700 ${
+              className={cn(
+                'transition-all delay-500 duration-700',
                 isVisible
                   ? 'translate-y-0 opacity-100'
-                  : 'translate-y-8 opacity-0'
-              }`}
+                  : 'translate-y-8 opacity-0',
+              )}
             >
               <div className="flex flex-wrap justify-center gap-4 md:justify-start">
                 <a
@@ -119,9 +124,10 @@ export default function Hero() {
           {/* Portrait with custom blob mask */}
           <div className="flex w-full justify-center md:w-1/2 md:justify-end">
             <div
-              className={`transition-all delay-200 duration-1000 ${
-                isVisible ? 'scale-100 opacity-100' : 'scale-90 opacity-0'
-              }`}
+              className={cn(
+                'transition-all delay-200 duration-1000',
+                isVisible ? 'scale-100 opacity-100' : 'scale-90 opacity-0',
+              )}
             >
               <div className="group relative">
                 {/* Custom blob mask matching the provided SVG */}
@@ -130,7 +136,7 @@ export default function Hero() {
                   animated={true}
                 >
                   <image
-                    href="/images/profile.jpg"
+                    href="/images/profile.webp"
                     width="100%"
                     height="100%"
                     preserveAspectRatio="xMidYMid slice"

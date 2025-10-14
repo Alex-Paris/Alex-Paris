@@ -1,0 +1,26 @@
+:root {
+  --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --gradient-secondary: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --gradient-accent: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 20px 60px rgba(0, 0, 0, 0.15);
+  --shadow-elevated: 0 30px 80px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode variables */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --shadow-soft: 0 10px 40px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 20px 60px rgba(0, 0, 0, 0.4);
+    --shadow-elevated: 0 30px 80px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* Custom theme class overrides */
+[data-theme='light'] {
+  color-scheme: light;
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+}

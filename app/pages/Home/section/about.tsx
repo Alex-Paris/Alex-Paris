@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { personalInfo } from '~/data/portfolio'
 import { useParallax } from '~/hooks/useParallax'
+import { cn } from '~/lib/cn'
 
 /**
  * About section with parallax effects and bio
@@ -68,13 +69,13 @@ export default function About() {
       {/* Parallax background decorations */}
       <div className="pointer-events-none absolute inset-0 overflow-hidden">
         <div
-          className="absolute top-20 right-10 h-96 w-96 rounded-full bg-purple-200 opacity-20 mix-blend-multiply blur-3xl filter dark:bg-purple-900 dark:mix-blend-soft-light"
+          className="absolute top-20 right-10 h-96 w-96 rounded-full bg-purple-200 opacity-50 mix-blend-multiply blur-3xl filter dark:bg-purple-900 dark:mix-blend-soft-light"
           style={{
             transform: `translateY(${getParallaxOffset(0.3)}px)`,
           }}
         />
         <div
-          className="absolute bottom-20 left-10 h-80 w-80 rounded-full bg-blue-200 opacity-20 mix-blend-multiply blur-3xl filter dark:bg-blue-900 dark:mix-blend-soft-light"
+          className="absolute bottom-20 left-10 h-80 w-80 rounded-full bg-blue-200 opacity-50 mix-blend-multiply blur-3xl filter dark:bg-blue-900 dark:mix-blend-soft-light"
           style={{
             transform: `translateY(${getParallaxOffset(0.2)}px)`,
           }}
@@ -84,9 +85,10 @@ export default function About() {
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
         {/* Section header */}
         <div
-          className={`mb-16 text-center transition-all duration-700 ${
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          }`}
+          className={cn(
+            'mb-16 text-center transition-all duration-700',
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0',
+          )}
         >
           <h2 className="mb-4 text-4xl font-bold text-slate-900 md:text-5xl dark:text-white">
             About Me
@@ -99,11 +101,12 @@ export default function About() {
           {personalInfo.bio.map((paragraph, index) => (
             <p
               key={index}
-              className={`mb-6 text-lg leading-relaxed text-slate-700 transition-all duration-700 md:text-xl dark:text-slate-300 ${
+              className={cn(
+                'mb-6 text-lg leading-relaxed text-slate-700 transition-all duration-700 md:text-xl dark:text-slate-300',
                 isVisible
                   ? 'translate-y-0 opacity-100'
-                  : 'translate-y-8 opacity-0'
-              }`}
+                  : 'translate-y-8 opacity-0',
+              )}
               style={{ transitionDelay: `${(index + 1) * 100}ms` }}
             >
               {paragraph}
@@ -116,11 +119,12 @@ export default function About() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className={`shadow-soft hover:shadow-medium group rounded-2xl bg-slate-50 p-8 transition-all duration-500 dark:bg-slate-800 ${
+              className={cn(
+                'shadow-soft hover:shadow-medium group rounded-2xl bg-slate-50 p-8 transition-all duration-500 dark:bg-slate-800',
                 isVisible
                   ? 'translate-y-0 opacity-100'
-                  : 'translate-y-8 opacity-0'
-              }`}
+                  : 'translate-y-8 opacity-0',
+              )}
               style={{ transitionDelay: `${(index + 4) * 100}ms` }}
             >
               <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-xl bg-gradient-to-br from-purple-600 to-blue-600 text-white transition-transform duration-300 group-hover:scale-110">

@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { type WebProject, webProjects } from '~/data/portfolio'
 import { useLazyImage } from '~/hooks/useLazyImage'
+import { cn } from '~/lib/cn'
 
 interface ProjectCardProps {
   project: WebProject
@@ -30,9 +31,10 @@ function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
           alt={project.title}
           loading="lazy"
           onLoad={() => setIsLoaded(true)}
-          className={`h-full w-full object-cover transition-all duration-700 group-hover:scale-110 ${
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
+          className={cn(
+            'h-full w-full object-cover transition-all duration-700 group-hover:scale-110',
+            isLoaded ? 'opacity-100' : 'opacity-0',
+          )}
         />
 
         {/* Loading skeleton */}
@@ -42,9 +44,10 @@ function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
 
         {/* Overlay with tech tags */}
         <div
-          className={`absolute inset-0 flex items-end bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent p-6 transition-opacity duration-300 ${
-            isHovered ? 'opacity-100' : 'opacity-0'
-          }`}
+          className={cn(
+            'absolute inset-0 flex items-end bg-gradient-to-t from-slate-900/90 via-slate-900/50 to-transparent p-6 transition-opacity duration-300',
+            isHovered ? 'opacity-100' : 'opacity-0',
+          )}
         >
           <div className="flex flex-wrap gap-2">
             {project.tech.slice(0, 4).map((tech) => (
@@ -178,9 +181,10 @@ export default function Projects() {
       <div className="container mx-auto px-6 lg:px-12">
         {/* Section header */}
         <div
-          className={`mb-12 text-center transition-all duration-700 ${
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          }`}
+          className={cn(
+            'mb-12 text-center transition-all duration-700',
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0',
+          )}
         >
           <h2 className="mb-4 text-4xl font-bold text-slate-900 md:text-5xl dark:text-white">
             Web Projects
@@ -194,30 +198,33 @@ export default function Projects() {
 
         {/* Filters */}
         <div
-          className={`mb-8 transition-all delay-100 duration-700 ${
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          }`}
+          className={cn(
+            'mb-8 transition-all delay-100 duration-700',
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0',
+          )}
         >
           {/* Featured/All toggle */}
           <div className="mb-6 flex justify-center">
             <div className="shadow-soft inline-flex rounded-lg bg-white p-1 dark:bg-slate-700">
               <button
                 onClick={() => setFilter('all')}
-                className={`rounded-md px-6 py-2 font-medium transition-all duration-300 ${
+                className={cn(
+                  'rounded-md px-6 py-2 font-medium transition-all duration-30',
                   filter === 'all'
                     ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white'
-                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
-                }`}
+                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white',
+                )}
               >
                 All Projects
               </button>
               <button
                 onClick={() => setFilter('featured')}
-                className={`rounded-md px-6 py-2 font-medium transition-all duration-300 ${
+                className={cn(
+                  'rounded-md px-6 py-2 font-medium transition-all duration-300',
                   filter === 'featured'
                     ? 'bg-gradient-to-r from-purple-600 to-blue-600 text-white'
-                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white'
-                }`}
+                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white',
+                )}
               >
                 Featured
               </button>
@@ -228,11 +235,12 @@ export default function Projects() {
           <div className="flex flex-wrap justify-center gap-2">
             <button
               onClick={() => setSelectedTech(null)}
-              className={`rounded-lg px-4 py-2 font-medium transition-all duration-300 ${
+              className={cn(
+                'rounded-lg px-4 py-2 font-medium transition-all duration-300',
                 selectedTech === null
                   ? 'bg-purple-600 text-white'
-                  : 'bg-white text-slate-600 hover:bg-slate-100 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600'
-              }`}
+                  : 'bg-white text-slate-600 hover:bg-slate-100 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600',
+              )}
             >
               All Tech
             </button>
@@ -242,11 +250,12 @@ export default function Projects() {
                 onClick={() =>
                   setSelectedTech(tech === selectedTech ? null : tech)
                 }
-                className={`rounded-lg px-4 py-2 font-medium transition-all duration-300 ${
+                className={cn(
+                  'rounded-lg px-4 py-2 font-medium transition-all duration-300',
                   selectedTech === tech
                     ? 'bg-purple-600 text-white'
-                    : 'bg-white text-slate-600 hover:bg-slate-100 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600'
-                }`}
+                    : 'bg-white text-slate-600 hover:bg-slate-100 dark:bg-slate-700 dark:text-slate-400 dark:hover:bg-slate-600',
+                )}
               >
                 {tech}
               </button>
@@ -260,11 +269,12 @@ export default function Projects() {
             {filteredProjects.map((project, index) => (
               <div
                 key={project.id}
-                className={`transition-all duration-700 ${
+                className={cn(
+                  'transition-all duration-700',
                   isVisible
                     ? 'translate-y-0 opacity-100'
-                    : 'translate-y-8 opacity-0'
-                }`}
+                    : 'translate-y-8 opacity-0',
+                )}
                 style={{ transitionDelay: `${(index + 2) * 100}ms` }}
               >
                 <ProjectCard
