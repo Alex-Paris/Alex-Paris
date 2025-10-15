@@ -292,7 +292,7 @@ function UnityPlayerModal({
 }
 
 /**
- * Unity Games section with WebGL embed support
+ * Unity Games _section with WebGL embed support
  * Features:
  * - Lazy-loaded game thumbnails
  * - Fullscreen game player modal

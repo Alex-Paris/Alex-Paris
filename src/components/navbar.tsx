@@ -22,7 +22,7 @@ const navItems: NavItem[] = [
 /**
  * Sticky navigation with scroll-spy and mobile hamburger menu
  * Features:
- * - IntersectionObserver-based active section tracking
+ * - IntersectionObserver-based active _section tracking
  * - Smooth scroll to sections
  * - Theme toggle
  * - Responsive hamburger menu

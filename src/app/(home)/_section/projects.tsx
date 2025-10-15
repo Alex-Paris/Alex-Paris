@@ -131,7 +131,7 @@ function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
 }
 
 /**
- * Projects section with filtering and lazy loading
+ * Projects _section with filtering and lazy loading
  * Features:
  * - Filter projects by technology
  * - Lazy-loaded images

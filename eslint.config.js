@@ -1,3 +1,3 @@
-import config from '@paristech/eslint-config/react.js'
+import config from '@paristech/eslint-config/next.js'
 
 export default [...config]

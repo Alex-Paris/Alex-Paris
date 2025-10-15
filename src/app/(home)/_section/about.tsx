@@ -6,7 +6,7 @@ import { useParallax } from '~/hooks/useParallax'
 import { cn } from '~/lib/cn'
 
 /**
- * About section with parallax effects and bio
+ * About _section with parallax effects and bio
  * Features:
  * - Parallax background layers
  * - Animated entrance on scroll

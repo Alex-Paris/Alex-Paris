@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 
 /**
- * Hook to track which section is currently active in the viewport
+ * Hook to track which _section is currently active in the viewport
  * Uses IntersectionObserver for performance
  */
 export function useActiveSection(sectionIds: string[]) {
@@ -12,7 +12,7 @@ export function useActiveSection(sectionIds: string[]) {
   useEffect(() => {
     const observerOptions = {
       root: null,
-      rootMargin: '-50% 0px -50% 0px', // Trigger when section crosses the middle of viewport
+      rootMargin: '-50% 0px -50% 0px', // Trigger when _section crosses the middle of viewport
       threshold: 0,
     }
 

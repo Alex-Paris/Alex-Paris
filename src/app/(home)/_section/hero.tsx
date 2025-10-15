@@ -1,18 +1,17 @@
 import { ArrowDown } from 'lucide-react'
 import { useEffect, useState } from 'react'
 
+import BlobMask from '~/app/(home)/_components/blob-mask'
 import { personalInfo } from '~/data/portfolio'
 import { cn } from '~/lib/cn'
 
-import BlobMask from '../components/blob-mask'
-
 /**
- * Hero section with animated entrance and SVG-masked portrait
+ * Hero _section with animated entrance and SVG-masked portrait
  * Features:
  * - Animated text reveal
  * - SVG clip-path mask for image with fallback
  * - Responsive layout
- * - Smooth scroll to next section
+ * - Smooth scroll to next _section
  */
 export default function Hero() {
   const [isVisible, setIsVisible] = useState(false)

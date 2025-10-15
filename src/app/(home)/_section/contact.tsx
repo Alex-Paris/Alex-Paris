@@ -14,7 +14,7 @@ import { cn } from '~/lib/cn'
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
 /**
- * Contact section with form and social links
+ * Contact _section with form and social links
  * Features:
  * - Contact form with validation
  * - Social media links

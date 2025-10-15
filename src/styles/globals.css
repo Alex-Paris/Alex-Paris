@@ -5,8 +5,21 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-html {
-  scroll-behavior: smooth;
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Inter', Arial, Helvetica, sans-serif;
+    @apply min-h-screen antialiased bg-white dark:bg-slate-900;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {

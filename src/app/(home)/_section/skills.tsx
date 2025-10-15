@@ -63,7 +63,7 @@ function SkillCategory({
 }
 
 /**
- * Skills section with categorized skill lists
+ * Skills _section with categorized skill lists
  * Features:
  * - Three categories: Web Dev, Game Dev, Tools
  * - Animated entrance
