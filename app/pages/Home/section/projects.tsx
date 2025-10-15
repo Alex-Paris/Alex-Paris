@@ -72,6 +72,15 @@ function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
             Featured
           </div>
         )}
+
+        {/* Category badge */}
+        {project.category && (
+          <div className="absolute top-4 left-4 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-slate-700 dark:bg-slate-800/90 dark:text-slate-300">
+            {project.category === 'client' && 'Client Work'}
+            {project.category === 'hobby' && 'Hobby Project'}
+            {project.category === 'professional' && 'Professional'}
+          </div>
+        )}
       </div>
 
       {/* Project info */}
@@ -133,6 +142,9 @@ function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
 export default function Projects() {
   const [isVisible, setIsVisible] = useState(false)
   const [filter, setFilter] = useState<'all' | 'featured'>('all')
+  const [selectedCategory, setSelectedCategory] = useState<
+    'all' | 'client' | 'hobby' | 'professional'
+  >('all')
   const [selectedTech, setSelectedTech] = useState<string | null>(null)
   const [selectedProject, setSelectedProject] = useState<WebProject | null>(
     null,
@@ -168,6 +180,8 @@ export default function Projects() {
   // Filter projects
   const filteredProjects = webProjects.filter((project) => {
     if (filter === 'featured' && !project.featured) return false
+    if (selectedCategory !== 'all' && project.category !== selectedCategory)
+      return false
     if (selectedTech && !project.tech.includes(selectedTech)) return false
     return true
   })
@@ -227,6 +241,56 @@ export default function Projects() {
                 )}
               >
                 Featured
+              </button>
+            </div>
+          </div>
+
+          {/* Category filter */}
+          <div className="mb-6 flex justify-center">
+            <div className="shadow-soft inline-flex rounded-lg bg-white p-1 dark:bg-slate-700">
+              <button
+                onClick={() => setSelectedCategory('all')}
+                className={cn(
+                  'rounded-md px-6 py-2 font-medium transition-all duration-300',
+                  selectedCategory === 'all'
+                    ? 'bg-gradient-to-r from-green-600 to-teal-600 text-white'
+                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white',
+                )}
+              >
+                All Categories
+              </button>
+              <button
+                onClick={() => setSelectedCategory('client')}
+                className={cn(
+                  'rounded-md px-6 py-2 font-medium transition-all duration-300',
+                  selectedCategory === 'client'
+                    ? 'bg-gradient-to-r from-green-600 to-teal-600 text-white'
+                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white',
+                )}
+              >
+                Client Work
+              </button>
+              <button
+                onClick={() => setSelectedCategory('hobby')}
+                className={cn(
+                  'rounded-md px-6 py-2 font-medium transition-all duration-300',
+                  selectedCategory === 'hobby'
+                    ? 'bg-gradient-to-r from-green-600 to-teal-600 text-white'
+                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white',
+                )}
+              >
+                Hobby Projects
+              </button>
+              <button
+                onClick={() => setSelectedCategory('professional')}
+                className={cn(
+                  'rounded-md px-6 py-2 font-medium transition-all duration-300',
+                  selectedCategory === 'professional'
+                    ? 'bg-gradient-to-r from-green-600 to-teal-600 text-white'
+                    : 'text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white',
+                )}
+              >
+                Professional
               </button>
             </div>
           </div>
@@ -346,9 +410,23 @@ function ProjectDetailModal({
         </div>
 
         <div className="p-8">
-          <h3 className="mb-4 text-3xl font-bold text-slate-900 dark:text-white">
-            {project.title}
-          </h3>
+          <div className="mb-4 flex items-center gap-3">
+            <h3 className="text-3xl font-bold text-slate-900 dark:text-white">
+              {project.title}
+            </h3>
+            {project.category && (
+              <span className="rounded-full bg-gradient-to-r from-green-100 to-teal-100 px-3 py-1 text-sm font-semibold text-green-700 dark:from-green-900/30 dark:to-teal-900/30 dark:text-green-300">
+                {project.category === 'client' && 'Client Work'}
+                {project.category === 'hobby' && 'Hobby Project'}
+                {project.category === 'professional' && 'Professional'}
+              </span>
+            )}
+            {project.featured && (
+              <span className="rounded-full bg-gradient-to-r from-purple-100 to-blue-100 px-3 py-1 text-sm font-semibold text-purple-700 dark:from-purple-900/30 dark:to-blue-900/30 dark:text-purple-300">
+                Featured
+              </span>
+            )}
+          </div>
 
           <p className="mb-6 text-lg text-slate-700 dark:text-slate-300">
             {project.longDescription || project.description}

@@ -17,6 +17,7 @@ export interface WebProject {
   repoUrl?: string
   liveUrl?: string
   featured?: boolean
+  category?: 'client' | 'hobby' | 'professional'
 }
 
 export interface UnityGame {
@@ -46,7 +47,6 @@ export interface PersonalInfo {
   itch?: string
 }
 
-// TODO: Update with your personal information
 export const personalInfo: PersonalInfo = {
   name: 'Alex Paris',
   role: 'Full-Stack Developer & Unity Game Developer',
@@ -66,50 +66,185 @@ export const personalInfo: PersonalInfo = {
 export const webProjects: WebProject[] = [
   {
     id: 'project-1',
-    title: 'E-Commerce Platform',
+    title: 'Funada Website',
     description:
-      'A full-featured e-commerce platform with real-time inventory management, payment processing, and admin dashboard.',
+      'Corporate website for Funada, a Brazilian beverage company featuring product showcases, interactive maps, and modern UI design.',
     longDescription:
-      'Built with React, Node.js, PostgreSQL, and Stripe. Features include product catalog, shopping cart, order tracking, and comprehensive analytics.',
+      'A comprehensive corporate website for Funada, showcasing their diverse product line including traditional sodas, energy drinks, and water products. Features include product galleries, store locator with interactive maps, company news, and responsive design optimized for Brazilian market.',
+    tech: [
+      'React',
+      'TypeScript',
+      'Next.js',
+      'Vercel',
+      'Tailwind CSS',
+      'Interactive Maps',
+      'Responsive Design',
+      'Figma',
+    ],
+    imageUrl: '/images/projects/project-1.webp?w=800&h=600&fit=crop',
+    liveUrl: 'https://www.funada.com.br/',
+    featured: true,
+    category: 'client',
+  },
+  {
+    id: 'project-2',
+    title: 'BizBizShare',
+    description:
+      'B2B marketplace platform enabling businesses to share and rent resources such as equipment, warehousing, and office space with comprehensive collaboration tools.',
+    longDescription:
+      'A comprehensive B2B marketplace platform for BizBizShare that facilitates business collaboration by allowing companies to monetize idle assets and find resources when needed. Features include equipment sharing, warehousing solutions, office space rental, and advanced search capabilities designed for enterprise clients.',
     tech: [
       'React',
       'TypeScript',
       'Node.js',
-      'PostgreSQL',
-      'Stripe',
-      'Tailwind CSS',
+      'B2B Solutions',
+      'Marketplace Platform',
+      'Responsive Design',
     ],
-    imageUrl:
-      'https://images.unsplash.com/photo-1557821552-17105176677c?w=800&h=600&fit=crop', // TODO: Replace with actual screenshot
-    repoUrl: 'https://github.com/yourusername/ecommerce-platform',
-    liveUrl: 'https://your-ecommerce-demo.com',
+    imageUrl: '/images/projects/project-2.webp?w=800&h=600&fit=crop',
+    liveUrl: 'https://bizbizshare.com',
     featured: true,
-  },
-  {
-    id: 'project-2',
-    title: 'Task Management App',
-    description:
-      'Collaborative task management application with real-time updates, team boards, and drag-and-drop interface.',
-    longDescription:
-      'A Trello-inspired app built with React, Firebase, and Material-UI. Supports multiple boards, real-time collaboration, and file attachments.',
-    tech: ['React', 'Firebase', 'Redux', 'Material-UI', 'React DnD'],
-    imageUrl:
-      'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&h=600&fit=crop', // TODO: Replace
-    repoUrl: 'https://github.com/yourusername/task-manager',
-    liveUrl: 'https://your-task-app.com',
-    featured: true,
+    category: 'professional',
   },
   {
     id: 'project-3',
-    title: 'Weather Dashboard',
+    title: 'JQ Lift Website',
     description:
-      'Beautiful weather dashboard with forecasts, interactive maps, and location-based alerts.',
-    tech: ['React', 'TypeScript', 'OpenWeather API', 'Leaflet', 'Chart.js'],
-    imageUrl:
-      'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=800&h=600&fit=crop', // TODO: Replace
-    repoUrl: 'https://github.com/yourusername/weather-dashboard',
-    liveUrl: 'https://your-weather-app.com',
-    featured: false,
+      'Corporate website for JQ Lift, a company specializing in lift equipment and elevator services with comprehensive product showcases.',
+    longDescription:
+      'A professional corporate website for JQ Lift featuring their lift equipment services, maintenance solutions, and elevator systems. The site includes detailed product information, service offerings, and contact forms designed for B2B clients in the lift and elevator industry.',
+    tech: [
+      'React',
+      'TypeScript',
+      'Responsive Design',
+      'B2B Solutions',
+      'Figma',
+    ],
+    imageUrl: '/images/projects/project-3.webp?w=800&h=600&fit=crop',
+    liveUrl: 'https://jqlift.bizbizshare.com',
+    featured: true,
+    category: 'client',
+  },
+  {
+    id: 'project-4',
+    title: 'S&J Installation & Innovation',
+    description:
+      'Corporate website for S&J Installation & Innovation, featuring their installation services, innovation solutions, and team collaboration platform.',
+    longDescription:
+      'A comprehensive corporate website for S&J Installation & Innovation showcasing their cutting-edge solutions and PowerChock technology. The site features a streamlined process overview (Discovery, Design, Deliver), team information, career opportunities, and contact forms designed for B2B clients in the installation and innovation industry.',
+    tech: ['WordPress', 'Responsive Design', 'Figma'],
+    imageUrl: '/images/projects/project-4.webp?w=800&h=600&fit=crop',
+    liveUrl: 'https://installationsj.com',
+    featured: true,
+    category: 'client',
+  },
+  {
+    id: 'project-5',
+    title: 'Helas Travel Platform',
+    description:
+      'Greek travel booking platform featuring vacation packages, hotel search, and destination discovery with advanced filtering and booking system.',
+    longDescription:
+      'A comprehensive travel booking platform for Greece featuring vacation packages, hotel accommodations, and destination exploration. The platform includes advanced search filters by price range, meal plans, ratings, and dates. Built with modern web technologies, it provides a seamless booking experience with real-time availability and pricing for Greek destinations.',
+    tech: [
+      'React',
+      'TypeScript',
+      'Vercel',
+      'Tailwind CSS',
+      'Search & Filters',
+      'Responsive Design',
+    ],
+    imageUrl: '/images/projects/project-5.webp?w=800&h=600&fit=crop',
+    repoUrl: 'https://github.com/Alex-Paris/helas',
+    liveUrl: 'https://helas.vercel.app',
+    category: 'hobby',
+  },
+  {
+    id: 'project-6',
+    title: 'CPE Maimonide',
+    description:
+      'Corporate website for CPE Maimonide, a French-Canadian early childhood center featuring educational programs, bilingual services, and parent information.',
+    longDescription:
+      'A comprehensive corporate website for CPE Maimonide, a French-Canadian early childhood center located in Côte Saint-Luc, Quebec. The site showcases their educational programs for children aged 18 months to 4+ years, bilingual services, speech therapy and occupational therapy programs, operating hours, and contact information. Features a clean, family-friendly design optimized for parents seeking quality childcare services.',
+    tech: ['WordPress', 'Responsive Design', 'Multilingual Content', 'Figma'],
+    imageUrl: '/images/projects/project-6.webp?w=800&h=600&fit=crop',
+    liveUrl:
+      'https://www.figma.com/proto/o89ZmkJh3h51gNR30sxBRk/CPE-Maimonide?node-id=1-8&p=f&t=ZXJClCgP5US1Maix-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
+    category: 'client',
+  },
+  {
+    id: 'project-7',
+    title: 'RAW Finder',
+    description:
+      'RAW Finder is a company used in sourcing bulk chemicals with ease and efficiency',
+    longDescription:
+      'RAW Finder is a company used in sourcing bulk chemicals with ease and efficiency.',
+    tech: ['React', 'Figma'],
+    imageUrl: '/images/projects/project-7.webp?w=800&h=600&fit=crop',
+    liveUrl:
+      'https://www.figma.com/proto/wPrOyBq7WiiE38Nw0rm9sC/Raw-Finder?node-id=1-3&t=kMvMFC0VBJIGerkx-1',
+    category: 'client',
+  },
+  {
+    id: 'project-8',
+    title: 'Ignite Shop',
+    description:
+      'E-commerce platform built with Next.js featuring product catalog, shopping cart, and Stripe payment integration for seamless online shopping experience.',
+    longDescription:
+      'A full-featured e-commerce platform built with Next.js and Stripe integration. Features include product catalog with filtering, shopping cart functionality, secure payment processing, order management, and responsive design. Built as a learning project to master modern e-commerce development practices.',
+    tech: [
+      'Next.js',
+      'TypeScript',
+      'Stripe',
+      'E-commerce',
+      'Shopping Cart',
+      'Responsive Design',
+    ],
+    imageUrl: '/images/projects/project-8.webp?w=800&h=600&fit=crop',
+    repoUrl: 'https://github.com/Alex-Paris/ignite-shop',
+    liveUrl: 'https://ignite-shop-alex-paris.vercel.app',
+    category: 'hobby',
+  },
+  {
+    id: 'project-9',
+    title: 'ig.news',
+    description:
+      'React-focused news platform with GitHub authentication, subscription-based content, and Stripe payment integration for premium articles.',
+    longDescription:
+      'A modern news platform focused on React development content. Features include GitHub OAuth authentication, subscription-based premium content, Stripe payment processing, article management, and responsive design. Built to showcase full-stack development skills with authentication, payments, and content management.',
+    tech: [
+      'Next.js',
+      'TypeScript',
+      'Stripe',
+      'GitHub OAuth',
+      'Prismic CMS',
+      'Responsive Design',
+    ],
+    imageUrl: '/images/projects/project-9.webp?w=800&h=600&fit=crop',
+    repoUrl: 'https://github.com/Alex-Paris/ignews',
+    liveUrl: 'https://ignews-lilac-gamma.vercel.app/',
+    category: 'hobby',
+  },
+  {
+    id: 'project-10',
+    title: 'GoBarber',
+    description:
+      'Barbershop management platform with appointment scheduling, user authentication, email notifications, and admin dashboard for service providers.',
+    longDescription:
+      'A comprehensive barbershop management platform built with React and Node.js. Features include appointment scheduling, user authentication, email notifications, admin dashboard, service management, and real-time updates. Demonstrates full-stack development skills with backend API, email services, and responsive frontend design.',
+    tech: [
+      'React',
+      'React Native',
+      'Node.js',
+      'TypeScript',
+      'Email Services',
+      'Authentication',
+      'Appointment System',
+      'Responsive Design',
+    ],
+    imageUrl: '/images/projects/project-10.webp?w=800&h=600&fit=crop',
+    repoUrl: 'https://github.com/Alex-Paris/gobarber',
+    liveUrl: 'https://alexparis.dev/demos/GoBarber/',
+    category: 'hobby',
   },
 ]
 
