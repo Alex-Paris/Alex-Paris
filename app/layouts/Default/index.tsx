@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { Outlet } from 'react-router'
 
-import Footer from '~/components/Footer'
+import Foote from '~/components/foote'
 import Navbar from '~/components/navbar'
 import { useParallax } from '~/hooks/useParallax'
 
@@ -27,7 +27,7 @@ export default function DefaultLayout() {
     <div className="min-h-screen bg-white dark:bg-slate-900">
       <Navbar />
       <Outlet />
-      <Footer />
+      <Foote />
     </div>
   )
 }

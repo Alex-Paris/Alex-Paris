@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from 'react'
 
 import { type UnityGame, unityGames } from '~/data/portfolio'
 import { useLazyImage } from '~/hooks/useLazyImage'
+import { cn } from '~/lib/cn'
 
 interface GameCardProps {
   game: UnityGame
@@ -32,9 +33,10 @@ function GameCard({ game, onPlay }: GameCardProps) {
           alt={game.title}
           loading="lazy"
           onLoad={() => setIsLoaded(true)}
-          className={`h-full w-full object-cover transition-all duration-700 ${
-            isLoaded ? 'opacity-100' : 'opacity-0'
-          }`}
+          className={cn(
+            'h-full w-full object-cover transition-all duration-700',
+            isLoaded ? 'opacity-100' : 'opacity-0',
+          )}
         />
 
         {/* Loading skeleton */}
@@ -45,9 +47,10 @@ function GameCard({ game, onPlay }: GameCardProps) {
         {/* Play button overlay */}
         {hasPlayableVersion && (
           <div
-            className={`absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
-              isHovered ? 'opacity-100' : 'opacity-0'
-            }`}
+            className={cn(
+              'absolute inset-0 flex items-center justify-center bg-black/60 backdrop-blur-sm transition-opacity duration-300',
+              isHovered ? 'opacity-100' : 'opacity-0',
+            )}
           >
             <button
               onClick={() => onPlay(game)}
@@ -237,7 +240,7 @@ function UnityPlayerModal({
           />
         </div>
 
-        {/* Footer with info */}
+        {/* Foote with info */}
         <div className="border-t border-slate-700 bg-slate-800 p-4">
           <div className="flex items-center justify-between">
             <div className="flex flex-wrap gap-2">
@@ -340,11 +343,12 @@ export default function UnityGames() {
         <div className="relative z-10 container mx-auto px-6 lg:px-12">
           {/* Section header */}
           <div
-            className={`mb-12 text-center transition-all duration-700 ${
+            className={cn(
+              'mb-12 text-center transition-all duration-700',
               isVisible
                 ? 'translate-y-0 opacity-100'
-                : 'translate-y-8 opacity-0'
-            }`}
+                : 'translate-y-8 opacity-0',
+            )}
           >
             <h2 className="mb-4 text-4xl font-bold text-white md:text-5xl">
               Unity Games
@@ -361,11 +365,12 @@ export default function UnityGames() {
             {unityGames.map((game, index) => (
               <div
                 key={game.id}
-                className={`transition-all duration-700 ${
+                className={cn(
+                  'transition-all duration-700',
                   isVisible
                     ? 'translate-y-0 opacity-100'
-                    : 'translate-y-8 opacity-0'
-                }`}
+                    : 'translate-y-8 opacity-0',
+                )}
                 style={{ transitionDelay: `${(index + 1) * 100}ms` }}
               >
                 <GameCard game={game} onPlay={setSelectedGame} />

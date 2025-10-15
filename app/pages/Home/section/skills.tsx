@@ -2,6 +2,7 @@ import { Code2, Gamepad2, Wrench } from 'lucide-react'
 import React, { useEffect, useRef, useState } from 'react'
 
 import { skills } from '~/data/portfolio'
+import { cn } from '~/lib/cn'
 
 interface SkillCategoryProps {
   icon: React.ReactNode
@@ -25,15 +26,19 @@ function SkillCategory({
 }: SkillCategoryProps) {
   return (
     <div
-      className={`shadow-soft hover:shadow-medium rounded-2xl bg-white p-8 transition-all duration-700 dark:bg-slate-800 ${
-        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-      }`}
+      className={cn(
+        'shadow-soft hover:shadow-medium rounded-2xl bg-white p-8 transition-all duration-700 dark:bg-slate-800',
+        isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0',
+      )}
       style={{ transitionDelay: `${delay}ms` }}
     >
       {/* Icon header */}
       <div className="mb-6 flex items-center gap-4">
         <div
-          className={`flex h-14 w-14 items-center justify-center rounded-xl text-white ${color}`}
+          className={cn(
+            'flex h-14 w-14 items-center justify-center rounded-xl text-white',
+            color,
+          )}
         >
           {icon}
         </div>
@@ -122,9 +127,10 @@ export default function Skills() {
       <div className="container mx-auto px-6 lg:px-12">
         {/* Section header */}
         <div
-          className={`mb-16 text-center transition-all duration-700 ${
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          }`}
+          className={cn(
+            'mb-16 text-center transition-all duration-700',
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0',
+          )}
         >
           <h2 className="mb-4 text-4xl font-bold text-slate-900 md:text-5xl dark:text-white">
             Skills & Expertise
@@ -153,9 +159,10 @@ export default function Skills() {
 
         {/* Additional info */}
         <div
-          className={`mt-16 text-center transition-all delay-500 duration-700 ${
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          }`}
+          className={cn(
+            'mt-16 text-center transition-all delay-500 duration-700',
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0',
+          )}
         >
           <p className="mx-auto max-w-3xl text-slate-600 dark:text-slate-400">
             Always learning and exploring new technologies. Currently diving

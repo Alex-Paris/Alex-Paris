@@ -9,6 +9,7 @@ import {
 import React, { useEffect, useRef, useState } from 'react'
 
 import { personalInfo } from '~/data/portfolio'
+import { cn } from '~/lib/cn'
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -128,9 +129,10 @@ export default function Contact() {
       <div className="relative z-10 container mx-auto px-6 lg:px-12">
         {/* Section header */}
         <div
-          className={`mb-16 text-center transition-all duration-700 ${
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'
-          }`}
+          className={cn(
+            'mb-16 text-center transition-all duration-700',
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0',
+          )}
         >
           <h2 className="mb-4 text-4xl font-bold text-slate-900 md:text-5xl dark:text-white">
             Get In Touch
@@ -144,11 +146,12 @@ export default function Contact() {
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-12 lg:grid-cols-2">
           {/* Contact form */}
           <div
-            className={`transition-all delay-100 duration-700 ${
+            className={cn(
+              'transition-all delay-100 duration-700',
               isVisible
                 ? 'translate-y-0 opacity-100'
-                : 'translate-y-8 opacity-0'
-            }`}
+                : 'translate-y-8 opacity-0',
+            )}
           >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -252,11 +255,12 @@ export default function Contact() {
 
           {/* Contact info and social links */}
           <div
-            className={`transition-all delay-200 duration-700 ${
+            className={cn(
+              'transition-all delay-200 duration-700',
               isVisible
                 ? 'translate-y-0 opacity-100'
-                : 'translate-y-8 opacity-0'
-            }`}
+                : 'translate-y-8 opacity-0',
+            )}
           >
             <div className="flex h-full flex-col justify-between rounded-2xl bg-slate-50 p-8 dark:bg-slate-800">
               <div>
@@ -300,7 +304,11 @@ export default function Contact() {
                           ? 'noopener noreferrer'
                           : undefined
                       }
-                      className={`flex h-12 w-12 items-center justify-center rounded-lg bg-white text-slate-600 dark:bg-slate-700 dark:text-slate-400 ${link.color} shadow-soft hover:shadow-medium transform transition-all duration-300 hover:-translate-y-1`}
+                      className={cn(
+                        'flex h-12 w-12 items-center justify-center rounded-lg bg-white text-slate-600 dark:bg-slate-700 dark:text-slate-400',
+                        link.color,
+                        'shadow-soft hover:shadow-medium transform transition-all duration-300 hover:-translate-y-1',
+                      )}
                       aria-label={link.label}
                     >
                       {link.icon}
