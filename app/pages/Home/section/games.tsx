@@ -240,7 +240,7 @@ function UnityPlayerModal({
           />
         </div>
 
-        {/* Foote with info */}
+        {/* Footer with info */}
         <div className="border-t border-slate-700 bg-slate-800 p-4">
           <div className="flex items-center justify-between">
             <div className="flex flex-wrap gap-2">

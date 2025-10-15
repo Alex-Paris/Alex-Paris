@@ -1,13 +1,13 @@
 import { Heart, ArrowUp } from 'lucide-react'
 
 /**
- * Foote component with back-to-top button
+ * Footer component with back-to-top button
  * Features:
  * - Copyright info
  * - Back to top button
  * - Simple, clean design
  */
-export default function Foote() {
+export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
