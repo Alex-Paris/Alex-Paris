@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react'
 
 import BlobMask from '~/app/(home)/_components/blob-mask'
 import { personalInfo } from '~/data/portfolio'
-import { cn } from '~/lib/cn'
+import { cn } from '~/lib/utils'
 
 /**
  * Hero _section with animated entrance and SVG-masked portrait

@@ -1,9 +1,10 @@
 import { ExternalLink, Github, ChevronDown } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { type WebProject, webProjects } from '~/data/portfolio'
-import { useLazyImage } from '~/hooks/useLazyImage'
-import { cn } from '~/lib/cn'
+import { useIntersectionObserver } from '~/hooks/use-intersection-observer'
+import { useLazyImage } from '~/hooks/use-lazy-image'
+import { cn } from '~/lib/utils'
 
 interface ProjectCardProps {
   project: WebProject
@@ -140,7 +141,7 @@ function ProjectCard({ project, onViewDetails }: ProjectCardProps) {
  * - Project detail modal
  */
 export default function Projects() {
-  const [isVisible, setIsVisible] = useState(false)
+  const { ref: sectionRef, isVisible } = useIntersectionObserver()
   const [filter, setFilter] = useState<'all' | 'featured'>('all')
   const [selectedCategory, setSelectedCategory] = useState<
     'all' | 'client' | 'hobby' | 'professional'
@@ -149,30 +150,6 @@ export default function Projects() {
   const [selectedProject, setSelectedProject] = useState<WebProject | null>(
     null,
   )
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [])
 
   // Get all unique technologies
   const allTech = Array.from(new Set(webProjects.flatMap((p) => p.tech))).sort()

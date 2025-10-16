@@ -8,7 +8,7 @@ import { Heart, ArrowUp } from 'lucide-react'
  * - Simple, clean design
  */
 export default function Footer() {
-  const scrollToTop = () => {
+  function scrollToTop() {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 

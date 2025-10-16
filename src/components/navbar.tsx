@@ -1,9 +1,9 @@
 import { Menu, X, Moon, Sun } from 'lucide-react'
 import React, { useEffect, useState } from 'react'
 
-import { useActiveSection } from '~/hooks/useActiveSection'
-import { useTheme } from '~/hooks/useTheme'
-import { cn } from '~/lib/cn'
+import { useActiveSection } from '~/hooks/use-active-section'
+import { useTheme } from '~/hooks/use-theme'
+import { cn } from '~/lib/utils'
 
 interface NavItem {
   id: string

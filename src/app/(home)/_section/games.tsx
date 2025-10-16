@@ -2,8 +2,9 @@ import { Play, Maximize2, ExternalLink, Github, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
 import { type UnityGame, unityGames } from '~/data/portfolio'
-import { useLazyImage } from '~/hooks/useLazyImage'
-import { cn } from '~/lib/cn'
+import { useIntersectionObserver } from '~/hooks/use-intersection-observer'
+import { useLazyImage } from '~/hooks/use-lazy-image'
+import { cn } from '~/lib/utils'
 
 interface GameCardProps {
   game: UnityGame
@@ -300,32 +301,8 @@ function UnityPlayerModal({
  * - Featured games
  */
 export default function UnityGames() {
-  const [isVisible, setIsVisible] = useState(false)
+  const { ref: sectionRef, isVisible } = useIntersectionObserver()
   const [selectedGame, setSelectedGame] = useState<UnityGame | null>(null)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [])
 
   return (
     <>

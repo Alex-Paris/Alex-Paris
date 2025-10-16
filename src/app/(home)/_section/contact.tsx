@@ -6,10 +6,11 @@ import {
   CheckCircle,
   AlertCircle,
 } from 'lucide-react'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 
 import { personalInfo } from '~/data/portfolio'
-import { cn } from '~/lib/cn'
+import { useIntersectionObserver } from '~/hooks/use-intersection-observer'
+import { cn } from '~/lib/utils'
 
 type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 
@@ -22,37 +23,13 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
  * - Form submission handling
  */
 export default function Contact() {
-  const [isVisible, setIsVisible] = useState(false)
+  const { ref: sectionRef, isVisible } = useIntersectionObserver()
   const [formStatus, setFormStatus] = useState<FormStatus>('idle')
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     message: '',
   })
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [])
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,

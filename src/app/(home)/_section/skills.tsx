@@ -1,8 +1,9 @@
 import { Code2, Gamepad2, Wrench } from 'lucide-react'
-import React, { useEffect, useRef, useState } from 'react'
+import React from 'react'
 
 import { skills } from '~/data/portfolio'
-import { cn } from '~/lib/cn'
+import { useIntersectionObserver } from '~/hooks/use-intersection-observer'
+import { cn } from '~/lib/utils'
 
 interface SkillCategoryProps {
   icon: React.ReactNode
@@ -71,31 +72,7 @@ function SkillCategory({
  * - Responsive grid layout
  */
 export default function Skills() {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [])
+  const { ref: sectionRef, isVisible } = useIntersectionObserver()
 
   const categories = [
     {

@@ -1,9 +1,9 @@
 import { Code2, Gamepad2, Palette } from 'lucide-react'
-import { useEffect, useRef, useState } from 'react'
 
 import { personalInfo } from '~/data/portfolio'
-import { useParallax } from '~/hooks/useParallax'
-import { cn } from '~/lib/cn'
+import { useIntersectionObserver } from '~/hooks/use-intersection-observer'
+import { useParallax } from '~/hooks/use-parallax'
+import { cn } from '~/lib/utils'
 
 /**
  * About _section with parallax effects and bio
@@ -13,32 +13,8 @@ import { cn } from '~/lib/cn'
  * - Icon highlights
  */
 export default function About() {
-  const [isVisible, setIsVisible] = useState(false)
-  const sectionRef = useRef<HTMLElement>(null)
+  const { ref: sectionRef, isVisible } = useIntersectionObserver()
   const { getParallaxOffset } = useParallax()
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setIsVisible(true)
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current)
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current)
-      }
-    }
-  }, [])
 
   const features = [
     {
