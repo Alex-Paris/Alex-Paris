@@ -1,6 +1,7 @@
 import { Play, Maximize2, ExternalLink, Github, X } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 
+import UnityGamePlayer from '~/components/unity-game-player'
 import { type UnityGame, unityGames } from '~/data/portfolio'
 import { useIntersectionObserver } from '~/hooks/use-intersection-observer'
 import { useLazyImage } from '~/hooks/use-lazy-image'
@@ -153,6 +154,17 @@ function UnityPlayerModal({
   game: UnityGame
   onClose: () => void
 }) {
+  // Use native Unity WebGL player for games with unityBuildPath
+  if (game.unityBuildPath) {
+    return (
+      <UnityGamePlayer
+        game={game as UnityGame & { unityBuildPath: string }}
+        onClose={onClose}
+      />
+    )
+  }
+
+  // Fallback to iframe for external games
   const [isLoading, setIsLoading] = useState(true)
   const iframeRef = useRef<HTMLIFrameElement>(null)
 
@@ -175,7 +187,7 @@ function UnityPlayerModal({
     return () => document.removeEventListener('keydown', handleEscape)
   }, [onClose])
 
-  const gameUrl = game.unityBuildPath || game.liveUrl || ''
+  const gameUrl = game.liveUrl || ''
 
   const handleFullscreen = () => {
     if (iframeRef.current) {
@@ -256,7 +268,7 @@ function UnityPlayerModal({
             </div>
 
             <div className="flex gap-2">
-              {game.liveUrl && !game.unityBuildPath && (
+              {game.liveUrl && (
                 <a
                   href={game.liveUrl}
                   target="_blank"

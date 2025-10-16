@@ -248,37 +248,32 @@ export const webProjects: WebProject[] = [
   },
 ]
 
-// TODO: Replace with your actual Unity games
+// Unity Games - Interactive WebGL builds
 export const unityGames: UnityGame[] = [
   {
-    id: 'game-1',
+    id: 'kitchen-chaos',
+    title: 'Kitchen Chaos',
+    description:
+      'Fast-paced cooking simulation game where timing and multitasking are key to success.',
+    longDescription:
+      'A chaotic kitchen management game inspired by Overcooked. Features multiple recipes, and a campaign mode with increasing difficulty. Built with Unity and optimized for WebGL deployment.',
+    tech: ['Unity', 'C#', 'Input System', 'Unity Events', 'WebGL'],
+    imageUrl: '/images/games/kitchen-chaos.webp',
+    unityBuildPath: '/unity/kitchen-chaos',
+    featured: true,
+  },
+  {
+    id: 'defenders-of-the-empire',
     title: 'Defenders of The Empire',
     description:
       'A strategic tower defense game where you protect your kingdom from waves of invaders.',
     longDescription:
       'Built in Unity with custom AI pathfinding, particle effects, and progressive difficulty. Features 20+ levels, multiple tower types, and upgrade systems.',
     tech: ['Unity', 'C#', 'Universal RP', 'NavMesh', 'Cinemachine'],
-    imageUrl:
-      'https://images.unsplash.com/photo-1538481199705-c710c4e965fc?w=800&h=600&fit=crop', // TODO: Replace with game screenshot
-    // Option 1: Host WebGL build locally
-    unityBuildPath: '/unity/defenders-of-the-empire', // TODO: Build and place in public/unity/
-    // Option 2: Or link to external host
-    // liveUrl: "https://yourusername.itch.io/defenders-of-the-empire",
-    repoUrl: 'https://github.com/yourusername/defenders-of-the-empire',
-    featured: true,
-  },
-  {
-    id: 'game-2',
-    title: 'Kitchen Chaos',
-    description:
-      'Fast-paced cooking simulation game where timing and multitasking are key to success.',
-    longDescription:
-      'A chaotic kitchen management game inspired by Overcooked. Supports local multiplayer, features multiple recipes, and includes a campaign mode with increasing difficulty.',
-    tech: ['Unity', 'C#', 'Input System', 'Multiplayer', 'Unity Events'],
-    imageUrl:
-      'https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=600&fit=crop', // TODO: Replace
-    liveUrl: 'https://yourusername.itch.io/kitchen-chaos', // TODO: Update
-    featured: true,
+    imageUrl: '/images/games/defenders-of-the-empire.webp',
+    // TODO: Add WebGL build when available
+    // unityBuildPath: '/unity/defenders-of-the-empire',
+    liveUrl: 'https://yourusername.itch.io/defenders-of-the-empire',
   },
 ]
 
