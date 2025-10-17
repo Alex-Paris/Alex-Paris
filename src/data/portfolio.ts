@@ -62,10 +62,32 @@ export const personalInfo: PersonalInfo = {
   // itch: 'https://yourusername.itch.io',
 }
 
-// TODO: Replace with your actual web projects
 export const webProjects: WebProject[] = [
   {
-    id: 'project-1',
+    id: 'sgapetro',
+    title: 'SGA Petro',
+    description:
+      'Comprehensive gas station management software application for SGA Petro, featuring purchase/sale management, invoice insurance, fuel movement tracking, POS system, and automation equipment integration.',
+    longDescription:
+      'A comprehensive gas station management software application for SGA Petro, a Brazilian software company specializing in gas station solutions. The application handles complete gas station operations including purchase and sale management, invoice insurance processing, fuel movement book tracking, point of sale functionality, and communication with automation equipment. Built with modern technologies including React.js frontend and C# API backend with Entity Framework, representing a migration from legacy Delphi systems to modern web technologies.',
+    tech: [
+      'React',
+      'TypeScript',
+      'C#',
+      'Entity Framework',
+      'ASP.NET Core',
+      'POS System',
+      'Invoice Management',
+      'Automation Integration',
+      'Legacy Migration',
+    ],
+    imageUrl: '/images/projects/sgapetro.webp?w=800&h=600&fit=crop',
+    liveUrl: 'https://gruposgapetro.com.br',
+    featured: true,
+    category: 'professional',
+  },
+  {
+    id: 'funada',
     title: 'Funada Website',
     description:
       'Corporate website for Funada, a Brazilian beverage company featuring product showcases, interactive maps, and modern UI design.',
@@ -81,13 +103,13 @@ export const webProjects: WebProject[] = [
       'Responsive Design',
       'Figma',
     ],
-    imageUrl: '/images/projects/project-1.webp?w=800&h=600&fit=crop',
+    imageUrl: '/images/projects/funada.webp?w=800&h=600&fit=crop',
     liveUrl: 'https://www.funada.com.br/',
     featured: true,
     category: 'client',
   },
   {
-    id: 'project-2',
+    id: 'bizbizshare',
     title: 'BizBizShare',
     description:
       'B2B marketplace platform enabling businesses to share and rent resources such as equipment, warehousing, and office space with comprehensive collaboration tools.',
@@ -101,13 +123,13 @@ export const webProjects: WebProject[] = [
       'Marketplace Platform',
       'Responsive Design',
     ],
-    imageUrl: '/images/projects/project-2.webp?w=800&h=600&fit=crop',
+    imageUrl: '/images/projects/bizbizshare.webp?w=800&h=600&fit=crop',
     liveUrl: 'https://bizbizshare.com',
     featured: true,
     category: 'professional',
   },
   {
-    id: 'project-3',
+    id: 'jq-lift',
     title: 'JQ Lift Website',
     description:
       'Corporate website for JQ Lift, a company specializing in lift equipment and elevator services with comprehensive product showcases.',
@@ -120,26 +142,27 @@ export const webProjects: WebProject[] = [
       'B2B Solutions',
       'Figma',
     ],
-    imageUrl: '/images/projects/project-3.webp?w=800&h=600&fit=crop',
+    imageUrl: '/images/projects/jq-lift.webp?w=800&h=600&fit=crop',
     liveUrl: 'https://jqlift.bizbizshare.com',
     featured: true,
     category: 'client',
   },
   {
-    id: 'project-4',
+    id: 'sj-installation-innovation',
     title: 'S&J Installation & Innovation',
     description:
       'Corporate website for S&J Installation & Innovation, featuring their installation services, innovation solutions, and team collaboration platform.',
     longDescription:
       'A comprehensive corporate website for S&J Installation & Innovation showcasing their cutting-edge solutions and PowerChock technology. The site features a streamlined process overview (Discovery, Design, Deliver), team information, career opportunities, and contact forms designed for B2B clients in the installation and innovation industry.',
     tech: ['WordPress', 'Responsive Design', 'Figma'],
-    imageUrl: '/images/projects/project-4.webp?w=800&h=600&fit=crop',
+    imageUrl:
+      '/images/projects/sj-installation-innovation.webp?w=800&h=600&fit=crop',
     liveUrl: 'https://installationsj.com',
     featured: true,
     category: 'client',
   },
   {
-    id: 'project-5',
+    id: 'helas-travel',
     title: 'Helas Travel Platform',
     description:
       'Greek travel booking platform featuring vacation packages, hotel search, and destination discovery with advanced filtering and booking system.',
@@ -153,39 +176,39 @@ export const webProjects: WebProject[] = [
       'Search & Filters',
       'Responsive Design',
     ],
-    imageUrl: '/images/projects/project-5.webp?w=800&h=600&fit=crop',
+    imageUrl: '/images/projects/helas-travel.webp?w=800&h=600&fit=crop',
     repoUrl: 'https://github.com/Alex-Paris/helas',
     liveUrl: 'https://helas.vercel.app',
     category: 'hobby',
   },
   {
-    id: 'project-6',
+    id: 'cpe-maimonide',
     title: 'CPE Maimonide',
     description:
       'Corporate website for CPE Maimonide, a French-Canadian early childhood center featuring educational programs, bilingual services, and parent information.',
     longDescription:
       'A comprehensive corporate website for CPE Maimonide, a French-Canadian early childhood center located in Côte Saint-Luc, Quebec. The site showcases their educational programs for children aged 18 months to 4+ years, bilingual services, speech therapy and occupational therapy programs, operating hours, and contact information. Features a clean, family-friendly design optimized for parents seeking quality childcare services.',
     tech: ['WordPress', 'Responsive Design', 'Multilingual Content', 'Figma'],
-    imageUrl: '/images/projects/project-6.webp?w=800&h=600&fit=crop',
+    imageUrl: '/images/projects/cpe-maimonide.webp?w=800&h=600&fit=crop',
     liveUrl:
       'https://www.figma.com/proto/o89ZmkJh3h51gNR30sxBRk/CPE-Maimonide?node-id=1-8&p=f&t=ZXJClCgP5US1Maix-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1',
     category: 'client',
   },
   {
-    id: 'project-7',
+    id: 'raw-finder',
     title: 'RAW Finder',
     description:
       'RAW Finder is a company used in sourcing bulk chemicals with ease and efficiency',
     longDescription:
       'RAW Finder is a company used in sourcing bulk chemicals with ease and efficiency.',
     tech: ['React', 'Figma'],
-    imageUrl: '/images/projects/project-7.webp?w=800&h=600&fit=crop',
+    imageUrl: '/images/projects/raw-finder.webp?w=800&h=600&fit=crop',
     liveUrl:
       'https://www.figma.com/proto/wPrOyBq7WiiE38Nw0rm9sC/Raw-Finder?node-id=1-3&t=kMvMFC0VBJIGerkx-1',
     category: 'client',
   },
   {
-    id: 'project-8',
+    id: 'ignite-shop',
     title: 'Ignite Shop',
     description:
       'E-commerce platform built with Next.js featuring product catalog, shopping cart, and Stripe payment integration for seamless online shopping experience.',
@@ -199,13 +222,13 @@ export const webProjects: WebProject[] = [
       'Shopping Cart',
       'Responsive Design',
     ],
-    imageUrl: '/images/projects/project-8.webp?w=800&h=600&fit=crop',
+    imageUrl: '/images/projects/ignite-shop.webp?w=800&h=600&fit=crop',
     repoUrl: 'https://github.com/Alex-Paris/ignite-shop',
     liveUrl: 'https://ignite-shop-alex-paris.vercel.app',
     category: 'hobby',
   },
   {
-    id: 'project-9',
+    id: 'ig-news',
     title: 'ig.news',
     description:
       'React-focused news platform with GitHub authentication, subscription-based content, and Stripe payment integration for premium articles.',
@@ -219,13 +242,13 @@ export const webProjects: WebProject[] = [
       'Prismic CMS',
       'Responsive Design',
     ],
-    imageUrl: '/images/projects/project-9.webp?w=800&h=600&fit=crop',
+    imageUrl: '/images/projects/ig-news.webp?w=800&h=600&fit=crop',
     repoUrl: 'https://github.com/Alex-Paris/ignews',
     liveUrl: 'https://ignews-lilac-gamma.vercel.app/',
     category: 'hobby',
   },
   {
-    id: 'project-10',
+    id: 'gobarber',
     title: 'GoBarber',
     description:
       'Barbershop management platform with appointment scheduling, user authentication, email notifications, and admin dashboard for service providers.',
@@ -241,7 +264,7 @@ export const webProjects: WebProject[] = [
       'Appointment System',
       'Responsive Design',
     ],
-    imageUrl: '/images/projects/project-10.webp?w=800&h=600&fit=crop',
+    imageUrl: '/images/projects/gobarber.webp?w=800&h=600&fit=crop',
     repoUrl: 'https://github.com/Alex-Paris/gobarber',
     liveUrl: 'https://alexparis.dev/demos/GoBarber/',
     category: 'hobby',
@@ -263,18 +286,29 @@ export const unityGames: UnityGame[] = [
     featured: true,
   },
   {
-    id: 'defenders-of-the-empire',
-    title: 'Defenders of The Empire',
+    id: 'horde-project',
+    title: 'Horde Project',
     description:
-      'A strategic tower defense game where you protect your kingdom from waves of invaders.',
+      'An intense survival game where you must defend against waves of enemies using strategy and quick reflexes.',
     longDescription:
-      'Built in Unity with custom AI pathfinding, particle effects, and progressive difficulty. Features 20+ levels, multiple tower types, and upgrade systems.',
-    tech: ['Unity', 'C#', 'Universal RP', 'NavMesh', 'Cinemachine'],
-    imageUrl: '/images/games/defenders-of-the-empire.webp',
-    // TODO: Add WebGL build when available
-    // unityBuildPath: '/unity/defenders-of-the-empire',
-    liveUrl: 'https://yourusername.itch.io/defenders-of-the-empire',
+      'A challenging survival game built with Unity featuring wave-based combat, strategic gameplay, and progressive difficulty. Players must defend their position against increasingly difficult hordes of enemies using various weapons and tactics. Optimized for WebGL deployment with smooth performance.',
+    tech: ['Unity', 'C#', 'WebGL', 'Game Physics', 'AI Systems'],
+    imageUrl: '/images/games/horde-project.webp',
+    unityBuildPath: '/unity/horde-project',
+    featured: true,
   },
+  // {
+  //   id: 'defenders-of-the-empire',
+  //   title: 'Defenders of The Empire',
+  //   description:
+  //     'A strategic tower defense game where you protect your kingdom from waves of invaders.',
+  //   longDescription:
+  //     'Built in Unity with custom AI pathfinding, particle effects, and progressive difficulty. Features 20+ levels, multiple tower types, and upgrade systems.',
+  //   tech: ['Unity', 'C#', 'Universal RP', 'NavMesh', 'Cinemachine'],
+  //   imageUrl: '/images/games/defenders-of-the-empire.webp',
+  //   // unityBuildPath: '/unity/defenders-of-the-empire',
+  //   liveUrl: 'https://yourusername.itch.io/defenders-of-the-empire',
+  // },
 ]
 
 export const skills = {
