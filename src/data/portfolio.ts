@@ -285,6 +285,18 @@ export const unityGames: UnityGame[] = [
     unityBuildPath: '/unity/kitchen-chaos',
     featured: true,
   },
+  {
+    id: 'horde-project',
+    title: 'Horde Project',
+    description:
+      'An intense survival game where you must defend against waves of enemies using strategy and quick reflexes.',
+    longDescription:
+      'A challenging survival game built with Unity featuring wave-based combat, strategic gameplay, and progressive difficulty. Players must defend their position against increasingly difficult hordes of enemies using various weapons and tactics. Optimized for WebGL deployment with smooth performance.',
+    tech: ['Unity', 'C#', 'WebGL', 'Game Physics', 'AI Systems'],
+    imageUrl: '/images/games/horde-project.webp',
+    unityBuildPath: '/unity/horde-project',
+    featured: true,
+  },
   // {
   //   id: 'defenders-of-the-empire',
   //   title: 'Defenders of The Empire',
