@@ -8,7 +8,9 @@ import {
 } from 'lucide-react'
 import React, { useState } from 'react'
 
+import { IContactMailTemplate } from '~/components/contact-mail-template'
 import { personalInfo } from '~/data/portfolio'
+import { sendMail } from '~/functions/send-mail'
 import { useIntersectionObserver } from '~/hooks/use-intersection-observer'
 import { cn } from '~/lib/utils'
 
@@ -25,32 +27,27 @@ type FormStatus = 'idle' | 'submitting' | 'success' | 'error'
 export default function Contact() {
   const { ref: sectionRef, isVisible } = useIntersectionObserver()
   const [formStatus, setFormStatus] = useState<FormStatus>('idle')
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<IContactMailTemplate>({
     name: '',
     email: '',
     message: '',
   })
 
-  const handleInputChange = (
+  function handleInputChange(
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => {
+  ) {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     })
   }
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
     setFormStatus('submitting')
 
-    // TODO: Replace with actual form submission logic
-    // This is a placeholder that simulates an API call
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-
-      // For now, we'll just log the form data and show success
-      console.log('Form submitted:', formData)
+      await sendMail(formData)
 
       setFormStatus('success')
       setFormData({ name: '', email: '', message: '' })
@@ -83,12 +80,6 @@ export default function Contact() {
       href: personalInfo.linkedin,
       color: 'hover:text-blue-600',
     },
-    // {
-    //   icon: <Twitter size={24} />,
-    //   label: 'Twitter',
-    //   href: personalInfo.twitter,
-    //   color: 'hover:text-sky-500',
-    // },
   ]
 
   return (

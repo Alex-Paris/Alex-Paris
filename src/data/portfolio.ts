@@ -295,6 +295,7 @@ export const unityGames: UnityGame[] = [
     tech: ['Unity', 'C#', 'WebGL', 'Game Physics', 'AI Systems'],
     imageUrl: '/images/games/horde-project.webp',
     unityBuildPath: '/unity/horde-project',
+    repoUrl: 'https://github.com/Alex-Paris/horde-project-game',
     featured: true,
   },
   // {

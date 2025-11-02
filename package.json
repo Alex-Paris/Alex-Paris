@@ -13,7 +13,8 @@
     "next": "15.5.5",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "react-unity-webgl": "^10.1.6"
+    "react-unity-webgl": "^10.1.6",
+    "resend": "^6.4.0"
   },
   "devDependencies": {
     "@paristech/eslint-config": "^3.0.1",
